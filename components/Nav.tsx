@@ -33,80 +33,80 @@ export default function Nav() {
       <header
         className={`fixed top-0 left-0 right-0 z-50 transition-all duration-300 ${
           scrolled
-            ? "bg-[#FAF8F5]/95 backdrop-blur-md border-b border-[rgba(36,35,32,0.08)] py-3.5 shadow-sm"
-            : "bg-[#FAF8F5] border-b border-[rgba(36,35,32,0.06)] py-4.5"
+            ? "bg-[#FAF8F5]/95 backdrop-blur-md border-b border-[rgba(36,35,32,0.08)] py-3 shadow-sm"
+            : "bg-[#FAF8F5] border-b border-[rgba(36,35,32,0.06)] py-4"
         }`}
       >
-        <div className="container-site">
+        <div className="w-full max-w-[1360px] mx-auto px-4 sm:px-6 lg:px-8 xl:px-10">
           <nav
-            className="flex items-center justify-between"
+            className="flex items-center justify-between gap-4 lg:gap-6"
             aria-label="Main navigation"
           >
             {/* Logo */}
             <Link
               href="/"
-              className="flex items-center gap-2 group"
+              className="flex items-center gap-2 group shrink-0"
               aria-label="Small Wonders — Home"
             >
-              <div className="relative h-11 w-40 sm:w-48 flex items-center">
+              <div className="relative h-9 sm:h-10 w-36 sm:w-44 flex items-center">
                 <Image
                   src="/images/logo.png"
                   alt="Small Wonders"
                   width={212}
                   height={121}
-                  className="object-contain object-left h-9 sm:h-10 w-auto"
+                  className="object-contain object-left h-8 sm:h-9 w-auto"
                   priority
                 />
               </div>
             </Link>
 
-            {/* Desktop Nav Links */}
-            <div className="hidden lg:flex items-center gap-6">
+            {/* Desktop Nav Links — Unified straight baseline with equal gap */}
+            <div className="hidden xl:flex items-center gap-5 xl:gap-5.5 2xl:gap-7">
               {NAV_LINKS.map((link) => {
-                const isActive = pathname === link.href || pathname.startsWith(`${link.href}/`);
+                const isActive = pathname === link.href || (link.href !== "/" && pathname.startsWith(link.href));
                 return (
                   <Link
                     key={link.href}
                     href={link.href}
-                    className={`nav-link text-sm ${isActive ? "active" : ""}`}
+                    className={`nav-link whitespace-nowrap shrink-0 ${isActive ? "active" : ""}`}
                   >
                     {link.label}
                   </Link>
                 );
               })}
 
-              {/* Assessment link */}
+              {/* Assessment link — equal gap and exact same baseline */}
               <a
                 href={CTA.assessment.href}
                 target="_blank"
                 rel="noopener noreferrer"
                 id="nav-cta-assessment-link"
-                className="text-sm font-sans text-[#242320]/75 hover:text-[#A31818] transition-colors"
+                className="nav-link whitespace-nowrap shrink-0"
               >
                 Assessment ↗
               </a>
 
-              {/* Take an Appointment button */}
+              {/* Take an Appointment button — matching height & baseline with equal gap */}
               <Link
                 href="/contact"
                 id="nav-cta-appointment-btn"
-                className="btn btn-primary text-xs sm:text-sm py-2 px-4.5 shadow-sm"
+                className="inline-flex items-center justify-center font-sans font-medium text-xs sm:text-sm h-9 px-4.5 rounded-full bg-[#A31818] text-[#FAF8F5] hover:bg-[#7F1313] transition-all whitespace-nowrap shrink-0 shadow-sm"
               >
                 Take an Appointment
               </Link>
             </div>
 
-            {/* Mobile Toggle & CTA */}
-            <div className="lg:hidden flex items-center gap-2.5">
+            {/* Tablet & Mobile Header Action + Hamburger Toggle */}
+            <div className="xl:hidden flex items-center gap-3">
               <Link
                 href="/contact"
-                className="btn btn-primary text-xs py-1.5 px-3"
+                className="inline-flex items-center justify-center font-sans font-medium text-xs h-8 px-3.5 rounded-full bg-[#A31818] text-[#FAF8F5] hover:bg-[#7F1313] transition-all whitespace-nowrap shrink-0 shadow-sm"
               >
                 Appointment
               </Link>
               <button
                 onClick={() => setMenuOpen(!menuOpen)}
-                className="p-2 text-[#242320] hover:text-[#A31818] transition-colors flex flex-col justify-center items-center w-8 h-8 gap-1.5"
+                className="p-2 text-[#242320] hover:text-[#A31818] transition-colors flex flex-col justify-center items-center w-9 h-9 gap-1.5 shrink-0 rounded-lg hover:bg-[rgba(36,35,32,0.05)]"
                 aria-label={menuOpen ? "Close menu" : "Open menu"}
                 aria-expanded={menuOpen}
                 aria-controls="mobile-menu"
@@ -127,10 +127,10 @@ export default function Nav() {
         </div>
       </header>
 
-      {/* Mobile menu drawer */}
+      {/* Mobile/Tablet Menu Drawer */}
       <div
         id="mobile-menu"
-        className={`fixed inset-0 z-40 lg:hidden transition-all duration-300 ${
+        className={`fixed inset-0 z-40 xl:hidden transition-all duration-300 ${
           menuOpen ? "opacity-100 pointer-events-auto" : "opacity-0 pointer-events-none"
         }`}
         aria-hidden={!menuOpen}
