@@ -1,10 +1,12 @@
 "use client";
 
-import { useEffect, useRef, useState } from "react";
+import { useState } from "react";
 
 interface Stage {
   id: string;
+  number: string;
   label: string;
+  subtitle: string;
   description: string;
   x: number;
   y: number;
@@ -13,242 +15,210 @@ interface Stage {
 const STAGES: Stage[] = [
   {
     id: "excitement",
+    number: "01",
     label: "Initial Excitement",
+    subtitle: "Organic alignment",
     description:
-      "Early energy is high. The team is small, the mission is clear, and everyone pulls in the same direction naturally.",
-    x: 60,
-    y: 80,
+      "Early energy is high. The team is small, the mission is intuitive, and everyone pulls in the same direction without needing formalized processes.",
+    x: 70,
+    y: 90,
   },
   {
     id: "valley",
+    number: "02",
     label: "The Valley of Death",
+    subtitle: "Energy leaks & drift",
     description:
-      "As the organisation scales, alignment drifts. Execution becomes chaotic. Teams feel stretched and founders worry if what made them great will survive.",
-    x: 240,
-    y: 200,
+      "As headcount grows, alignment drifts. Meetings multiply, communication breaks, and founders worry whether what made them great will survive the scale-up.",
+    x: 250,
+    y: 210,
   },
   {
     id: "anchor",
+    number: "03",
     label: "The Anchor",
+    subtitle: "Intentional rituals embedded",
     description:
-      "Intentional rituals create clarity, psychological safety, and rhythm. Small, repeatable behaviours absorb pressure and restore alignment.",
-    x: 400,
-    y: 160,
+      "Intentional rituals introduce clarity, psychological safety, and rhythm. Small repeatable behaviours absorb pressure and restore genuine alignment.",
+    x: 430,
+    y: 155,
   },
   {
-    id: "rhythm",
+    id: "growth",
+    number: "04",
     label: "Sustained Growth",
+    subtitle: "Rhythm for results",
     description:
-      "With rituals embedded, growth becomes rigorous without being ruthless. Culture compounds. The organisation runs on rhythm.",
-    x: 560,
-    y: 60,
+      "With rituals rooted in daily practice, growth becomes rigorous without being ruthless. Culture compounds over quarters, not just retreats.",
+    x: 610,
+    y: 65,
   },
 ];
 
-// The SVG path — a smooth curve through all four stages
+// Smooth natural cubic bezier curve through all 4 coordinates
 const PATH_D =
-  "M 60 80 C 120 80, 150 200, 240 200 S 330 160, 400 160 S 490 60, 560 60";
+  "M 70 90 C 140 90, 170 210, 250 210 C 330 210, 360 155, 430 155 C 500 155, 540 65, 610 65";
 
 export default function JourneyDiagram() {
-  const [active, setActive] = useState<string | null>(null);
-  const [animated, setAnimated] = useState(false);
-  const ref = useRef<HTMLDivElement>(null);
+  const [activeStageId, setActiveStageId] = useState<string>("valley");
 
-  // Trigger animation on scroll-into-view
-  useEffect(() => {
-    const observer = new IntersectionObserver(
-      ([entry]) => { if (entry.isIntersecting) setAnimated(true); },
-      { threshold: 0.3 }
-    );
-    if (ref.current) observer.observe(ref.current);
-    return () => observer.disconnect();
-  }, []);
-
-  const activeStage = STAGES.find((s) => s.id === active) ?? null;
+  const currentStage = STAGES.find((s) => s.id === activeStageId) || STAGES[1];
 
   return (
-    <div ref={ref} className="w-full">
-      {/* SVG diagram */}
-      <div className="relative w-full" style={{ paddingBottom: "38%" }}>
-        <svg
-          viewBox="0 0 620 280"
-          fill="none"
-          xmlns="http://www.w3.org/2000/svg"
-          className="absolute inset-0 w-full h-full"
-          aria-label="Valley of Death growth journey diagram"
-          role="img"
-        >
-          {/* Grid lines */}
-          {[80, 140, 200].map((y) => (
-            <line
-              key={y}
-              x1="40"
-              y1={y}
-              x2="590"
-              y2={y}
-              stroke="rgba(42,42,40,0.06)"
-              strokeWidth="1"
-              strokeDasharray="4 6"
-            />
-          ))}
+    <div className="w-full">
+      {/* Hand-considered architectural drawing SVG */}
+      <div className="relative w-full bg-[#FAF7F2] rounded-3xl border border-[rgba(36,35,32,0.08)] p-6 sm:p-10 mb-8">
+        <div className="flex items-center justify-between text-xs text-[#242320]/45 font-sans mb-4">
+          <span className="tracking-[0.14em] uppercase">The Dynamics of Growth</span>
+          <span className="font-serif italic">Fig. 1 — The Valley &amp; The Anchor</span>
+        </div>
 
-          {/* Gradient fill under curve */}
-          <defs>
-            <linearGradient id="curveGrad" x1="0" y1="0" x2="0" y2="1">
-              <stop offset="0%" stopColor="#B5654A" stopOpacity="0.12" />
-              <stop offset="100%" stopColor="#B5654A" stopOpacity="0" />
-            </linearGradient>
-            <linearGradient id="pathGrad" x1="0" y1="0" x2="1" y2="0">
-              <stop offset="0%" stopColor="#7A8B6F" />
-              <stop offset="40%" stopColor="#B5654A" />
-              <stop offset="100%" stopColor="#2A2A28" />
-            </linearGradient>
-          </defs>
+        <div className="relative w-full aspect-[2.4/1] min-h-[220px]">
+          <svg
+            viewBox="0 0 680 280"
+            fill="none"
+            xmlns="http://www.w3.org/2000/svg"
+            className="w-full h-full"
+            role="img"
+            aria-label="The Journey of Growth: Valley of Death and Rituals"
+          >
+            <defs>
+              {/* Soft warm terracotta gradient fill */}
+              <linearGradient id="warmTerracottaFill" x1="0" y1="0" x2="0" y2="1">
+                <stop offset="0%" stopColor="#B4533C" stopOpacity="0.08" />
+                <stop offset="100%" stopColor="#B4533C" stopOpacity="0" />
+              </linearGradient>
+            </defs>
 
-          {/* Fill area */}
-          {animated && (
+            {/* Subtle horizontal reference lines */}
+            <line x1="50" y1="70" x2="630" y2="70" stroke="rgba(36,35,32,0.05)" strokeWidth="1" strokeDasharray="3 5" />
+            <line x1="50" y1="150" x2="630" y2="150" stroke="rgba(36,35,32,0.05)" strokeWidth="1" strokeDasharray="3 5" />
+            <line x1="50" y1="220" x2="630" y2="220" stroke="rgba(36,35,32,0.05)" strokeWidth="1" strokeDasharray="3 5" />
+
+            {/* Fill under the curve */}
             <path
-              d={`${PATH_D} L 560 280 L 60 280 Z`}
-              fill="url(#curveGrad)"
-              className="animate-fade-in opacity-0 delay-500"
+              d={`${PATH_D} L 610 270 L 70 270 Z`}
+              fill="url(#warmTerracottaFill)"
             />
-          )}
 
-          {/* Main journey path */}
-          <path
-            d={PATH_D}
-            stroke="url(#pathGrad)"
-            strokeWidth="2.5"
-            strokeLinecap="round"
-            strokeLinejoin="round"
-            strokeDasharray="2000"
-            strokeDashoffset={animated ? "0" : "2000"}
-            style={{
-              transition: animated ? "stroke-dashoffset 2.4s ease-out" : "none",
-            }}
-          />
+            {/* The main continuous curve line */}
+            <path
+              d={PATH_D}
+              stroke="#242320"
+              strokeWidth="1.75"
+              strokeLinecap="round"
+            />
 
-          {/* Stage dots */}
-          {STAGES.map((stage) => (
-            <g
+            {/* Stage nodes */}
+            {STAGES.map((stage) => {
+              const isActive = stage.id === activeStageId;
+              return (
+                <g
+                  key={stage.id}
+                  className="cursor-pointer transition-all duration-300"
+                  onClick={() => setActiveStageId(stage.id)}
+                  tabIndex={0}
+                  role="button"
+                  aria-label={stage.label}
+                  onKeyDown={(e) => {
+                    if (e.key === "Enter" || e.key === " ") {
+                      setActiveStageId(stage.id);
+                    }
+                  }}
+                >
+                  {/* Subtle target circle */}
+                  <circle
+                    cx={stage.x}
+                    cy={stage.y}
+                    r={isActive ? 16 : 10}
+                    fill={isActive ? "rgba(180, 83, 60, 0.12)" : "transparent"}
+                    stroke={isActive ? "#B4533C" : "rgba(36,35,32,0.15)"}
+                    strokeWidth="1"
+                    className="transition-all duration-300"
+                  />
+
+                  {/* Center dot */}
+                  <circle
+                    cx={stage.x}
+                    cy={stage.y}
+                    r={isActive ? 4 : 3}
+                    fill={isActive ? "#B4533C" : "#242320"}
+                    className="transition-all duration-300"
+                  />
+
+                  {/* Stage Number & Label */}
+                  <text
+                    x={stage.x}
+                    y={stage.id === "valley" ? stage.y + 26 : stage.y - 18}
+                    textAnchor="middle"
+                    fontSize="11"
+                    fontFamily="var(--font-serif)"
+                    fontStyle={isActive ? "italic" : "normal"}
+                    fontWeight={isActive ? "600" : "400"}
+                    fill={isActive ? "#B4533C" : "rgba(36,35,32,0.75)"}
+                    className="select-none transition-colors duration-200"
+                  >
+                    {stage.number}. {stage.label}
+                  </text>
+                </g>
+              );
+            })}
+          </svg>
+        </div>
+      </div>
+
+      {/* Editorial Stage Details Panel */}
+      <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-4 pt-2">
+        {STAGES.map((stage) => {
+          const isActive = stage.id === activeStageId;
+          return (
+            <button
               key={stage.id}
-              style={{ cursor: "pointer" }}
-              onClick={() => setActive(active === stage.id ? null : stage.id)}
-              onMouseEnter={() => setActive(stage.id)}
-              onMouseLeave={() => setActive(null)}
-              role="button"
-              tabIndex={0}
-              aria-label={stage.label}
-              onKeyDown={(e) =>
-                e.key === "Enter" && setActive(active === stage.id ? null : stage.id)
-              }
+              onClick={() => setActiveStageId(stage.id)}
+              className={`text-left p-5 rounded-2xl transition-all duration-300 ${
+                isActive
+                  ? "bg-[#F3ECE3] border-l-2 border-[#B4533C]"
+                  : "bg-transparent hover:bg-[#F3ECE3]/50 border-l-2 border-transparent"
+              }`}
             >
-              {/* Outer ring */}
-              <circle
-                cx={stage.x}
-                cy={stage.y}
-                r={active === stage.id ? 14 : 10}
-                fill="white"
-                stroke={active === stage.id ? "#B5654A" : "rgba(42,42,40,0.2)"}
-                strokeWidth={active === stage.id ? 2 : 1.5}
-                style={{ transition: "all 0.2s ease" }}
-              />
-              {/* Inner dot */}
-              <circle
-                cx={stage.x}
-                cy={stage.y}
-                r={active === stage.id ? 5 : 3.5}
-                fill={active === stage.id ? "#B5654A" : "rgba(42,42,40,0.4)"}
-                style={{ transition: "all 0.2s ease" }}
-              />
-
-              {/* Label */}
-              <text
-                x={stage.x}
-                y={
-                  stage.id === "valley"
-                    ? stage.y + 28
-                    : stage.y - 18
-                }
-                textAnchor="middle"
-                fontSize="9"
-                fontFamily="var(--font-jakarta)"
-                fontWeight="500"
-                fill={active === stage.id ? "#B5654A" : "rgba(42,42,40,0.5)"}
-                style={{ transition: "fill 0.2s ease", userSelect: "none" }}
-              >
+              <div className="flex items-center justify-between mb-2">
+                <span
+                  className={`text-xs font-mono font-medium ${
+                    isActive ? "text-[#B4533C]" : "text-[#242320]/40"
+                  }`}
+                >
+                  {stage.number}
+                </span>
+                <span
+                  className={`w-1.5 h-1.5 rounded-full ${
+                    isActive ? "bg-[#B4533C]" : "bg-[#242320]/20"
+                  }`}
+                />
+              </div>
+              <h3 className="font-serif text-base text-[#242320] font-medium mb-1">
                 {stage.label}
-              </text>
-            </g>
-          ))}
-
-          {/* X-axis label */}
-          <text
-            x="310"
-            y="270"
-            textAnchor="middle"
-            fontSize="8.5"
-            fontFamily="var(--font-jakarta)"
-            fill="rgba(42,42,40,0.35)"
-          >
-            Journey of growth →
-          </text>
-
-          {/* Y-axis label */}
-          <text
-            x="18"
-            y="150"
-            textAnchor="middle"
-            fontSize="8.5"
-            fontFamily="var(--font-jakarta)"
-            fill="rgba(42,42,40,0.35)"
-            transform="rotate(-90, 18, 150)"
-          >
-            Alignment &amp; momentum
-          </text>
-        </svg>
+              </h3>
+              <p className="font-sans text-xs text-[#242320]/60 leading-relaxed">
+                {stage.subtitle}
+              </p>
+            </button>
+          );
+        })}
       </div>
 
-      {/* Info panel — appears when a stage is active */}
-      <div
-        className={`mt-6 transition-all duration-300 ${
-          activeStage
-            ? "opacity-100 translate-y-0"
-            : "opacity-0 translate-y-2 pointer-events-none"
-        }`}
-        aria-live="polite"
-        style={{ minHeight: "3.5rem" }}
-      >
-        {activeStage && (
-          <div className="flex items-start gap-4 p-5 rounded-2xl bg-white border border-[rgba(42,42,40,0.08)] shadow-soft">
-            <div className="w-2 h-2 rounded-full bg-[#B5654A] mt-2 shrink-0" />
-            <div>
-              <p className="font-serif font-semibold text-[#2A2A28] text-base mb-1">
-                {activeStage.label}
-              </p>
-              <p className="font-sans text-sm text-[rgba(42,42,40,0.65)] leading-relaxed max-w-xl">
-                {activeStage.description}
-              </p>
-            </div>
-          </div>
-        )}
-      </div>
-
-      {/* Touch-friendly stage buttons for mobile */}
-      <div className="grid grid-cols-2 sm:grid-cols-4 gap-2 mt-4 md:hidden">
-        {STAGES.map((stage) => (
-          <button
-            key={stage.id}
-            onClick={() => setActive(active === stage.id ? null : stage.id)}
-            className={`p-3 rounded-xl border text-xs font-sans font-medium text-left transition-all ${
-              active === stage.id
-                ? "border-[#B5654A] bg-[rgba(181,101,74,0.08)] text-[#B5654A]"
-                : "border-[rgba(42,42,40,0.1)] text-[rgba(42,42,40,0.6)] hover:border-[rgba(42,42,40,0.2)]"
-            }`}
-          >
-            {stage.label}
-          </button>
-        ))}
+      {/* Active Stage Callout */}
+      <div className="mt-6 p-6 rounded-2xl bg-[#F3ECE3]/60 border border-[rgba(36,35,32,0.06)]">
+        <div className="flex flex-col sm:flex-row sm:items-baseline gap-2 sm:gap-4 mb-2">
+          <span className="font-serif text-lg font-medium text-[#242320]">
+            Stage {currentStage.number} — {currentStage.label}
+          </span>
+          <span className="text-xs font-sans uppercase tracking-widest text-[#B4533C]">
+            {currentStage.subtitle}
+          </span>
+        </div>
+        <p className="font-sans text-sm sm:text-base text-[#242320]/75 leading-relaxed max-w-2xl">
+          {currentStage.description}
+        </p>
       </div>
     </div>
   );

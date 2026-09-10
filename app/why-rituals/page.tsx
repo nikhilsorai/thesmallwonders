@@ -1,6 +1,5 @@
 import type { Metadata } from "next";
 import Link from "next/link";
-import { ArrowRight, CheckCircle2 } from "lucide-react";
 
 export const metadata: Metadata = {
   title: "Why Rituals? | Small Wonders",
@@ -17,27 +16,27 @@ export const metadata: Metadata = {
 const tracks = [
   {
     id: "core-alignment",
+    number: "Track 01",
     label: "Core Alignment",
-    description: "From vision to reality",
-    color: "terracotta" as const,
+    description: "From vision to everyday reality",
     rituals: [
-      "Founder story-telling sessions",
+      "Founder storytelling sessions",
       "Values-in-action recognition",
       "Monthly Purpose Circles",
       "Values-anchored pre-mortems",
       "Purpose-linked win stories",
     ],
     approach: [
-      "Define the organisational purpose in plain language",
-      "Connect daily decisions back to that purpose explicitly",
-      "Create regular touchpoints where values are practiced, not preached",
+      "Define the organisational purpose in clear, unpretentious language",
+      "Connect daily operational decisions back to that purpose explicitly",
+      "Create recurring touchpoints where values are practiced, not preached",
     ],
   },
   {
     id: "aligned-goals",
+    number: "Track 02",
     label: "Aligned Goals",
     description: "From ambition to focus",
-    color: "sage" as const,
     rituals: [
       "North Star Metric definition",
       "Quarterly planning & retrospectives",
@@ -46,27 +45,26 @@ const tracks = [
       "RAG reviews (Red-Amber-Green status checks)",
     ],
     approach: [
-      "Identify one metric that matters most at this stage of growth",
-      "Build a planning cadence that keeps teams focused — not busy",
-      "Create honest retrospective formats that improve the next quarter",
+      "Identify the single metric that matters most at this growth stage",
+      "Build a planning cadence that keeps teams focused rather than busy",
+      "Create candid retrospective formats that compound into the next quarter",
     ],
   },
   {
     id: "execution-agility",
+    number: "Track 03",
     label: "Execution & Agility",
-    description: "Rhythm for results",
-    color: "charcoal" as const,
+    description: "Rhythm for reliable results",
     rituals: [
       "Daily stand-ups with clear ownership",
-      "Innovation sprints",
+      "Innovation sprints and safe experiments",
       "Structured onboarding journeys",
-      "Customer voice reviews",
-      "Succession and mentoring rituals",
+      "Customer voice reviews in core meetings",
+      "Succession and mentoring rhythms",
       "Cross-functional huddles",
-      "Monthly capability reviews",
     ],
     approach: [
-      "Map where decisions slow down and design rituals that unblock them",
+      "Map where decisions stall and design rituals that naturally unblock them",
       "Build review cadences that create accountability without micromanagement",
       "Embed customer feedback into recurring team rhythms",
     ],
@@ -77,49 +75,49 @@ const tracks = [
 const pillars = [
   {
     id: "strategy-planning",
+    number: "01",
     name: "Strategy & Planning",
     description:
-      "Clarify purpose, vision, values, and goals. Drive alignment from board to frontline.",
-    icon: "01",
+      "Clarify purpose, vision, values, and goals. Drive alignment from board level to frontline execution.",
   },
   {
     id: "innovation-rituals",
+    number: "02",
     name: "Innovation Rituals",
     description:
-      "Let teams think new without the fear of failure. Design the conditions for safe experimentation.",
-    icon: "02",
+      "Let teams explore new ground without fear of failure. Design the cultural conditions for safe, rapid experimentation.",
   },
   {
     id: "execution-agility",
+    number: "03",
     name: "Execution & Agility",
     description:
-      "Move fast without losing rhythm. Build review and stand-up cadences that actually work.",
-    icon: "03",
+      "Move fast without losing collective rhythm. Build review and stand-up cadences that teams actually value.",
   },
   {
     id: "customer-centricity",
+    number: "04",
     name: "Customer Centricity",
     description:
-      "Bring the customer's voice into daily decisions — not just quarterly NPS reports.",
-    icon: "04",
+      "Bring the customer's real voice into daily team decisions — not just quarterly survey decks.",
   },
   {
     id: "people-culture",
+    number: "05",
     name: "People & Culture",
     description:
-      "Build a future-ready team through onboarding, succession, and recognition rituals.",
-    icon: "05",
+      "Build a future-ready organisation through intentional onboarding, succession, and recognition rhythms.",
   },
   {
     id: "collaboration-trust",
+    number: "06",
     name: "Collaboration & Trust",
     description:
-      "Break silos. Build cross-functional trust through huddles and honest feedback loops.",
-    icon: "06",
+      "Dissolve functional silos. Build cross-team trust through structured huddles and honest feedback loops.",
   },
 ];
 
-// Six-step method — §4.3 (deduplicated — "Build Feedback Loops" appears exactly once)
+// Six-step method — §4.3
 const method = [
   {
     step: "01",
@@ -131,202 +129,183 @@ const method = [
     step: "02",
     name: "Create Psychological Safety",
     detail:
-      "Rituals only work when people feel safe to participate honestly. We design for safety before we design for anything else.",
+      "Rituals only work when people feel safe to participate honestly. We design for emotional safety before everything else.",
   },
   {
     step: "03",
     name: "Align with Strategy",
     detail:
-      "A ritual that isn't connected to what the organisation is trying to achieve is just a meeting. We ensure every ritual has a strategic anchor.",
+      "A ritual that isn't connected to the organisation's North Star is just another meeting. We ensure every ritual has a strategic anchor.",
   },
   {
     step: "04",
     name: "Build Feedback Loops",
     detail:
-      "Rituals need to learn and evolve. We build in honest reflection mechanisms — so the ritual itself improves the team, and the team improves the ritual.",
+      "Rituals need to learn and evolve. We build in honest reflection mechanisms so the ritual and the team compound together.",
   },
   {
     step: "05",
     name: "Design for Rhythm",
     detail:
-      "Frequency, duration, format — these aren't afterthoughts. A ritual designed for the wrong rhythm won't stick, no matter how good the content.",
+      "Frequency, duration, and cadence aren't afterthoughts. A ritual designed for the wrong cadence won't stick, regardless of intent.",
   },
   {
     step: "06",
     name: "Make it Culture-Embedded",
     detail:
-      "The goal isn't compliance — it's internalisation. We design rituals that the team eventually owns, adapts, and passes on.",
+      "The goal is internalisation, not compliance. We design rituals that the team eventually owns, adapts, and carries forward.",
   },
 ];
-
-const trackColorMap = {
-  terracotta: {
-    badge: "bg-[rgba(181,101,74,0.1)] text-[#B5654A] border-[rgba(181,101,74,0.2)]",
-    dot: "bg-[#B5654A]",
-    border: "border-[#B5654A]",
-  },
-  sage: {
-    badge: "bg-[rgba(122,139,111,0.1)] text-[#7A8B6F] border-[rgba(122,139,111,0.2)]",
-    dot: "bg-[#7A8B6F]",
-    border: "border-[#7A8B6F]",
-  },
-  charcoal: {
-    badge: "bg-[rgba(42,42,40,0.07)] text-[rgba(42,42,40,0.7)] border-[rgba(42,42,40,0.15)]",
-    dot: "bg-[#2A2A28]",
-    border: "border-[#2A2A28]",
-  },
-};
 
 export default function WhyRitualsPage() {
   return (
     <>
       {/* Page header */}
-      <section className="section-pad bg-[#FAF8F4] border-b border-[rgba(42,42,40,0.07)]">
+      <section className="section-pad-sm bg-[#FAF7F2] border-b border-[rgba(36,35,32,0.06)]">
         <div className="container-content">
           <span className="section-label">Why Rituals?</span>
-          <h1 className="font-serif text-[clamp(2.25rem,5vw,4rem)] font-bold text-[#2A2A28] leading-tight mb-5">
+          <h1 className="font-serif text-[clamp(2.5rem,5.5vw,4.25rem)] font-normal text-[#242320] leading-[1.12] mb-6">
             Six pillars. Three tracks. One rhythm.
           </h1>
-          <p className="font-sans text-lg md:text-xl text-[rgba(42,42,40,0.65)] leading-relaxed max-w-2xl">
-            Rituals work because they give teams a consistent way to show up — to each other, to the work, to the customer. Here&apos;s the framework behind how we design them.
+          <p className="font-sans text-lg sm:text-xl text-[#242320]/75 leading-[1.8] max-w-2xl">
+            Rituals work because they give teams a consistent, safe way to show up — to each other, to the work, and to the customer. Here is the framework behind how we design them.
           </p>
         </div>
       </section>
 
       {/* Three Tracks */}
-      <section className="section-pad bg-white" aria-label="Three ritual design tracks">
+      <section className="section-pad bg-[#FAF7F2]" aria-label="Three ritual design tracks">
         <div className="container-site">
-          <div className="max-w-2xl mb-12">
-            <span className="section-label">The three tracks</span>
-            <h2 className="font-serif text-[clamp(1.75rem,3.5vw,2.5rem)] font-bold text-[#2A2A28] leading-tight">
-              Where rituals have the most impact
+          <div className="max-w-3xl mb-16">
+            <span className="section-label">The Three Tracks</span>
+            <h2 className="font-serif text-[clamp(2rem,3.8vw,2.85rem)] font-normal text-[#242320] leading-tight">
+              Where rituals have the deepest impact
             </h2>
           </div>
 
-          <div className="grid grid-cols-1 lg:grid-cols-3 gap-6">
-            {tracks.map((track) => {
-              const colors = trackColorMap[track.color];
-              return (
-                <div
-                  key={track.id}
-                  id={track.id}
-                  className={`card-base bg-[#FAF8F4] p-7 border-t-4 ${colors.border}`}
-                >
-                  <span
-                    className={`chip border ${colors.badge} mb-4`}
-                  >
-                    {track.label}
+          <div className="grid grid-cols-1 lg:grid-cols-3 gap-12 lg:gap-10">
+            {tracks.map((track) => (
+              <div
+                key={track.id}
+                id={track.id}
+                className="pt-8 border-t border-[rgba(36,35,32,0.12)] flex flex-col justify-between"
+              >
+                <div>
+                  <span className="text-[0.6875rem] font-medium tracking-[0.16em] uppercase text-[#B4533C] block mb-2 font-sans">
+                    {track.number}
                   </span>
-                  <p className="font-sans text-xs text-[rgba(42,42,40,0.45)] mb-5 uppercase tracking-widest font-medium">
+                  <h3 className="font-serif text-2xl font-normal text-[#242320] mb-1">
+                    {track.label}
+                  </h3>
+                  <p className="font-serif text-sm italic text-[#242320]/60 mb-8">
                     {track.description}
                   </p>
 
-                  <div className="mb-6">
-                    <p className="text-xs font-semibold tracking-[0.08em] uppercase text-[rgba(42,42,40,0.4)] mb-3 font-sans">
+                  <div className="mb-8">
+                    <p className="text-[0.6875rem] font-medium tracking-[0.14em] uppercase text-[#242320]/45 mb-4 font-sans">
                       Rituals in this track
                     </p>
-                    <ul className="space-y-2" role="list">
+                    <ul className="space-y-2.5" role="list">
                       {track.rituals.map((ritual, i) => (
-                        <li key={i} className="flex items-start gap-2.5 font-sans text-sm text-[rgba(42,42,40,0.7)]">
-                          <span className={`w-1.5 h-1.5 rounded-full ${colors.dot} mt-1.5 shrink-0`} />
-                          {ritual}
-                        </li>
-                      ))}
-                    </ul>
-                  </div>
-
-                  <div className="pt-5 border-t border-[rgba(42,42,40,0.07)]">
-                    <p className="text-xs font-semibold tracking-[0.08em] uppercase text-[rgba(42,42,40,0.4)] mb-3 font-sans">
-                      Our approach
-                    </p>
-                    <ul className="space-y-2" role="list">
-                      {track.approach.map((step, i) => (
-                        <li key={i} className="flex items-start gap-2.5 font-sans text-sm text-[rgba(42,42,40,0.65)]">
-                          <CheckCircle2 size={13} className="text-[#7A8B6F] mt-0.5 shrink-0" />
-                          {step}
+                        <li key={i} className="flex items-start gap-2.5 font-sans text-sm text-[#242320]/75 leading-relaxed">
+                          <span className="text-[#B4533C] text-sm leading-none mt-1 select-none">·</span>
+                          <span>{ritual}</span>
                         </li>
                       ))}
                     </ul>
                   </div>
                 </div>
-              );
-            })}
+
+                <div className="pt-6 border-t border-[rgba(36,35,32,0.06)]">
+                  <p className="text-[0.6875rem] font-medium tracking-[0.14em] uppercase text-[#242320]/45 mb-3 font-sans">
+                    Our approach
+                  </p>
+                  <ul className="space-y-2" role="list">
+                    {track.approach.map((step, i) => (
+                      <li key={i} className="font-sans text-xs text-[#242320]/65 leading-relaxed">
+                        {step}
+                      </li>
+                    ))}
+                  </ul>
+                </div>
+              </div>
+            ))}
           </div>
         </div>
       </section>
 
       {/* Six Pillars Grid */}
-      <section className="section-pad bg-[#FAF8F4] border-y border-[rgba(42,42,40,0.07)]" aria-label="Six pillars">
+      <section
+        className="section-pad bg-[#F3ECE3] border-y border-[rgba(36,35,32,0.08)]"
+        aria-label="Six pillars"
+      >
         <div className="container-site">
-          <div className="max-w-2xl mb-12">
-            <span className="section-label">The six pillars</span>
-            <h2 className="font-serif text-[clamp(1.75rem,3.5vw,2.5rem)] font-bold text-[#2A2A28] leading-tight">
-              Six areas, designed as offerings
+          <div className="max-w-3xl mb-16">
+            <span className="section-label">The Six Pillars</span>
+            <h2 className="font-serif text-[clamp(2rem,3.8vw,2.85rem)] font-normal text-[#242320] leading-tight mb-4">
+              Six areas, designed as modular offerings
             </h2>
-            <p className="font-sans text-base text-[rgba(42,42,40,0.6)] leading-relaxed mt-4 max-w-xl">
-              These six pillars form the basis for every ritual engagement. They can be addressed independently or as an integrated programme — depending on where your organisation is.
+            <p className="font-sans text-base text-[#242320]/70 leading-[1.8] max-w-2xl">
+              These six pillars form the foundation for every ritual engagement. They can be addressed individually or as an integrated programme tailored to your stage.
             </p>
           </div>
 
-          <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-5">
+          <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-10">
             {pillars.map((pillar) => (
               <div
                 key={pillar.id}
-                className="card-base bg-white p-6 md:p-7 flex gap-5"
+                className="pt-6 border-t border-[rgba(36,35,32,0.12)]"
               >
-                <span className="font-serif text-3xl font-bold text-[rgba(42,42,40,0.08)] shrink-0 leading-none mt-1">
-                  {pillar.icon}
+                <span className="font-serif text-2xl italic text-[#B4533C] block mb-3">
+                  {pillar.number}
                 </span>
-                <div>
-                  <h3 className="font-serif text-lg font-semibold text-[#2A2A28] mb-2 leading-tight">
-                    {pillar.name}
-                  </h3>
-                  <p className="font-sans text-sm text-[rgba(42,42,40,0.65)] leading-relaxed">
-                    {pillar.description}
-                  </p>
-                </div>
+                <h3 className="font-serif text-xl font-medium text-[#242320] mb-2 leading-snug">
+                  {pillar.name}
+                </h3>
+                <p className="font-sans text-sm text-[#242320]/70 leading-[1.75]">
+                  {pillar.description}
+                </p>
               </div>
             ))}
           </div>
 
-          <div className="mt-8 flex flex-wrap gap-4">
+          <div className="mt-16 pt-8 border-t border-[rgba(36,35,32,0.1)] flex flex-wrap items-center gap-6">
             <Link href="/services" className="btn btn-primary text-sm">
-              See all services <ArrowRight size={14} />
+              Explore All Services <span>→</span>
             </Link>
-            <Link href="/case-studies" className="btn btn-outline text-sm">
-              Proof through practice <ArrowRight size={14} />
+            <Link href="/case-studies" className="link-editorial text-sm font-sans font-medium">
+              <span>See case studies in practice</span>
+              <span aria-hidden="true">→</span>
             </Link>
           </div>
         </div>
       </section>
 
       {/* Six-Step Method */}
-      <section className="section-pad bg-white" aria-label="Six-step ritual design method">
+      <section className="section-pad bg-[#FAF7F2]" aria-label="Six-step ritual design method">
         <div className="container-site">
-          <div className="max-w-2xl mb-12">
-            <span className="section-label">How we build rituals that stick</span>
-            <h2 className="font-serif text-[clamp(1.75rem,3.5vw,2.5rem)] font-bold text-[#2A2A28] leading-tight">
-              The six-step method
+          <div className="max-w-3xl mb-16">
+            <span className="section-label">Our Design Method</span>
+            <h2 className="font-serif text-[clamp(2rem,3.8vw,2.85rem)] font-normal text-[#242320] leading-tight">
+              How we build rituals that stick
             </h2>
           </div>
 
-          <div className="grid grid-cols-1 md:grid-cols-2 gap-5">
-            {method.map((m, i) => (
+          <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-10">
+            {method.map((m) => (
               <div
                 key={m.step}
-                className="flex gap-5 p-6 rounded-2xl bg-[#FAF8F4] border border-[rgba(42,42,40,0.07)]"
+                className="pt-6 border-t border-[rgba(36,35,32,0.12)]"
               >
-                <span className="font-serif text-2xl font-bold text-[rgba(181,101,74,0.3)] shrink-0 leading-none mt-1">
-                  {m.step}
+                <span className="font-mono text-xs text-[#B4533C] font-semibold block mb-2">
+                  STEP {m.step}
                 </span>
-                <div>
-                  <h3 className="font-sans text-base font-semibold text-[#2A2A28] mb-2">
-                    {m.name}
-                  </h3>
-                  <p className="font-sans text-sm text-[rgba(42,42,40,0.65)] leading-relaxed">
-                    {m.detail}
-                  </p>
-                </div>
+                <h3 className="font-serif text-lg font-medium text-[#242320] mb-2">
+                  {m.name}
+                </h3>
+                <p className="font-sans text-sm text-[#242320]/70 leading-relaxed">
+                  {m.detail}
+                </p>
               </div>
             ))}
           </div>
@@ -334,15 +313,18 @@ export default function WhyRitualsPage() {
       </section>
 
       {/* Proof bridge */}
-      <section className="py-14 bg-[#FAF8F4] border-t border-[rgba(42,42,40,0.07)]">
-        <div className="container-content flex flex-col sm:flex-row items-start sm:items-center justify-between gap-6">
+      <section className="py-20 bg-[#F3ECE3] border-t border-[rgba(36,35,32,0.08)]">
+        <div className="container-content flex flex-col sm:flex-row items-start sm:items-center justify-between gap-8">
           <div>
-            <p className="font-serif text-xl text-[#2A2A28] font-medium">
-              Proof through practice — see how rituals have created real outcomes.
+            <p className="font-serif text-2xl text-[#242320] font-normal leading-snug">
+              Proof through practice
+            </p>
+            <p className="font-sans text-sm text-[#242320]/60 mt-1">
+              Explore how intentional rituals translated into measurable growth across 15+ engagements.
             </p>
           </div>
-          <Link href="/case-studies" className="btn btn-primary shrink-0">
-            Case Studies <ArrowRight size={15} />
+          <Link href="/case-studies" className="btn btn-primary shrink-0 text-sm">
+            View Case Studies <span>→</span>
           </Link>
         </div>
       </section>

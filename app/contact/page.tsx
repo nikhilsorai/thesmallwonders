@@ -1,6 +1,5 @@
 import type { Metadata } from "next";
 import ContactForm from "@/components/ContactForm";
-import { ArrowUpRight } from "lucide-react";
 import { CTA } from "@/data/site-content";
 
 export const metadata: Metadata = {
@@ -20,22 +19,22 @@ export default function ContactPage() {
     <>
       {/* Page header */}
       <section
-        className="section-pad bg-[#FAF8F4] border-b border-[rgba(42,42,40,0.07)]"
+        className="section-pad-sm bg-[#FAF7F2] border-b border-[rgba(36,35,32,0.06)]"
         aria-label="Contact page header"
       >
         <div className="container-content">
           <span className="section-label">Contact</span>
-          <h1 className="font-serif text-[clamp(2.25rem,5vw,4rem)] font-bold text-[#2A2A28] leading-tight mb-5">
-            Let&apos;s talk
+          <h1 className="font-serif text-[clamp(2.5rem,5.5vw,4.25rem)] font-normal text-[#242320] leading-[1.12] mb-6">
+            Let&apos;s start a conversation
           </h1>
-          <p className="font-sans text-lg md:text-xl text-[rgba(42,42,40,0.65)] leading-relaxed max-w-xl">
-            Ready to build clarity, rhythm, and culture into your next phase of growth?
+          <p className="font-sans text-lg sm:text-xl text-[#242320]/75 leading-[1.8] max-w-xl">
+            Ready to bring clarity, rhythm, and culture into your next phase of organisational growth?
           </p>
         </div>
       </section>
 
       {/* Form section */}
-      <section className="section-pad bg-white" aria-label="Contact form">
+      <section className="section-pad bg-[#FAF7F2]" aria-label="Contact form">
         <div className="container-site">
           <ContactForm />
         </div>
@@ -43,16 +42,16 @@ export default function ContactPage() {
 
       {/* Assessment alternate CTA */}
       <section
-        className="py-12 bg-[#2A2A28]"
+        className="py-16 bg-[#242320] text-[#FAF7F2]"
         aria-label="Assessment alternative CTA"
       >
-        <div className="container-content flex flex-col sm:flex-row items-center justify-between gap-6">
+        <div className="container-content flex flex-col sm:flex-row items-start sm:items-center justify-between gap-8">
           <div>
-            <p className="font-serif text-lg text-white font-medium">
-              Not ready to talk? Start with the assessment instead.
+            <p className="font-serif text-2xl font-normal text-white leading-snug">
+              Not ready to speak yet?
             </p>
-            <p className="font-sans text-sm text-white/55 mt-1">
-              Takes 5 minutes. Gives you a clear read on where your organisation needs an anchor.
+            <p className="font-sans text-sm text-white/60 mt-1.5">
+              The assessment takes 5 minutes and gives you a clear read on where your organisation needs an anchor.
             </p>
           </div>
           <a
@@ -60,10 +59,10 @@ export default function ContactPage() {
             target="_blank"
             rel="noopener noreferrer"
             id="contact-page-bottom-cta-assessment"
-            className="btn btn-ghost shrink-0"
+            className="btn btn-ghost text-sm shrink-0"
           >
-            {CTA.assessment.label}
-            <ArrowUpRight size={15} />
+            <span>{CTA.assessment.label}</span>
+            <span aria-hidden="true">↗</span>
           </a>
         </div>
       </section>

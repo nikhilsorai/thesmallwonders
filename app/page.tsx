@@ -1,6 +1,5 @@
 import type { Metadata } from "next";
 import Link from "next/link";
-import { ArrowRight } from "lucide-react";
 import Hero from "@/components/Hero";
 import JourneyDiagram from "@/components/JourneyDiagram";
 import StatStrip from "@/components/StatStrip";
@@ -23,7 +22,7 @@ export const metadata: Metadata = {
   },
 };
 
-// Show 3 featured service cards on the homepage teaser
+// 3 featured ritual offerings for the homepage teaser
 const featuredServices = (servicesData as ServiceCardProps[])
   .filter((s) => s.category === "Ritual Design")
   .slice(0, 3);
@@ -36,36 +35,35 @@ export default function HomePage() {
 
       {/* ── Section 2: What We Do ── */}
       <section
-        className="section-pad bg-[#FAF8F4]"
+        className="section-pad bg-[#FAF7F2] border-t border-[rgba(36,35,32,0.06)]"
         aria-label="What we do"
       >
         <div className="container-content">
           <span className="section-label">What we do</span>
-          <div className="grid grid-cols-1 lg:grid-cols-5 gap-10 lg:gap-16 items-start">
-            <div className="lg:col-span-3">
+          <div className="space-y-8">
+            <div className="space-y-6">
               {HOME_COPY.whatWeDo.paragraphs.map((para, i) => (
                 <p
                   key={i}
-                  className="font-sans text-lg md:text-xl text-[rgba(42,42,40,0.75)] leading-relaxed mb-6"
+                  className="font-sans text-lg sm:text-xl text-[#242320]/80 leading-[1.8]"
                 >
                   {para}
                 </p>
               ))}
             </div>
-            <div className="lg:col-span-2">
-              {/* Sidebar accent card */}
-              <div className="rounded-2xl bg-[#F5F0E8] border border-[rgba(42,42,40,0.08)] p-7">
-                <p className="font-serif text-xl italic text-[#2A2A28] leading-relaxed mb-4">
-                  &ldquo;Not by overhauling everything, but by embedding simple, intentional rituals that create clarity, trust, and rhythm.&rdquo;
-                </p>
-                <Link
-                  href="/approach"
-                  className="inline-flex items-center gap-1.5 text-sm font-sans font-medium text-[#B5654A] hover:text-[#8F4D38] transition-colors group"
-                >
-                  See our approach
-                  <ArrowRight size={14} className="group-hover:translate-x-1 transition-transform" />
-                </Link>
-              </div>
+
+            {/* Editorial pullout quote */}
+            <div className="my-10 p-8 sm:p-10 rounded-3xl bg-[#F3ECE3] border border-[rgba(36,35,32,0.08)]">
+              <p className="font-serif text-xl sm:text-2xl italic text-[#242320] leading-snug mb-6">
+                &ldquo;Not by overhauling everything, but by embedding simple, intentional rituals that create clarity, trust, and rhythm.&rdquo;
+              </p>
+              <Link
+                href="/approach"
+                className="link-editorial text-sm font-sans font-medium"
+              >
+                <span>Explore our three-part approach</span>
+                <span aria-hidden="true">→</span>
+              </Link>
             </div>
           </div>
         </div>
@@ -73,65 +71,69 @@ export default function HomePage() {
 
       {/* ── Section 3: Journey of Growth (Valley of Death) ── */}
       <section
-        className="section-pad bg-white border-y border-[rgba(42,42,40,0.07)]"
+        className="section-pad bg-[#FAF7F2] border-t border-[rgba(36,35,32,0.06)]"
         aria-label="The journey of growth — Valley of Death diagram"
       >
         <div className="container-site">
-          <div className="max-w-2xl mb-10">
+          <div className="max-w-3xl mb-12">
             <span className="section-label">{HOME_COPY.journey.heading}</span>
-            <h2 className="font-serif text-[clamp(2rem,4vw,3rem)] font-bold text-[#2A2A28] mb-4 leading-tight">
+            <h2 className="font-serif text-[clamp(2.25rem,4.5vw,3.25rem)] font-normal text-[#242320] mb-5 leading-tight">
               {HOME_COPY.journey.subhead}
             </h2>
-            <p className="font-sans text-base md:text-lg text-[rgba(42,42,40,0.65)] leading-relaxed">
+            <p className="font-sans text-base sm:text-lg text-[#242320]/70 leading-[1.8]">
               {HOME_COPY.journey.description}
             </p>
           </div>
 
           <JourneyDiagram />
 
-          <div className="mt-10 max-w-2xl">
-            <p className="font-sans text-base text-[rgba(42,42,40,0.65)] leading-relaxed">
+          <div className="mt-12 max-w-2xl pt-6 border-t border-[rgba(36,35,32,0.08)]">
+            <p className="font-sans text-base text-[#242320]/75 leading-[1.8]">
               {HOME_COPY.journey.anchor}
             </p>
-            <Link
-              href="/why-rituals"
-              className="inline-flex items-center gap-1.5 mt-4 text-sm font-sans font-medium text-[#B5654A] hover:text-[#8F4D38] transition-colors group"
-            >
-              Why Rituals? 
-              <ArrowRight size={14} className="group-hover:translate-x-1 transition-transform" />
-            </Link>
+            <div className="mt-6">
+              <Link
+                href="/why-rituals"
+                className="link-editorial text-sm font-sans font-medium"
+              >
+                <span>Discover why rituals create lasting rhythm</span>
+                <span aria-hidden="true">→</span>
+              </Link>
+            </div>
           </div>
         </div>
       </section>
 
-      {/* ── Section 4: What's Missing ── */}
+      {/* ── Section 4: What's Missing (Three Pillars) ── */}
       <section
-        className="section-pad bg-[#FAF8F4]"
+        className="section-pad bg-[#FAF7F2] border-t border-[rgba(36,35,32,0.06)]"
         aria-label="What's missing — the anchor"
       >
         <div className="container-site">
-          <div className="max-w-2xl mb-12">
-            <span className="section-label">What&apos;s missing</span>
-            <h2 className="font-serif text-[clamp(2rem,4vw,3rem)] font-bold text-[#2A2A28] leading-tight">
+          <div className="max-w-2xl mb-16">
+            <span className="section-label">What&apos;s Missing</span>
+            <h2 className="font-serif text-[clamp(2.25rem,4.5vw,3.25rem)] font-normal text-[#242320] leading-tight">
               {HOME_COPY.whatsMissing.heading}
             </h2>
           </div>
 
-          <div className="grid grid-cols-1 md:grid-cols-3 gap-6">
+          <div className="grid grid-cols-1 md:grid-cols-3 gap-12 md:gap-10">
             {HOME_COPY.whatsMissing.pillars.map((pillar, i) => (
               <div
                 key={i}
-                className="card-base bg-white p-7 md:p-8 group"
+                className="pt-6 border-t border-[rgba(36,35,32,0.12)] flex flex-col justify-between"
               >
-                <div className="w-10 h-10 rounded-full bg-[rgba(181,101,74,0.1)] flex items-center justify-center mb-5">
-                  <span className="font-serif font-bold text-[#B5654A] text-lg">{i + 1}</span>
+                <div>
+                  <span className="font-serif text-3xl italic text-[#B4533C] block mb-4">
+                    0{i + 1}
+                  </span>
+                  <h3 className="font-serif text-xl text-[#242320] font-medium mb-3 leading-snug">
+                    {pillar.title}
+                  </h3>
+                  <p className="font-sans text-sm sm:text-base text-[#242320]/70 leading-[1.75]">
+                    {pillar.body}
+                  </p>
                 </div>
-                <h3 className="font-serif text-lg font-semibold text-[#2A2A28] mb-3 leading-tight">
-                  {pillar.title}
-                </h3>
-                <p className="font-sans text-sm text-[rgba(42,42,40,0.65)] leading-relaxed">
-                  {pillar.body}
-                </p>
               </div>
             ))}
           </div>
@@ -140,29 +142,29 @@ export default function HomePage() {
 
       {/* ── Section 5: Services Teaser ── */}
       <section
-        className="section-pad bg-white border-y border-[rgba(42,42,40,0.07)]"
+        className="section-pad bg-[#FAF7F2] border-t border-[rgba(36,35,32,0.06)]"
         aria-label="Services teaser"
       >
         <div className="container-site">
-          <div className="flex flex-col md:flex-row md:items-end md:justify-between gap-6 mb-10">
+          <div className="flex flex-col md:flex-row md:items-baseline md:justify-between gap-6 mb-12">
             <div>
-              <span className="section-label">What we offer</span>
-              <h2 className="font-serif text-[clamp(1.75rem,3.5vw,2.75rem)] font-bold text-[#2A2A28] leading-tight">
+              <span className="section-label">What We Offer</span>
+              <h2 className="font-serif text-[clamp(2rem,4vw,3rem)] font-normal text-[#242320] leading-tight">
                 Rituals designed for your stage
               </h2>
             </div>
             <Link
               href="/services"
-              className="inline-flex items-center gap-1.5 text-sm font-sans font-medium text-[#B5654A] hover:text-[#8F4D38] transition-colors group shrink-0"
+              className="link-editorial text-sm font-sans font-medium shrink-0"
             >
-              See all services
-              <ArrowRight size={14} className="group-hover:translate-x-1 transition-transform" />
+              <span>View full service catalog</span>
+              <span aria-hidden="true">→</span>
             </Link>
           </div>
 
-          <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6">
-            {featuredServices.map((service) => (
-              <ServiceCard key={service.id} {...service} />
+          <div className="grid grid-cols-1 md:grid-cols-3 gap-8">
+            {featuredServices.map((service, index) => (
+              <ServiceCard key={service.id} {...service} index={index} />
             ))}
           </div>
         </div>
@@ -176,7 +178,7 @@ export default function HomePage() {
 
       {/* ── Section 8: Contact Strip ── */}
       <section
-        className="section-pad bg-white border-t border-[rgba(42,42,40,0.07)]"
+        className="section-pad bg-[#FAF7F2] border-t border-[rgba(36,35,32,0.06)]"
         aria-label="Contact"
         id="contact"
       >

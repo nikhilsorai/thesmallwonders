@@ -1,7 +1,6 @@
 "use client";
 
 import { useState } from "react";
-import { ArrowRight, Building2, Users } from "lucide-react";
 
 export interface CaseStudyCardProps {
   id: string;
@@ -30,74 +29,71 @@ export default function CaseStudyCard({
   return (
     <article
       id={`case-${id}`}
-      className="card-base p-6 md:p-7 bg-white flex flex-col gap-4"
+      className="py-8 border-t border-[rgba(36,35,32,0.12)] flex flex-col justify-between"
       aria-label={`Case study: ${industry} — ${offering}`}
     >
-      {/* Header chips */}
-      <div className="flex flex-wrap items-center gap-2">
-        <span className="chip">
-          <Building2 size={11} className="mr-1" />
-          {industry}
-        </span>
-        {offering && (
-          <span className="text-xs font-sans text-[rgba(42,42,40,0.45)] italic">
-            {offering}
+      <div>
+        {/* Industry & Offering */}
+        <div className="flex flex-wrap items-baseline justify-between gap-2 mb-4">
+          <span className="text-xs font-medium tracking-wider uppercase text-[#B4533C] font-sans">
+            {industry}
           </span>
+          <span className="text-xs font-sans text-[#242320]/45">
+            {companyType}
+          </span>
+        </div>
+
+        {/* Verbatim client problem */}
+        <blockquote className="my-4 pl-4 border-l-2 border-[#B4533C]">
+          <p className="font-serif text-base italic text-[#242320] leading-snug">
+            &ldquo;{problem}&rdquo;
+          </p>
+        </blockquote>
+
+        {/* Offering note */}
+        {offering && (
+          <p className="font-serif text-xs italic text-[#242320]/55 mb-5">
+            Engagement: {offering}
+          </p>
+        )}
+
+        {/* Outcome */}
+        <div className="p-5 rounded-2xl bg-[#F3ECE3]/70 border border-[rgba(36,35,32,0.06)] mb-4">
+          <p className="text-[0.625rem] font-semibold tracking-[0.16em] uppercase text-[#242320]/45 mb-1.5 font-sans">
+            Impact &amp; Outcome
+          </p>
+          <p className="font-sans text-sm text-[#242320]/85 leading-relaxed">
+            {outcome}
+          </p>
+        </div>
+
+        {/* Expandable work detail */}
+        {expanded && (
+          <div className="pt-4 border-t border-[rgba(36,35,32,0.08)] mb-4 animate-fade-in">
+            <p className="text-[0.625rem] font-semibold tracking-[0.16em] uppercase text-[#242320]/45 mb-3 font-sans">
+              Scope of Work
+            </p>
+            <ul className="space-y-2" role="list">
+              {work.map((item, i) => (
+                <li key={i} className="flex items-start gap-2.5 font-sans text-xs text-[#242320]/75 leading-relaxed">
+                  <span className="text-[#B4533C] text-xs leading-none mt-0.5">·</span>
+                  <span>{item}</span>
+                </li>
+              ))}
+            </ul>
+          </div>
         )}
       </div>
 
-      {/* Problem — verbatim client question */}
-      <blockquote className="border-l-2 border-[#B5654A] pl-4 m-0">
-        <p className="font-serif text-base italic text-[#2A2A28] leading-relaxed">
-          &ldquo;{problem}&rdquo;
-        </p>
-      </blockquote>
-
-      {/* Company type */}
-      <div className="flex items-center gap-2 text-xs text-[rgba(42,42,40,0.4)] font-sans">
-        <Users size={12} />
-        {companyType}
-      </div>
-
-      {/* Outcome — always visible */}
-      <div className="bg-[#FAF8F4] rounded-xl p-4">
-        <p className="text-xs font-semibold tracking-[0.08em] uppercase text-[rgba(42,42,40,0.4)] mb-2 font-sans">
-          Outcome
-        </p>
-        <p className="font-sans text-sm text-[rgba(42,42,40,0.8)] leading-relaxed">
-          {outcome}
-        </p>
-      </div>
-
-      {/* Expandable work detail */}
-      {expanded && (
-        <div className="border-t border-[rgba(42,42,40,0.07)] pt-4">
-          <p className="text-xs font-semibold tracking-[0.08em] uppercase text-[rgba(42,42,40,0.4)] mb-3 font-sans">
-            Work done
-          </p>
-          <ul className="space-y-1.5" role="list">
-            {work.map((item, i) => (
-              <li key={i} className="flex items-start gap-2 font-sans text-sm text-[rgba(42,42,40,0.65)]">
-                <span className="w-1 h-1 rounded-full bg-[#7A8B6F] mt-1.5 shrink-0" />
-                {item}
-              </li>
-            ))}
-          </ul>
-        </div>
-      )}
-
-      {/* Toggle */}
+      {/* Toggle button */}
       <button
         onClick={() => setExpanded(!expanded)}
-        className="inline-flex items-center gap-1.5 text-xs font-sans font-medium text-[rgba(42,42,40,0.45)] hover:text-[#B5654A] transition-colors self-start mt-auto pt-2"
+        className="inline-flex items-center gap-1 text-xs font-sans font-medium text-[#242320]/60 hover:text-[#B4533C] transition-colors pt-2 cursor-pointer"
         aria-expanded={expanded}
         aria-controls={`case-detail-${id}`}
       >
-        {expanded ? "Show less" : "See work done"}
-        <ArrowRight
-          size={12}
-          className={`transition-transform ${expanded ? "rotate-90" : ""}`}
-        />
+        <span>{expanded ? "Show less" : "View scope of work"}</span>
+        <span aria-hidden="true">{expanded ? "↑" : "↓"}</span>
       </button>
     </article>
   );

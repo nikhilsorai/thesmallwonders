@@ -1,9 +1,9 @@
 import type { Metadata } from "next";
 import Link from "next/link";
-import { ArrowRight } from "lucide-react";
 import ServiceCard from "@/components/ServiceCard";
 import type { ServiceCardProps } from "@/components/ServiceCard";
 import servicesData from "@/data/services.json";
+import { CTA } from "@/data/site-content";
 
 export const metadata: Metadata = {
   title: "Services — Ritual Design & Brand Advisory | Small Wonders",
@@ -40,43 +40,43 @@ export default function ServicesPage() {
     <>
       {/* Page header */}
       <section
-        className="section-pad bg-[#FAF8F4] border-b border-[rgba(42,42,40,0.07)]"
+        className="section-pad-sm bg-[#FAF7F2] border-b border-[rgba(36,35,32,0.06)]"
         aria-label="Services page header"
       >
         <div className="container-content">
-          <span className="section-label">What we offer</span>
-          <h1 className="font-serif text-[clamp(2.25rem,5vw,4rem)] font-bold text-[#2A2A28] leading-tight mb-5">
-            Services
+          <span className="section-label">What We Offer</span>
+          <h1 className="font-serif text-[clamp(2.5rem,5.5vw,4.25rem)] font-normal text-[#242320] leading-[1.12] mb-6">
+            Services &amp; Engagements
           </h1>
-          <p className="font-sans text-lg md:text-xl text-[rgba(42,42,40,0.65)] leading-relaxed max-w-2xl">
-            Every engagement is designed for your context — not from a playbook, but from your North Star. Below are the areas where we work, and what we typically deliver.
+          <p className="font-sans text-lg sm:text-xl text-[#242320]/75 leading-[1.8] max-w-2xl mb-4">
+            Every engagement is shaped for your context — not from an off-the-shelf playbook, but from your North Star.
           </p>
-          <p className="font-sans text-sm text-[rgba(42,42,40,0.45)] mt-4 max-w-xl">
-            Pricing and engagement structure vary by scope and stage. If you see something that resonates, use the &ldquo;Ask about this&rdquo; link on any card — we&apos;ll talk through what makes sense for you.
+          <p className="font-sans text-sm text-[#242320]/50 max-w-xl">
+            Scope and timeline vary by organisational stage. If an offering resonates, use the &ldquo;Ask about this&rdquo; link to discuss what fits your team.
           </p>
         </div>
       </section>
 
       {/* Ritual Design Services */}
       <section
-        className="section-pad bg-white"
+        className="section-pad bg-[#FAF7F2]"
         aria-label="Ritual Design services"
         id="ritual-design"
       >
         <div className="container-site">
-          <div className="max-w-2xl mb-12">
-            <span className="section-label">Ritual Design</span>
-            <h2 className="font-serif text-[clamp(1.75rem,3.5vw,2.5rem)] font-bold text-[#2A2A28] leading-tight mb-4">
-              Building the rituals that anchor growth
+          <div className="max-w-3xl mb-14">
+            <span className="section-label">Core Offerings</span>
+            <h2 className="font-serif text-[clamp(2rem,3.8vw,2.85rem)] font-normal text-[#242320] leading-tight mb-4">
+              Ritual Design
             </h2>
-            <p className="font-sans text-base text-[rgba(42,42,40,0.65)] leading-relaxed">
-              These are the core Small Wonders offerings — designed for founder-led, family-led, and PE/VC-backed companies navigating a transition, a scale-up, or a cultural reset.
+            <p className="font-sans text-base sm:text-lg text-[#242320]/70 leading-[1.8]">
+              Designed for founder-led, family-led, and PE/VC-backed companies navigating a transition, rapid scaling, or a cultural reset.
             </p>
           </div>
 
-          <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6">
-            {ritualDesign.map((service) => (
-              <ServiceCard key={service.id} {...service} />
+          <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8 md:gap-10">
+            {ritualDesign.map((service, index) => (
+              <ServiceCard key={service.id} {...service} index={index} />
             ))}
           </div>
         </div>
@@ -84,24 +84,24 @@ export default function ServicesPage() {
 
       {/* Legacy Brand Advisory */}
       <section
-        className="section-pad bg-[#FAF8F4] border-y border-[rgba(42,42,40,0.07)]"
+        className="section-pad bg-[#F3ECE3] border-y border-[rgba(36,35,32,0.08)]"
         aria-label="Legacy Brand Advisory services"
         id="brand-advisory"
       >
         <div className="container-site">
-          <div className="max-w-2xl mb-12">
-            <span className="section-label">Legacy Brand Advisory</span>
-            <h2 className="font-serif text-[clamp(1.75rem,3.5vw,2.5rem)] font-bold text-[#2A2A28] leading-tight mb-4">
-              From Ekta&apos;s brand consulting practice
+          <div className="max-w-3xl mb-14">
+            <span className="section-label">Legacy Practice</span>
+            <h2 className="font-serif text-[clamp(2rem,3.8vw,2.85rem)] font-normal text-[#242320] leading-tight mb-4">
+              Brand Consulting &amp; Advisory
             </h2>
-            <p className="font-sans text-base text-[rgba(42,42,40,0.65)] leading-relaxed">
-              Before Small Wonders, Ekta spent over a decade in brand consulting and brand valuation — working on M&amp;A transactions, rights issues, licensing frameworks, and leadership alignment for companies across industries. These services remain available as standalone engagements.
+            <p className="font-sans text-base sm:text-lg text-[#242320]/70 leading-[1.8]">
+              Over a decade in brand valuation, M&amp;A advisory, rights issues, licensing frameworks, and leadership alignment for companies across sectors. These services remain available as standalone engagements.
             </p>
           </div>
 
-          <div className="grid grid-cols-1 md:grid-cols-2 gap-6">
-            {legacyAdvisory.map((service) => (
-              <ServiceCard key={service.id} {...service} />
+          <div className="grid grid-cols-1 md:grid-cols-2 gap-10">
+            {legacyAdvisory.map((service, index) => (
+              <ServiceCard key={service.id} {...service} index={index + 6} />
             ))}
           </div>
         </div>
@@ -109,14 +109,14 @@ export default function ServicesPage() {
 
       {/* Industries served */}
       <section
-        className="py-14 bg-white border-b border-[rgba(42,42,40,0.07)]"
+        className="py-20 bg-[#FAF7F2] border-b border-[rgba(36,35,32,0.06)]"
         aria-label="Industries we've worked with"
       >
         <div className="container-site">
           <div className="mb-8">
-            <span className="section-label">Industries & sectors</span>
-            <h2 className="font-serif text-[clamp(1.5rem,2.5vw,2rem)] font-bold text-[#2A2A28] leading-tight">
-              We&apos;ve worked across
+            <span className="section-label">Sector Depth</span>
+            <h2 className="font-serif text-2xl sm:text-3xl font-normal text-[#242320]">
+              Industries across 15+ years of practice
             </h2>
           </div>
           <div className="flex flex-wrap gap-2.5">
@@ -126,38 +126,38 @@ export default function ServicesPage() {
               </span>
             ))}
           </div>
-          <p className="font-sans text-sm text-[rgba(42,42,40,0.45)] mt-5">
-            Full case archive available on the{" "}
+          <p className="font-sans text-xs text-[#242320]/45 mt-6">
+            Detailed case studies across these sectors are documented in the{" "}
             <Link
               href="/case-studies"
-              className="underline text-[rgba(42,42,40,0.6)] hover:text-[#B5654A] transition-colors"
+              className="text-[#B4533C] hover:underline"
             >
-              Case Studies
-            </Link>{" "}
-            page.
+              Case Studies archive
+            </Link>
+            .
           </p>
         </div>
       </section>
 
       {/* CTA section */}
-      <section className="py-16 bg-[#2A2A28]" aria-label="Get in touch CTA">
+      <section className="py-24 bg-[#242320] text-[#FAF7F2]" aria-label="Get in touch CTA">
         <div className="container-content text-center">
-          <h2 className="font-serif text-[clamp(1.75rem,3.5vw,2.5rem)] font-bold text-white mb-4 leading-tight">
-            Not sure which service fits?
+          <h2 className="font-serif text-[clamp(2rem,3.8vw,2.85rem)] font-normal text-white mb-4 leading-tight">
+            Not sure which engagement fits?
           </h2>
-          <p className="font-sans text-base text-white/60 mb-8 max-w-xl mx-auto leading-relaxed">
-            Most engagements start with a conversation. Tell us where you are and what you&apos;re trying to build — we&apos;ll help you figure out the right starting point.
+          <p className="font-sans text-base sm:text-lg text-white/70 mb-10 max-w-xl mx-auto leading-relaxed">
+            Most engagements begin with a candid conversation. Share where you are and what you&apos;re building — we&apos;ll help clarify the right starting point.
           </p>
-          <div className="flex flex-wrap justify-center gap-4">
-            <Link href="/contact" className="btn btn-primary">
-              Let&apos;s talk <ArrowRight size={15} />
+          <div className="flex flex-wrap justify-center items-center gap-5">
+            <Link href="/contact" className="btn btn-primary text-sm bg-white text-[#242320] hover:bg-[#B4533C] hover:text-white border-white">
+              Let&apos;s talk <span>→</span>
             </Link>
             <a
-              href="http://assessment.thesmallwonders.com/"
+              href={CTA.assessment.href}
               target="_blank"
               rel="noopener noreferrer"
               id="services-cta-assessment"
-              className="btn btn-ghost"
+              className="btn btn-ghost text-sm"
             >
               Take the Assessment ↗
             </a>

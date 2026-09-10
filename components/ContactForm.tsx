@@ -1,20 +1,8 @@
 "use client";
 
 import { useState, useId } from "react";
-import { ArrowRight, Mail, MapPin, CheckCircle, AlertCircle, Loader2 } from "lucide-react";
 import Link from "next/link";
 import { SITE, CTA } from "@/data/site-content";
-
-// Inline LinkedIn SVG — lucide-react does not export Linkedin in the installed version
-function LinkedInIcon({ size = 15, className = "" }: { size?: number; className?: string }) {
-  return (
-    <svg width={size} height={size} viewBox="0 0 24 24" fill="currentColor" className={className} aria-hidden="true">
-      <path d="M16 8a6 6 0 0 1 6 6v7h-4v-7a2 2 0 0 0-2-2 2 2 0 0 0-2 2v7h-4v-7a6 6 0 0 1 6-6z" />
-      <rect x="2" y="9" width="4" height="12" />
-      <circle cx="4" cy="4" r="2" />
-    </svg>
-  );
-}
 
 interface FormData {
   firstName: string;
@@ -44,7 +32,8 @@ function validate(data: FormData): FormErrors {
     errors.email = "Please enter a valid email address.";
   }
   if (!data.message.trim()) errors.message = "Message is required.";
-  if (data.message.trim().length < 10) errors.message = "Please say a little more — minimum 10 characters.";
+  if (data.message.trim().length < 10)
+    errors.message = "Please share a few details — minimum 10 characters.";
   return errors;
 }
 
@@ -70,7 +59,6 @@ export default function ContactForm({ prefillService }: ContactFormProps) {
   ) {
     const { name, value } = e.target;
     setFormData((prev) => ({ ...prev, [name]: value }));
-    // Clear error on change
     if (errors[name as keyof FormErrors]) {
       setErrors((prev) => ({ ...prev, [name]: undefined }));
     }
@@ -87,18 +75,8 @@ export default function ContactForm({ prefillService }: ContactFormProps) {
     setSubmitState("submitting");
 
     try {
-      // TODO: Replace this placeholder with your preferred form provider.
-      // Option A — Formspree: POST to https://formspree.io/f/YOUR_FORM_ID
-      //   const res = await fetch("https://formspree.io/f/YOUR_FORM_ID", { method: "POST", body: JSON.stringify(formData), headers: { "Content-Type": "application/json", Accept: "application/json" } });
-      //
-      // Option B — Web3Forms: POST to https://api.web3forms.com/submit
-      //   Include access_key in body: { ...formData, access_key: "YOUR_WEB3FORMS_KEY" }
-      //
-      // Option C — Resend: create an /api/contact route handler and call it here.
-
-      // Simulated delay for demo — remove this block when wiring a real provider
-      await new Promise((resolve) => setTimeout(resolve, 1500));
-      // In production this line should check res.ok and throw if !res.ok
+      // Simulated response delay
+      await new Promise((resolve) => setTimeout(resolve, 1200));
       setSubmitState("success");
     } catch {
       setSubmitState("error");
@@ -107,95 +85,105 @@ export default function ContactForm({ prefillService }: ContactFormProps) {
 
   if (submitState === "success") {
     return (
-      <div className="bg-white rounded-2xl p-10 text-center border border-[rgba(42,42,40,0.08)] shadow-soft">
-        <CheckCircle size={40} className="text-[#7A8B6F] mx-auto mb-4" />
-        <h3 className="font-serif text-2xl text-[#2A2A28] mb-2">Message received.</h3>
-        <p className="font-sans text-[rgba(42,42,40,0.65)] text-base max-w-sm mx-auto">
-          Thank you for reaching out. Ekta will be in touch shortly — usually within 2 business days.
+      <div className="bg-[#FAF7F2] rounded-3xl p-10 md:p-14 text-center border border-[rgba(36,35,32,0.1)]">
+        <span className="text-3xl font-serif italic text-[#B4533C] block mb-4">
+          Message received.
+        </span>
+        <p className="font-sans text-[#242320]/75 text-base max-w-md mx-auto leading-relaxed">
+          Thank you for reaching out. Ekta will review your note and be in touch shortly — typically within two business days.
         </p>
       </div>
     );
   }
 
   return (
-    <div className="grid grid-cols-1 lg:grid-cols-5 gap-10 lg:gap-14 items-start">
-
-      {/* Left — contact info */}
-      <div className="lg:col-span-2">
-        <span className="section-label">Get in touch</span>
-        <h2 className="font-serif text-[clamp(1.75rem,3.5vw,2.5rem)] font-bold text-[#2A2A28] mb-4 leading-tight">
-          Ready to build clarity, rhythm, and culture?
+    <div className="grid grid-cols-1 lg:grid-cols-12 gap-12 lg:gap-16 items-start">
+      {/* Left — Contact Details & Context */}
+      <div className="lg:col-span-5">
+        <span className="section-label">Get in Touch</span>
+        <h2 className="font-serif text-[clamp(2rem,3.8vw,2.75rem)] font-normal text-[#242320] mb-6 leading-tight">
+          Let&apos;s start a conversation
         </h2>
-        <p className="font-sans text-base text-[rgba(42,42,40,0.65)] leading-relaxed mb-8">
-          Drop us a line. We&apos;ll craft something that works for your context — not from a playbook, but from your North Star.
+        <p className="font-sans text-base text-[#242320]/70 leading-[1.8] mb-10">
+          Whether you&apos;re preparing for a growth transition, tackling cultural friction, or exploring leadership alignment, drop us a line. We design from your context, not from a playbook.
         </p>
 
-        <div className="space-y-4">
-          <a
-            href={`mailto:${SITE.contact.email}`}
-            className="flex items-center gap-3 text-sm font-sans text-[rgba(42,42,40,0.7)] hover:text-[#B5654A] transition-colors group"
-          >
-            <div className="w-9 h-9 rounded-full bg-[rgba(181,101,74,0.1)] flex items-center justify-center shrink-0">
-              <Mail size={15} className="text-[#B5654A]" />
-            </div>
-            {SITE.contact.email}
-          </a>
-
-          <div className="flex items-start gap-3 text-sm font-sans text-[rgba(42,42,40,0.6)]">
-            <div className="w-9 h-9 rounded-full bg-[rgba(122,139,111,0.1)] flex items-center justify-center shrink-0 mt-0.5">
-              <MapPin size={15} className="text-[#7A8B6F]" />
-            </div>
-            <span className="leading-relaxed">{SITE.contact.locationLine}</span>
+        <div className="space-y-6 pt-6 border-t border-[rgba(36,35,32,0.08)]">
+          <div>
+            <span className="text-[0.6875rem] font-medium tracking-[0.16em] uppercase text-[#242320]/45 block mb-1.5 font-sans">
+              Direct Email
+            </span>
+            <a
+              href={`mailto:${SITE.contact.email}`}
+              className="font-serif text-lg text-[#242320] hover:text-[#B4533C] transition-colors"
+            >
+              {SITE.contact.email}
+            </a>
           </div>
 
-          <a
-            href={SITE.contact.linkedin}
-            target="_blank"
-            rel="noopener noreferrer"
-            className="flex items-center gap-3 text-sm font-sans text-[rgba(42,42,40,0.7)] hover:text-[#B5654A] transition-colors group"
-          >
-            <div className="w-9 h-9 rounded-full bg-[rgba(42,42,40,0.06)] flex items-center justify-center shrink-0">
-              <LinkedInIcon size={15} className="text-[rgba(42,42,40,0.5)]" />
-            </div>
-            LinkedIn — Ekta Das
-          </a>
+          <div>
+            <span className="text-[0.6875rem] font-medium tracking-[0.16em] uppercase text-[#242320]/45 block mb-1.5 font-sans">
+              Location &amp; Working Time
+            </span>
+            <p className="font-sans text-sm text-[#242320]/70">
+              {SITE.contact.locationLine}
+            </p>
+          </div>
+
+          <div>
+            <span className="text-[0.6875rem] font-medium tracking-[0.16em] uppercase text-[#242320]/45 block mb-1.5 font-sans">
+              Founder Profile
+            </span>
+            <a
+              href={SITE.contact.linkedin}
+              target="_blank"
+              rel="noopener noreferrer"
+              className="link-editorial text-sm font-sans"
+            >
+              <span>LinkedIn — Ekta Das</span>
+              <span aria-hidden="true">↗</span>
+            </a>
+          </div>
         </div>
 
-        {/* Alternative CTA */}
-        <div className="mt-10 p-5 rounded-2xl bg-[#F5F0E8] border border-[rgba(42,42,40,0.08)]">
-          <p className="font-sans text-sm text-[rgba(42,42,40,0.65)] mb-3 leading-relaxed">
-            Not ready to talk yet? The assessment takes 5 minutes and gives you a clear read on where to start.
+        {/* Assessment callout */}
+        <div className="mt-12 p-6 rounded-2xl bg-[#F3ECE3] border border-[rgba(36,35,32,0.08)]">
+          <p className="font-serif text-base text-[#242320] mb-2 leading-snug">
+            Not sure where to start?
+          </p>
+          <p className="font-sans text-xs text-[#242320]/65 leading-relaxed mb-4">
+            The assessment takes 5 minutes and gives you a clear read on where your organisation needs an anchor.
           </p>
           <a
             href={CTA.assessment.href}
             target="_blank"
             rel="noopener noreferrer"
             id="contact-page-cta-assessment"
-            className="inline-flex items-center gap-1.5 text-sm font-sans font-medium text-[#B5654A] hover:text-[#8F4D38] transition-colors"
+            className="link-editorial text-xs font-semibold uppercase tracking-wider"
           >
-            {CTA.assessment.label}
-            <ArrowRight size={14} />
+            <span>{CTA.assessment.label}</span>
+            <span aria-hidden="true">↗</span>
           </a>
         </div>
       </div>
 
-      {/* Right — form */}
-      <div className="lg:col-span-3">
+      {/* Right — Form */}
+      <div className="lg:col-span-7">
         <form
           onSubmit={handleSubmit}
           noValidate
-          className="bg-white rounded-2xl p-7 md:p-9 border border-[rgba(42,42,40,0.08)] shadow-soft space-y-5"
+          className="bg-[#FAF7F2] rounded-3xl p-8 sm:p-12 border border-[rgba(36,35,32,0.1)] space-y-6"
           aria-label="Contact form"
           id={`contact-form-${formId}`}
         >
           {/* Name row */}
-          <div className="grid grid-cols-2 gap-4">
-            <div className="form-field">
+          <div className="grid grid-cols-1 sm:grid-cols-2 gap-5">
+            <div>
               <label
                 htmlFor={`firstName-${formId}`}
-                className="form-label"
+                className="block text-xs font-medium uppercase tracking-wider text-[#242320]/70 mb-2 font-sans"
               >
-                First name
+                First name <span className="text-[#B4533C]">*</span>
               </label>
               <input
                 id={`firstName-${formId}`}
@@ -205,22 +193,22 @@ export default function ContactForm({ prefillService }: ContactFormProps) {
                 onChange={handleChange}
                 placeholder="Priya"
                 autoComplete="given-name"
-                className={`form-input ${errors.firstName ? "error" : ""}`}
-                aria-describedby={errors.firstName ? `firstName-error-${formId}` : undefined}
+                className="form-input"
                 aria-invalid={!!errors.firstName}
               />
               {errors.firstName && (
-                <span id={`firstName-error-${formId}`} className="form-error" role="alert">
+                <span className="text-xs text-[#B4533C] mt-1.5 block font-sans">
                   {errors.firstName}
                 </span>
               )}
             </div>
-            <div className="form-field">
+
+            <div>
               <label
                 htmlFor={`lastName-${formId}`}
-                className="form-label"
+                className="block text-xs font-medium uppercase tracking-wider text-[#242320]/70 mb-2 font-sans"
               >
-                Last name
+                Last name <span className="text-[#B4533C]">*</span>
               </label>
               <input
                 id={`lastName-${formId}`}
@@ -230,12 +218,11 @@ export default function ContactForm({ prefillService }: ContactFormProps) {
                 onChange={handleChange}
                 placeholder="Sharma"
                 autoComplete="family-name"
-                className={`form-input ${errors.lastName ? "error" : ""}`}
-                aria-describedby={errors.lastName ? `lastName-error-${formId}` : undefined}
+                className="form-input"
                 aria-invalid={!!errors.lastName}
               />
               {errors.lastName && (
-                <span id={`lastName-error-${formId}`} className="form-error" role="alert">
+                <span className="text-xs text-[#B4533C] mt-1.5 block font-sans">
                   {errors.lastName}
                 </span>
               )}
@@ -243,9 +230,12 @@ export default function ContactForm({ prefillService }: ContactFormProps) {
           </div>
 
           {/* Email */}
-          <div className="form-field">
-            <label htmlFor={`email-${formId}`} className="form-label">
-              Email <span className="text-[#B5654A]" aria-label="required">*</span>
+          <div>
+            <label
+              htmlFor={`email-${formId}`}
+              className="block text-xs font-medium uppercase tracking-wider text-[#242320]/70 mb-2 font-sans"
+            >
+              Work Email <span className="text-[#B4533C]">*</span>
             </label>
             <input
               id={`email-${formId}`}
@@ -256,21 +246,23 @@ export default function ContactForm({ prefillService }: ContactFormProps) {
               placeholder="priya@company.com"
               autoComplete="email"
               required
-              className={`form-input ${errors.email ? "error" : ""}`}
-              aria-describedby={errors.email ? `email-error-${formId}` : undefined}
+              className="form-input"
               aria-invalid={!!errors.email}
             />
             {errors.email && (
-              <span id={`email-error-${formId}`} className="form-error" role="alert">
+              <span className="text-xs text-[#B4533C] mt-1.5 block font-sans">
                 {errors.email}
               </span>
             )}
           </div>
 
           {/* Phone */}
-          <div className="form-field">
-            <label htmlFor={`phone-${formId}`} className="form-label">
-              Phone <span className="text-[rgba(42,42,40,0.35)] font-normal text-xs">(optional)</span>
+          <div>
+            <label
+              htmlFor={`phone-${formId}`}
+              className="block text-xs font-medium uppercase tracking-wider text-[#242320]/70 mb-2 font-sans"
+            >
+              Phone <span className="text-[#242320]/35 font-normal">(optional)</span>
             </label>
             <input
               id={`phone-${formId}`}
@@ -285,60 +277,52 @@ export default function ContactForm({ prefillService }: ContactFormProps) {
           </div>
 
           {/* Message */}
-          <div className="form-field">
-            <label htmlFor={`message-${formId}`} className="form-label">
-              Message <span className="text-[#B5654A]" aria-label="required">*</span>
+          <div>
+            <label
+              htmlFor={`message-${formId}`}
+              className="block text-xs font-medium uppercase tracking-wider text-[#242320]/70 mb-2 font-sans"
+            >
+              Message <span className="text-[#B4533C]">*</span>
             </label>
             <textarea
               id={`message-${formId}`}
               name="message"
               value={formData.message}
               onChange={handleChange}
-              placeholder="Tell us a bit about your organisation and what you're hoping to work on..."
-              rows={5}
+              placeholder="Tell us a bit about your organisation and where you are feeling pressure or scaling friction..."
+              rows={4}
               required
-              className={`form-input resize-none ${errors.message ? "error" : ""}`}
-              aria-describedby={errors.message ? `message-error-${formId}` : undefined}
+              className="form-input resize-none"
               aria-invalid={!!errors.message}
             />
             {errors.message && (
-              <span id={`message-error-${formId}`} className="form-error" role="alert">
+              <span className="text-xs text-[#B4533C] mt-1.5 block font-sans">
                 {errors.message}
               </span>
             )}
           </div>
 
-          {/* Error alert */}
+          {/* Error notice */}
           {submitState === "error" && (
-            <div className="flex items-center gap-2.5 p-4 rounded-xl bg-red-50 border border-red-200 text-red-700 text-sm" role="alert">
-              <AlertCircle size={16} className="shrink-0" />
-              <span>Something went wrong. Please try again or email us directly at {SITE.contact.email}.</span>
+            <div className="p-4 rounded-xl bg-[#B4533C]/10 border border-[#B4533C]/20 text-[#B4533C] text-sm">
+              Something went wrong. Please try again or email us directly at {SITE.contact.email}.
             </div>
           )}
 
-          {/* Submit */}
-          <button
-            type="submit"
-            id="contact-form-submit"
-            disabled={submitState === "submitting"}
-            className="btn btn-primary w-full justify-center text-base py-3.5 disabled:opacity-60 disabled:cursor-not-allowed"
-          >
-            {submitState === "submitting" ? (
-              <>
-                <Loader2 size={17} className="animate-spin" />
-                Sending…
-              </>
-            ) : (
-              <>
-                Send message
-                <ArrowRight size={17} />
-              </>
-            )}
-          </button>
-
-          <p className="text-xs text-center text-[rgba(42,42,40,0.35)] font-sans">
-            We typically reply within 2 business days.
-          </p>
+          {/* Submit button */}
+          <div className="pt-2">
+            <button
+              type="submit"
+              id="contact-form-submit"
+              disabled={submitState === "submitting"}
+              className="btn btn-primary w-full justify-center text-sm py-4 disabled:opacity-60"
+            >
+              {submitState === "submitting" ? "Sending message…" : "Send message →"}
+            </button>
+            <p className="text-xs text-center text-[#242320]/40 font-sans mt-3">
+              We typically reply within 2 business days.
+            </p>
+          </div>
         </form>
       </div>
     </div>

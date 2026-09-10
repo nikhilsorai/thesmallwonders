@@ -2,7 +2,6 @@
 
 import { useState, useMemo } from "react";
 import Link from "next/link";
-import { ArrowRight, ArrowUpRight, Building2, Filter } from "lucide-react";
 import CaseStudyCard from "@/components/CaseStudyCard";
 import type { CaseStudyCardProps } from "@/components/CaseStudyCard";
 import casesData from "@/data/case-studies.json";
@@ -12,7 +11,7 @@ const allCases = casesData as CaseStudyCardProps[];
 const nonFlagshipFeatured = allCases.filter((c) => c.featured && !c.flagship);
 const filterOptions = ["All", ...new Set(nonFlagshipFeatured.map((c) => c.industry))];
 
-// All industry names from the industries.json file (for tag cloud)
+// All industry names for tag cloud
 const allIndustryNames = industriesData.map((i) => i.industry);
 const extraTags = ["Discount Brokerage", "HR Tech", "Airport", "Budget Housing", "Entertainment"];
 const industryTagCloud = [...new Set([...allIndustryNames, ...extraTags])];
@@ -32,26 +31,25 @@ export default function CaseStudiesClient() {
     <>
       {/* Filterable grid */}
       <section
-        className="section-pad bg-[#FAF8F4]"
-        aria-label="All case studies — filterable grid"
+        className="section-pad bg-[#FAF7F2]"
+        aria-label="All case studies — archive grid"
       >
         <div className="container-site">
-          <div className="flex flex-col md:flex-row md:items-end md:justify-between gap-6 mb-10">
+          <div className="flex flex-col md:flex-row md:items-baseline md:justify-between gap-6 mb-12">
             <div>
-              <span className="section-label">Track record</span>
-              <h2 className="font-serif text-[clamp(1.75rem,3.5vw,2.5rem)] font-bold text-[#2A2A28] leading-tight">
-                More engagements
+              <span className="section-label">Track Record</span>
+              <h2 className="font-serif text-[clamp(2rem,3.8vw,2.85rem)] font-normal text-[#242320] leading-tight">
+                Case Archive
               </h2>
             </div>
-            <div className="flex items-center gap-1.5 text-xs text-[rgba(42,42,40,0.4)] font-sans">
-              <Filter size={12} />
+            <div className="text-xs text-[#242320]/45 font-sans">
               Filter by industry
             </div>
           </div>
 
-          {/* Filter pills */}
+          {/* Minimalist filter pills */}
           <div
-            className="flex flex-wrap gap-2 mb-8"
+            className="flex flex-wrap gap-2 mb-12"
             role="group"
             aria-label="Filter by industry"
           >
@@ -59,10 +57,10 @@ export default function CaseStudiesClient() {
               <button
                 key={opt}
                 onClick={() => setActiveFilter(opt)}
-                className={`px-4 py-1.5 rounded-full text-sm font-sans font-medium transition-all duration-200 border ${
+                className={`px-4 py-1.5 rounded-full text-xs font-sans font-medium transition-all duration-300 border cursor-pointer ${
                   activeFilter === opt
-                    ? "bg-[#2A2A28] text-white border-[#2A2A28]"
-                    : "bg-white text-[rgba(42,42,40,0.6)] border-[rgba(42,42,40,0.15)] hover:border-[rgba(42,42,40,0.3)]"
+                    ? "bg-[#242320] text-[#FAF7F2] border-[#242320]"
+                    : "bg-transparent text-[#242320]/65 border-[rgba(36,35,32,0.12)] hover:border-[#242320]"
                 }`}
                 aria-pressed={activeFilter === opt}
               >
@@ -73,13 +71,13 @@ export default function CaseStudiesClient() {
 
           {/* Cards grid */}
           {filtered.length > 0 ? (
-            <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-5">
+            <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-10">
               {filtered.map((c) => (
                 <CaseStudyCard key={c.id} {...c} />
               ))}
             </div>
           ) : (
-            <p className="font-sans text-sm text-[rgba(42,42,40,0.45)] py-8 text-center">
+            <p className="font-sans text-sm text-[#242320]/45 py-12 text-center">
               No cases match this filter.
             </p>
           )}
@@ -88,14 +86,14 @@ export default function CaseStudiesClient() {
 
       {/* Industries tag cloud */}
       <section
-        className="py-14 bg-white border-y border-[rgba(42,42,40,0.07)]"
+        className="py-20 bg-[#F3ECE3] border-y border-[rgba(36,35,32,0.08)]"
         aria-label="Industries and sectors we've worked with"
       >
         <div className="container-site">
-          <div className="flex items-start gap-3 mb-6">
-            <Building2 size={17} className="text-[#7A8B6F] mt-0.5 shrink-0" />
-            <h2 className="font-serif text-xl font-semibold text-[#2A2A28]">
-              Industries &amp; sectors we&apos;ve worked with
+          <div className="mb-6">
+            <span className="section-label">Sectors Worked With</span>
+            <h2 className="font-serif text-2xl font-normal text-[#242320]">
+              Additional Engagements &amp; Sector Breadth
             </h2>
           </div>
           <div className="flex flex-wrap gap-2.5">
@@ -105,35 +103,36 @@ export default function CaseStudiesClient() {
               </span>
             ))}
           </div>
-          <p className="font-sans text-xs text-[rgba(42,42,40,0.35)] mt-5 leading-relaxed">
-            Includes engagements without a full case write-up — discount brokerage, HR tech, airport, construction equipment, paints, two-wheelers, accounting &amp; taxation, apparel, IT products/services, real estate budget housing, crowdfunding, entertainment.
+          <p className="font-sans text-xs text-[#242320]/40 mt-6 leading-relaxed max-w-2xl">
+            Includes advisory engagements in discount brokerage, HR tech, aviation infrastructure, construction equipment, paints, two-wheelers, accounting &amp; taxation, apparel, and entertainment.
           </p>
         </div>
       </section>
 
       {/* CTA */}
-      <section className="py-14 bg-[#FAF8F4]">
-        <div className="container-content flex flex-col sm:flex-row items-start sm:items-center justify-between gap-6">
+      <section className="py-20 bg-[#FAF7F2]">
+        <div className="container-content flex flex-col sm:flex-row items-start sm:items-center justify-between gap-8">
           <div>
-            <p className="font-serif text-xl text-[#2A2A28] font-medium">
+            <p className="font-serif text-2xl text-[#242320] font-normal leading-snug">
               Interested in working together?
             </p>
-            <p className="font-sans text-sm text-[rgba(42,42,40,0.55)] mt-1">
-              Every engagement starts with a conversation about your context.
+            <p className="font-sans text-sm text-[#242320]/60 mt-1">
+              Every engagement starts with an exploratory conversation about your team&apos;s context.
             </p>
           </div>
-          <div className="flex flex-wrap gap-3 shrink-0">
+          <div className="flex flex-wrap items-center gap-4 shrink-0">
             <Link href="/contact" className="btn btn-primary text-sm">
-              Let&apos;s talk <ArrowRight size={14} />
+              Let&apos;s talk <span>→</span>
             </Link>
             <a
               href="http://assessment.thesmallwonders.com/"
               target="_blank"
               rel="noopener noreferrer"
               id="case-studies-cta-assessment"
-              className="btn btn-outline text-sm"
+              className="link-editorial text-sm font-sans font-medium"
             >
-              Take the Assessment <ArrowUpRight size={14} />
+              <span>Take the Assessment</span>
+              <span aria-hidden="true">↗</span>
             </a>
           </div>
         </div>

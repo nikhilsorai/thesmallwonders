@@ -1,6 +1,5 @@
 import type { Metadata } from "next";
 import Link from "next/link";
-import { CheckCircle2 } from "lucide-react";
 import CaseStudiesClient from "@/components/CaseStudiesClient";
 import type { CaseStudyCardProps } from "@/components/CaseStudyCard";
 import casesData from "@/data/case-studies.json";
@@ -27,10 +26,10 @@ const workshopCount = allCases.filter(
 ).length;
 
 const statBar = [
-  { value: `${featuredCount}+`, label: "Featured engagements" },
-  { value: `${distinctIndustries}+`, label: "Industries" },
-  { value: `${workshopCount}+`, label: "Leadership workshops" },
-  { value: "15+", label: "Years experience" },
+  { value: `${featuredCount}+`, label: "Documented Engagements" },
+  { value: `${distinctIndustries}+`, label: "Industries Served" },
+  { value: `${workshopCount}+`, label: "Leadership Workshops" },
+  { value: "15+", label: "Years Practice" },
 ];
 
 export default function CaseStudiesPage() {
@@ -38,30 +37,30 @@ export default function CaseStudiesPage() {
     <>
       {/* Page header */}
       <section
-        className="section-pad bg-[#FAF8F4] border-b border-[rgba(42,42,40,0.07)]"
+        className="section-pad-sm bg-[#FAF7F2] border-b border-[rgba(36,35,32,0.06)]"
         aria-label="Case Studies page header"
       >
         <div className="container-content">
-          <span className="section-label">Case Studies & Expertise</span>
-          <h1 className="font-serif text-[clamp(2.25rem,5vw,4rem)] font-bold text-[#2A2A28] leading-tight mb-5">
+          <span className="section-label">Case Studies &amp; Practice</span>
+          <h1 className="font-serif text-[clamp(2.5rem,5.5vw,4.25rem)] font-normal text-[#242320] leading-[1.12] mb-6">
             Proof through practice
           </h1>
-          <p className="font-sans text-lg md:text-xl text-[rgba(42,42,40,0.65)] leading-relaxed max-w-2xl">
-            Fifteen years of working with founder-led, family-led, and PE/VC-backed companies across industries. All engagements anonymised — client names available on request where permitted.
+          <p className="font-sans text-lg sm:text-xl text-[#242320]/75 leading-[1.8] max-w-2xl">
+            Fifteen years of partnering with founder-led, family-led, and PE/VC-backed companies across sectors. All engagements are anonymised to protect commercial confidentiality.
           </p>
         </div>
       </section>
 
       {/* Stat bar */}
-      <section className="bg-[#2A2A28] py-8" aria-label="Track record statistics">
+      <section className="bg-[#242320] text-[#FAF7F2] py-12" aria-label="Track record statistics">
         <div className="container-site">
-          <div className="grid grid-cols-2 md:grid-cols-4 gap-px bg-white/10 rounded-2xl overflow-hidden">
+          <div className="grid grid-cols-2 md:grid-cols-4 gap-8">
             {statBar.map((stat) => (
-              <div key={stat.label} className="bg-[#2A2A28] px-7 py-6 flex flex-col gap-1">
-                <span className="font-serif text-3xl font-bold text-[#C97C5E] leading-none">
+              <div key={stat.label} className="flex flex-col">
+                <span className="font-serif text-3xl sm:text-4xl font-normal italic text-[#D98772] leading-none mb-2">
                   {stat.value}
                 </span>
-                <span className="font-sans text-sm text-white/55">{stat.label}</span>
+                <span className="font-sans text-xs sm:text-sm text-white/60">{stat.label}</span>
               </div>
             ))}
           </div>
@@ -71,51 +70,54 @@ export default function CaseStudiesPage() {
       {/* Flagship case — full narrative */}
       {flagshipCase && (
         <section
-          className="section-pad bg-white border-b border-[rgba(42,42,40,0.07)]"
+          className="section-pad bg-[#FAF7F2] border-b border-[rgba(36,35,32,0.08)]"
           aria-label="Featured flagship case study"
           id={`case-${flagshipCase.id}`}
         >
           <div className="container-site">
-            <div className="flex flex-wrap items-center gap-3 mb-8">
-              <span className="chip chip-terracotta">Featured Case</span>
-              <span className="chip">{flagshipCase.industry}</span>
-              <span className="text-xs font-sans italic text-[rgba(42,42,40,0.45)]">
+            <div className="flex flex-wrap items-baseline gap-3 mb-10 pb-4 border-b border-[rgba(36,35,32,0.08)]">
+              <span className="text-xs font-semibold tracking-widest uppercase text-[#B4533C] font-sans">
+                Featured Case Study
+              </span>
+              <span className="text-xs text-[#242320]/40 font-sans">·</span>
+              <span className="text-xs font-sans text-[#242320]/70">{flagshipCase.industry}</span>
+              <span className="text-xs text-[#242320]/40 font-sans">·</span>
+              <span className="text-xs font-serif italic text-[#242320]/60">
                 {flagshipCase.offering}
               </span>
             </div>
 
-            <div className="grid grid-cols-1 lg:grid-cols-12 gap-10 lg:gap-14">
+            <div className="grid grid-cols-1 lg:grid-cols-12 gap-12 lg:gap-16">
               {/* Narrative */}
               <div className="lg:col-span-7">
-                <span className="section-label">Rituals in action</span>
-                <h2 className="font-serif text-[clamp(1.75rem,3.5vw,2.75rem)] font-bold text-[#2A2A28] mb-6 leading-tight">
-                  How rituals turned a family business into a retail powerhouse
+                <h2 className="font-serif text-[clamp(2rem,3.8vw,2.85rem)] font-normal text-[#242320] mb-8 leading-tight">
+                  How rituals turned a family manufacturer into a retail powerhouse
                 </h2>
-                <div className="space-y-6">
+
+                <div className="space-y-8">
                   <div>
-                    <h3 className="font-sans text-sm font-semibold uppercase tracking-widest text-[rgba(42,42,40,0.4)] mb-3">
-                      The challenge
+                    <h3 className="text-[0.6875rem] font-semibold uppercase tracking-[0.16em] text-[#242320]/45 mb-3 font-sans">
+                      The Challenge
                     </h3>
-                    <blockquote className="border-l-2 border-[#B5654A] pl-5 mb-4">
-                      <p className="font-serif text-lg italic text-[#2A2A28]">
+                    <blockquote className="my-4 pl-5 border-l-2 border-[#B4533C]">
+                      <p className="font-serif text-lg italic text-[#242320] leading-snug">
                         &ldquo;{flagshipCase.problem}&rdquo;
                       </p>
                     </blockquote>
-                    <p className="font-sans text-base text-[rgba(42,42,40,0.7)] leading-relaxed">
+                    <p className="font-sans text-base text-[#242320]/75 leading-[1.8]">
                       A premium kitchen manufacturer — family-led and privately held — was transitioning from a manufacturing-heavy model to retail. Revenue was concentrated in a few accounts. Strategy was unclear. The leadership team was not aligned on where to take the business next.
                     </p>
                   </div>
+
                   <div>
-                    <h3 className="font-sans text-sm font-semibold uppercase tracking-widest text-[rgba(42,42,40,0.4)] mb-3">
-                      What we did
+                    <h3 className="text-[0.6875rem] font-semibold uppercase tracking-[0.16em] text-[#242320]/45 mb-3 font-sans">
+                      What We Did
                     </h3>
                     <ul className="space-y-3" role="list">
                       {flagshipCase.work.map((item, i) => (
-                        <li key={i} className="flex items-start gap-3">
-                          <CheckCircle2 size={16} className="text-[#7A8B6F] shrink-0 mt-0.5" />
-                          <span className="font-sans text-base text-[rgba(42,42,40,0.75)] leading-relaxed">
-                            {item}
-                          </span>
+                        <li key={i} className="flex items-start gap-3 font-sans text-sm sm:text-base text-[#242320]/80 leading-relaxed">
+                          <span className="text-[#B4533C] text-sm leading-none mt-1 select-none">·</span>
+                          <span>{item}</span>
                         </li>
                       ))}
                     </ul>
@@ -125,29 +127,34 @@ export default function CaseStudiesPage() {
 
               {/* Outcome panel */}
               <div className="lg:col-span-5">
-                <div className="bg-[#FAF8F4] rounded-2xl p-8 border border-[rgba(42,42,40,0.07)] h-full flex flex-col justify-between gap-8">
+                <div className="bg-[#F3ECE3] rounded-3xl p-8 sm:p-10 border border-[rgba(36,35,32,0.08)] flex flex-col justify-between gap-8 h-full">
                   <div>
-                    <h3 className="font-sans text-sm font-semibold uppercase tracking-widest text-[rgba(42,42,40,0.4)] mb-4">
-                      The impact
+                    <h3 className="text-[0.6875rem] font-semibold uppercase tracking-[0.16em] text-[#242320]/45 mb-4 font-sans">
+                      The Impact
                     </h3>
-                    <p className="font-sans text-base text-[rgba(42,42,40,0.75)] leading-relaxed mb-6">
+                    <p className="font-sans text-base text-[#242320]/85 leading-relaxed mb-8">
                       {flagshipCase.outcome}
                     </p>
-                  </div>
-                  {/* Impact numbers */}
-                  <div className="grid grid-cols-2 gap-4">
-                    <div className="bg-white rounded-xl p-5 border border-[rgba(42,42,40,0.07)]">
-                      <span className="font-serif text-4xl font-bold text-[#B5654A] leading-none">2×</span>
-                      <p className="font-sans text-sm text-[rgba(42,42,40,0.6)] mt-1">Revenue growth</p>
+
+                    {/* Impact numbers */}
+                    <div className="grid grid-cols-2 gap-6 pt-6 border-t border-[rgba(36,35,32,0.08)]">
+                      <div>
+                        <span className="font-serif text-4xl font-normal italic text-[#B4533C] leading-none block mb-1">
+                          2×
+                        </span>
+                        <p className="font-sans text-xs text-[#242320]/60">Total revenue growth</p>
+                      </div>
+                      <div>
+                        <span className="font-serif text-4xl font-normal italic text-[#B4533C] leading-none block mb-1">
+                          10×
+                        </span>
+                        <p className="font-sans text-xs text-[#242320]/60">Retail expansion in 2 yrs</p>
+                      </div>
                     </div>
-                    <div className="bg-white rounded-xl p-5 border border-[rgba(42,42,40,0.07)]">
-                      <span className="font-serif text-4xl font-bold text-[#B5654A] leading-none">10×</span>
-                      <p className="font-sans text-sm text-[rgba(42,42,40,0.6)] mt-1">Retail growth in 2 yrs</p>
-                    </div>
                   </div>
-                  <p className="font-sans text-xs text-[rgba(42,42,40,0.35)] leading-relaxed pt-2">
-                    <strong className="text-[rgba(42,42,40,0.55)]">Company type:</strong>{" "}
-                    {flagshipCase.companyType}
+
+                  <p className="font-sans text-xs text-[#242320]/40 pt-4 border-t border-[rgba(36,35,32,0.06)]">
+                    <strong>Context:</strong> {flagshipCase.companyType}
                   </p>
                 </div>
               </div>
@@ -156,7 +163,7 @@ export default function CaseStudiesPage() {
         </section>
       )}
 
-      {/* Filterable grid + tag cloud + CTA — client component */}
+      {/* Filterable grid + tag cloud + CTA */}
       <CaseStudiesClient />
     </>
   );

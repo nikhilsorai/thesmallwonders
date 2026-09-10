@@ -1,5 +1,4 @@
 import Link from "next/link";
-import { ArrowRight, Clock, Users, CheckCircle } from "lucide-react";
 
 export interface ServiceCardProps {
   id: string;
@@ -11,6 +10,7 @@ export interface ServiceCardProps {
   engagementLength: string;
   cta: string;
   featured?: boolean;
+  index?: number;
 }
 
 export default function ServiceCard({
@@ -21,70 +21,69 @@ export default function ServiceCard({
   delivered,
   engagementLength,
   cta,
+  index,
 }: ServiceCardProps) {
+  const indexStr = index !== undefined ? String(index + 1).padStart(2, "0") : undefined;
+
   return (
     <article
       id={`service-${id}`}
-      className="card-base p-7 md:p-8 flex flex-col gap-5 bg-white group"
+      className="py-8 md:py-10 border-t border-[rgba(36,35,32,0.12)] flex flex-col justify-between group transition-colors"
       aria-label={`Service: ${name}`}
     >
-      {/* Name */}
       <div>
-        <h3 className="font-serif text-xl font-semibold text-[#2A2A28] leading-tight mb-2">
-          {name}
-        </h3>
+        {/* Header with index */}
+        <div className="flex items-baseline justify-between gap-4 mb-3">
+          <h3 className="font-serif text-xl sm:text-2xl font-normal text-[#242320] leading-snug group-hover:text-[#B4533C] transition-colors">
+            {name}
+          </h3>
+          {indexStr && (
+            <span className="font-mono text-xs text-[#242320]/35 font-medium shrink-0">
+              {indexStr}
+            </span>
+          )}
+        </div>
+
         {/* Promise */}
-        <p className="font-sans text-base text-[#B5654A] font-medium leading-snug">
+        <p className="font-serif text-base italic text-[#B4533C] leading-snug mb-5">
           {promise}
         </p>
-      </div>
 
-      {/* Who it's for */}
-      <div className="flex items-start gap-2.5">
-        <Users size={15} className="shrink-0 text-[#7A8B6F] mt-0.5" />
-        <p className="font-sans text-sm text-[rgba(42,42,40,0.65)] leading-relaxed">
-          <span className="font-medium text-[rgba(42,42,40,0.8)]">For: </span>
+        {/* Who it's for */}
+        <p className="font-sans text-sm text-[#242320]/70 leading-relaxed mb-6">
+          <span className="font-medium text-[#242320]/90">Designed for: </span>
           {whoFor}
         </p>
-      </div>
 
-      {/* Deliverables */}
-      <div>
-        <p className="text-xs font-semibold tracking-[0.08em] uppercase text-[rgba(42,42,40,0.4)] mb-3 font-sans">
-          What&apos;s delivered
-        </p>
-        <ul className="space-y-2" role="list">
-          {delivered.map((item, i) => (
-            <li key={i} className="flex items-start gap-2.5">
-              <CheckCircle
-                size={14}
-                className="shrink-0 text-[#7A8B6F] mt-0.5"
-              />
-              <span className="font-sans text-sm text-[rgba(42,42,40,0.7)] leading-relaxed">
-                {item}
-              </span>
-            </li>
-          ))}
-        </ul>
-      </div>
-
-      {/* Footer — engagement length + CTA */}
-      <div className="mt-auto pt-5 border-t border-[rgba(42,42,40,0.07)] flex items-center justify-between gap-4">
-        <div className="flex items-center gap-1.5 text-xs text-[rgba(42,42,40,0.4)] font-sans">
-          <Clock size={12} />
-          {engagementLength}
+        {/* Deliverables */}
+        <div className="mb-6">
+          <p className="text-[0.6875rem] font-medium tracking-[0.14em] uppercase text-[#242320]/45 mb-3 font-sans">
+            Key Deliverables
+          </p>
+          <ul className="space-y-2" role="list">
+            {delivered.map((item, i) => (
+              <li key={i} className="flex items-start gap-2.5 font-sans text-sm text-[#242320]/75 leading-relaxed">
+                <span className="text-[#B4533C] text-sm leading-none mt-1 select-none">·</span>
+                <span>{item}</span>
+              </li>
+            ))}
+          </ul>
         </div>
+      </div>
+
+      {/* Footer */}
+      <div className="pt-5 border-t border-[rgba(36,35,32,0.06)] flex items-center justify-between gap-4 text-xs font-sans">
+        <span className="text-[#242320]/50 italic font-serif">
+          {engagementLength}
+        </span>
         <Link
           href={`/contact?service=${encodeURIComponent(name)}`}
           id={`service-cta-${id}`}
-          className="inline-flex items-center gap-1.5 text-sm font-sans font-medium text-[#B5654A] hover:text-[#8F4D38] transition-colors group/cta"
+          className="link-editorial text-sm font-medium"
           aria-label={`${cta} about ${name}`}
         >
-          {cta}
-          <ArrowRight
-            size={14}
-            className="group-hover/cta:translate-x-1 transition-transform"
-          />
+          <span>{cta}</span>
+          <span aria-hidden="true">→</span>
         </Link>
       </div>
     </article>
