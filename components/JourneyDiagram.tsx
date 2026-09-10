@@ -82,9 +82,9 @@ export default function JourneyDiagram() {
             aria-label="The Journey of Growth: Valley of Death and Rituals"
           >
             <defs>
-              <linearGradient id="warmClayFill" x1="0" y1="0" x2="0" y2="1">
-                <stop offset="0%" stopColor="#C46243" stopOpacity="0.10" />
-                <stop offset="100%" stopColor="#C46243" stopOpacity="0" />
+              <linearGradient id="warmMaroonFill" x1="0" y1="0" x2="0" y2="1">
+                <stop offset="0%" stopColor="#A31818" stopOpacity="0.10" />
+                <stop offset="100%" stopColor="#A31818" stopOpacity="0" />
               </linearGradient>
             </defs>
 
@@ -96,7 +96,7 @@ export default function JourneyDiagram() {
             {/* Fill under the curve */}
             <path
               d={`${PATH_D} L 610 270 L 70 270 Z`}
-              fill="url(#warmClayFill)"
+              fill="url(#warmMaroonFill)"
             />
 
             {/* The main continuous curve line */}
@@ -129,8 +129,8 @@ export default function JourneyDiagram() {
                     cx={stage.x}
                     cy={stage.y}
                     r={isActive ? 16 : 10}
-                    fill={isActive ? "rgba(196, 98, 67, 0.12)" : "transparent"}
-                    stroke={isActive ? "#C46243" : "rgba(36,35,32,0.18)"}
+                    fill={isActive ? "rgba(163, 24, 24, 0.12)" : "transparent"}
+                    stroke={isActive ? "#A31818" : "rgba(36,35,32,0.18)"}
                     strokeWidth="1.5"
                     className="transition-all duration-300"
                   />
@@ -140,7 +140,7 @@ export default function JourneyDiagram() {
                     cx={stage.x}
                     cy={stage.y}
                     r={isActive ? 4.5 : 3}
-                    fill={isActive ? "#C46243" : "#242320"}
+                    fill={isActive ? "#A31818" : "#242320"}
                     className="transition-all duration-300"
                   />
 
@@ -153,7 +153,7 @@ export default function JourneyDiagram() {
                     fontFamily="var(--font-serif)"
                     fontStyle={isActive ? "italic" : "normal"}
                     fontWeight={isActive ? "600" : "400"}
-                    fill={isActive ? "#C46243" : "rgba(36,35,32,0.8)"}
+                    fill={isActive ? "#A31818" : "rgba(36,35,32,0.8)"}
                     className="select-none transition-colors duration-200"
                   >
                     {stage.number}. {stage.label}
@@ -175,21 +175,21 @@ export default function JourneyDiagram() {
               onClick={() => setActiveStageId(stage.id)}
               className={`text-left p-5 rounded-2xl transition-all duration-300 cursor-pointer ${
                 isActive
-                  ? "bg-white border-l-4 border-[#C46243] shadow-sm"
+                  ? "bg-white border-l-4 border-[#A31818] shadow-sm"
                   : "bg-transparent hover:bg-white/60 border-l-4 border-transparent"
               }`}
             >
               <div className="flex items-center justify-between mb-2">
                 <span
                   className={`text-xs font-mono font-semibold ${
-                    isActive ? "text-[#C46243]" : "text-[#242320]/40"
+                    isActive ? "text-[#A31818]" : "text-[#242320]/40"
                   }`}
                 >
                   {stage.number}
                 </span>
                 <span
                   className={`w-1.5 h-1.5 rounded-full ${
-                    isActive ? "bg-[#C46243]" : "bg-[#242320]/20"
+                    isActive ? "bg-[#A31818]" : "bg-[#242320]/20"
                   }`}
                 />
               </div>
@@ -210,7 +210,7 @@ export default function JourneyDiagram() {
           <span className="font-serif text-lg font-medium text-[#242320]">
             Stage {currentStage.number} — {currentStage.label}
           </span>
-          <span className="text-xs font-sans uppercase tracking-widest text-[#C46243] font-medium">
+          <span className="text-xs font-sans uppercase tracking-widest text-[#A31818] font-medium">
             {currentStage.subtitle}
           </span>
         </div>

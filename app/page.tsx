@@ -54,8 +54,8 @@ export default function HomePage() {
               We’ve seen it across industries — the initial excitement of building something new often gives way to overwhelm. Execution becomes chaotic. Teams feel stretched. Founders worry if what made them great will survive scale.
             </p>
 
-            {/* Italic terracotta callout line */}
-            <p className="font-serif text-xl sm:text-2xl italic text-[#C46243] my-8 font-normal">
+            {/* Italic maroon callout line */}
+            <p className="font-serif text-xl sm:text-2xl italic text-[#A31818] my-8 font-normal">
               We exist to change that.
             </p>
 
@@ -127,7 +127,7 @@ export default function HomePage() {
                 className="pt-6 border-t border-[rgba(36,35,32,0.14)] flex flex-col justify-between"
               >
                 <div>
-                  <span className="font-serif text-2xl sm:text-3xl font-normal italic text-[#C46243] block mb-3">
+                  <span className="font-serif text-2xl sm:text-3xl font-normal italic text-[#A31818] block mb-3">
                     0{i + 1}
                   </span>
                   <h3 className="font-serif text-xl text-[#242320] font-medium mb-3 leading-snug">

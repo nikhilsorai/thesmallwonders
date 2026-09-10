@@ -10,18 +10,18 @@ const config: Config = {
   theme: {
     extend: {
       colors: {
-        // Editorial Warm Palette — Terracotta/Clay, Deep Charcoal, Warm Off-White
-        clay: {
-          DEFAULT: "#C46243",
-          hover: "#A84B2F",
-          dark: "#8F3A22",
-          light: "#E28B72",
-          soft: "#F8ECE8",
-          border: "rgba(196, 98, 67, 0.25)",
+        // Official Brand Maroon/Wine Palette
+        maroon: {
+          DEFAULT: "#A31818",
+          dark: "#7F1313",
+          deep: "#6B0F0F",
+          light: "#C02525",
+          soft: "#FBF0F0",
+          border: "rgba(163, 24, 24, 0.18)",
         },
         charcoal: {
           DEFAULT: "#242320",
-          light: "rgba(36, 35, 32, 0.70)",
+          light: "rgba(36, 35, 32, 0.72)",
           muted: "rgba(36, 35, 32, 0.45)",
           border: "rgba(36, 35, 32, 0.08)",
         },
@@ -29,6 +29,7 @@ const config: Config = {
           bg: "#FAF8F5",
           surface: "#F4EFEA",
           card: "#FFFFFF",
+          cream: "#FAF8F5",
         },
       },
       fontFamily: {

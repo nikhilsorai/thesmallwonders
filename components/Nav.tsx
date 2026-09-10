@@ -68,7 +68,7 @@ export default function Nav() {
                 target="_blank"
                 rel="noopener noreferrer"
                 id="nav-cta-assessment-link"
-                className="text-sm font-sans text-[#242320]/75 hover:text-[#C46243] transition-colors"
+                className="text-sm font-sans text-[#242320]/75 hover:text-[#A31818] transition-colors"
               >
                 Take an assessment
               </a>
@@ -99,7 +99,7 @@ export default function Nav() {
               </a>
               <button
                 onClick={() => setMenuOpen(!menuOpen)}
-                className="p-2 text-[#242320] hover:text-[#C46243] transition-colors flex flex-col justify-center items-center w-8 h-8 gap-1.5"
+                className="p-2 text-[#242320] hover:text-[#A31818] transition-colors flex flex-col justify-center items-center w-8 h-8 gap-1.5"
                 aria-label={menuOpen ? "Close menu" : "Open menu"}
                 aria-expanded={menuOpen}
                 aria-controls="mobile-menu"
@@ -144,7 +144,7 @@ export default function Nav() {
                   href={CTA.assessment.href}
                   target="_blank"
                   rel="noopener noreferrer"
-                  className="block py-3 px-3 text-base font-sans text-[#C46243] font-medium"
+                  className="block py-3 px-3 text-base font-sans text-[#A31818] font-medium"
                 >
                   Take an assessment ↗
                 </a>
@@ -160,8 +160,8 @@ export default function Nav() {
                       href={link.href}
                       className={`block py-3 px-3 text-base font-sans transition-colors ${
                         isActive
-                          ? "text-[#C46243] font-medium border-l-2 border-[#C46243] bg-[#F8ECE8]/60"
-                          : "text-[#242320] hover:text-[#C46243]"
+                          ? "text-[#A31818] font-medium border-l-2 border-[#A31818] bg-[#FBF0F0]"
+                          : "text-[#242320] hover:text-[#A31818]"
                       }`}
                     >
                       {link.label}
