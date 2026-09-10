@@ -34,7 +34,7 @@ export default function ServiceCard({
       <div>
         {/* Header with index */}
         <div className="flex items-baseline justify-between gap-4 mb-3">
-          <h3 className="font-serif text-xl sm:text-2xl font-normal text-[#242320] leading-snug group-hover:text-[#B4533C] transition-colors">
+          <h3 className="font-serif text-xl sm:text-2xl font-medium text-[#242320] leading-snug group-hover:text-[#C46243] transition-colors">
             {name}
           </h3>
           {indexStr && (
@@ -45,7 +45,7 @@ export default function ServiceCard({
         </div>
 
         {/* Promise */}
-        <p className="font-serif text-base italic text-[#B4533C] leading-snug mb-5">
+        <p className="font-serif text-base italic text-[#C46243] leading-snug mb-5">
           {promise}
         </p>
 
@@ -57,13 +57,13 @@ export default function ServiceCard({
 
         {/* Deliverables */}
         <div className="mb-6">
-          <p className="text-[0.6875rem] font-medium tracking-[0.14em] uppercase text-[#242320]/45 mb-3 font-sans">
+          <p className="text-[0.6875rem] font-semibold tracking-[0.14em] uppercase text-[#242320]/45 mb-3 font-sans">
             Key Deliverables
           </p>
           <ul className="space-y-2" role="list">
             {delivered.map((item, i) => (
               <li key={i} className="flex items-start gap-2.5 font-sans text-sm text-[#242320]/75 leading-relaxed">
-                <span className="text-[#B4533C] text-sm leading-none mt-1 select-none">·</span>
+                <span className="text-[#C46243] text-sm leading-none mt-1 select-none">·</span>
                 <span>{item}</span>
               </li>
             ))}

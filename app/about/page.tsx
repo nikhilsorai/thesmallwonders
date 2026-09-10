@@ -53,28 +53,28 @@ export default function AboutPage() {
     <>
       {/* Page header */}
       <section
-        className="section-pad-sm bg-[#FAF7F2] border-b border-[rgba(36,35,32,0.06)]"
+        className="section-pad-sm bg-white border-b border-[rgba(34,34,34,0.06)]"
         aria-label="About page header"
       >
         <div className="container-content">
           <span className="section-label">Founder &amp; Practice</span>
-          <h1 className="font-serif text-[clamp(2.5rem,5.5vw,4.25rem)] font-normal text-[#242320] leading-[1.12] mb-6">
+          <h1 className="font-serif text-[clamp(2.5rem,5.5vw,4.25rem)] font-normal text-[#222222] leading-[1.12] mb-6">
             Meet the founder
           </h1>
-          <p className="font-sans text-lg sm:text-xl text-[#242320]/75 leading-[1.8] max-w-2xl">
+          <p className="font-sans text-lg sm:text-xl text-[#222222]/75 leading-[1.8] max-w-2xl">
             Advising founders, promoters, and executive leadership teams on turning strategic ambition into humane, repeatable operational rhythm.
           </p>
         </div>
       </section>
 
       {/* Main bio section */}
-      <section className="section-pad bg-[#FAF7F2]" aria-label="Founder biography">
+      <section className="section-pad bg-white" aria-label="Founder biography">
         <div className="container-site">
           <div className="grid grid-cols-1 lg:grid-cols-12 gap-12 lg:gap-16 items-start">
             {/* Photo */}
             <div className="lg:col-span-5">
               <div className="relative max-w-md mx-auto lg:mx-0">
-                <div className="w-full aspect-[4/5] rounded-3xl bg-[#F3ECE3] overflow-hidden relative border border-[rgba(36,35,32,0.08)]">
+                <div className="w-full aspect-[4/5] rounded-3xl bg-[#F9F7F5] overflow-hidden relative border border-[rgba(34,34,34,0.08)] shadow-sm">
                   <Image
                     src="/images/founder-ekta.png"
                     alt="Ekta Das — Founder, Small Wonders"
@@ -84,7 +84,7 @@ export default function AboutPage() {
                     priority
                   />
                 </div>
-                <div className="mt-4 flex items-center justify-between text-xs text-[#242320]/50 font-sans">
+                <div className="mt-4 flex items-center justify-between text-xs text-[#222222]/50 font-sans">
                   <span>Ekta Das — Founder</span>
                   <span>Bangalore, India</span>
                 </div>
@@ -96,7 +96,7 @@ export default function AboutPage() {
               <h2 className="font-serif text-[clamp(2rem,3.8vw,2.85rem)] font-normal text-[#242320] mb-2 leading-tight">
                 {SITE.founder.name}
               </h2>
-              <p className="font-sans text-xs font-medium text-[#B4533C] tracking-[0.14em] uppercase mb-8">
+              <p className="font-sans text-xs font-semibold text-[#C46243] tracking-[0.14em] uppercase mb-8">
                 {SITE.founder.title} · 15+ Years Working with CXOs &amp; Founders
               </p>
 
@@ -111,7 +111,7 @@ export default function AboutPage() {
               </div>
 
               {/* Pull quote */}
-              <blockquote className="my-10 pl-6 border-l-2 border-[#B4533C]">
+              <blockquote className="my-10 pl-6 border-l-2 border-[#C46243]">
                 <p className="font-serif text-xl sm:text-2xl italic text-[#242320] leading-snug font-normal">
                   &ldquo;{SITE.founder.quote}&rdquo;
                 </p>
@@ -147,7 +147,7 @@ export default function AboutPage() {
 
       {/* Origin story section */}
       <section
-        className="section-pad bg-[#F3ECE3] border-y border-[rgba(36,35,32,0.08)]"
+        className="section-pad bg-[#FAF8F5] border-y border-[rgba(36,35,32,0.08)]"
         aria-label="Why Small Wonders — origin story"
         id="origin-story"
       >
@@ -157,8 +157,8 @@ export default function AboutPage() {
             From brand consulting to workplace rituals
           </h2>
 
-          <div className="p-8 sm:p-10 rounded-3xl bg-[#FAF7F2] border border-[rgba(36,35,32,0.1)]">
-            <p className="font-sans text-xs font-semibold tracking-widest uppercase text-[#B4533C] mb-3">
+          <div className="p-8 sm:p-10 rounded-3xl bg-white border border-[rgba(36,35,32,0.08)] shadow-sm">
+            <p className="font-sans text-xs font-semibold tracking-widest uppercase text-[#C46243] mb-3">
               Founder Narrative Note
             </p>
             <p className="font-sans text-base text-[#242320]/75 leading-[1.8] italic">
@@ -169,7 +169,7 @@ export default function AboutPage() {
       </section>
 
       {/* Background credentials */}
-      <section className="section-pad bg-[#FAF7F2]" aria-label="Background and credentials">
+      <section className="section-pad bg-white" aria-label="Background and credentials">
         <div className="container-site">
           <div className="max-w-3xl mb-16">
             <span className="section-label">Track Record</span>
@@ -184,7 +184,7 @@ export default function AboutPage() {
                 key={item.label}
                 className="pt-6 border-t border-[rgba(36,35,32,0.12)]"
               >
-                <span className="font-serif text-2xl italic text-[#B4533C] block mb-3">
+                <span className="font-serif text-2xl font-normal italic text-[#C46243] block mb-3">
                   {item.number}
                 </span>
                 <h3 className="font-serif text-xl font-medium text-[#242320] mb-2 leading-snug">
@@ -200,13 +200,13 @@ export default function AboutPage() {
       </section>
 
       {/* CTA bridge */}
-      <section className="py-20 bg-[#F3ECE3] border-t border-[rgba(36,35,32,0.08)]">
+      <section className="py-20 bg-[#F9F7F5] border-t border-[rgba(34,34,34,0.08)]">
         <div className="container-content flex flex-col sm:flex-row items-start sm:items-center justify-between gap-8">
           <div>
-            <p className="font-serif text-2xl text-[#242320] font-normal leading-snug">
+            <p className="font-serif text-2xl text-[#222222] font-normal leading-snug">
               Ready to work with Ekta and Small Wonders?
             </p>
-            <p className="font-sans text-sm text-[#242320]/60 mt-1">
+            <p className="font-sans text-sm text-[#222222]/60 mt-1">
               Start an exploratory conversation about your organisation.
             </p>
           </div>

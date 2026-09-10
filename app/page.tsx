@@ -22,7 +22,6 @@ export const metadata: Metadata = {
   },
 };
 
-// 3 featured ritual offerings for the homepage teaser
 const featuredServices = (servicesData as ServiceCardProps[])
   .filter((s) => s.category === "Ritual Design")
   .slice(0, 3);
@@ -33,51 +32,55 @@ export default function HomePage() {
       {/* ── Section 1: Hero ── */}
       <Hero />
 
-      {/* ── Section 2: What We Do ── */}
+      {/* ── Section 2: What do we do? (Calm, Airy, Editorial) ── */}
       <section
-        className="section-pad bg-[#FAF7F2] border-t border-[rgba(36,35,32,0.06)]"
-        aria-label="What we do"
+        className="section-pad bg-white"
+        aria-label="What do we do?"
       >
-        <div className="container-content">
-          <span className="section-label">What we do</span>
-          <div className="space-y-8">
-            <div className="space-y-6">
-              {HOME_COPY.whatWeDo.paragraphs.map((para, i) => (
-                <p
-                  key={i}
-                  className="font-sans text-lg sm:text-xl text-[#242320]/80 leading-[1.8]"
-                >
-                  {para}
-                </p>
-              ))}
-            </div>
+        <div className="container-content text-center">
+          <span className="section-label mx-auto">Our Purpose</span>
+          <h2
+            className="font-serif font-normal text-[#242320] mb-8 tracking-tight"
+            style={{ fontSize: "clamp(2.25rem, 4.5vw, 3.25rem)" }}
+          >
+            What do we do?
+          </h2>
 
-            {/* Editorial pullout quote */}
-            <div className="my-10 p-8 sm:p-10 rounded-3xl bg-[#F3ECE3] border border-[rgba(36,35,32,0.08)]">
-              <p className="font-serif text-xl sm:text-2xl italic text-[#242320] leading-snug mb-6">
-                &ldquo;Not by overhauling everything, but by embedding simple, intentional rituals that create clarity, trust, and rhythm.&rdquo;
-              </p>
-              <Link
-                href="/approach"
-                className="link-editorial text-sm font-sans font-medium"
-              >
-                <span>Explore our three-part approach</span>
-                <span aria-hidden="true">→</span>
-              </Link>
-            </div>
+          <div className="space-y-6 max-w-2xl mx-auto text-[#242320]/75 font-sans text-base sm:text-lg leading-[1.85]">
+            <p>
+              At Small Wonders, we believe in making growth a more human experience.
+            </p>
+            <p>
+              We’ve seen it across industries — the initial excitement of building something new often gives way to overwhelm. Execution becomes chaotic. Teams feel stretched. Founders worry if what made them great will survive scale.
+            </p>
+
+            {/* Italic terracotta callout line */}
+            <p className="font-serif text-xl sm:text-2xl italic text-[#C46243] my-8 font-normal">
+              We exist to change that.
+            </p>
+
+            <p>
+              We help growing organizations turn ambition into action — not by overhauling everything, but by embedding simple, intentional rituals that create clarity, trust, and rhythm.
+            </p>
+            <p>
+              Because growth doesn’t need to feel stressful or lonely.
+            </p>
+            <p className="font-medium text-[#242320]">
+              It can be consistent. Purpose-led. And deeply human.
+            </p>
           </div>
         </div>
       </section>
 
-      {/* ── Section 3: Journey of Growth (Valley of Death) ── */}
+      {/* ── Section 3: The Journey of Growth (Valley of Death) ── */}
       <section
-        className="section-pad bg-[#FAF7F2] border-t border-[rgba(36,35,32,0.06)]"
+        className="section-pad bg-[#FAF8F5] border-y border-[rgba(36,35,32,0.06)]"
         aria-label="The journey of growth — Valley of Death diagram"
       >
         <div className="container-site">
           <div className="max-w-3xl mb-12">
-            <span className="section-label">{HOME_COPY.journey.heading}</span>
-            <h2 className="font-serif text-[clamp(2.25rem,4.5vw,3.25rem)] font-normal text-[#242320] mb-5 leading-tight">
+            <span className="section-label">The Journey of Growth</span>
+            <h2 className="font-serif text-[clamp(2rem,4vw,3rem)] font-normal text-[#242320] mb-4 leading-tight">
               {HOME_COPY.journey.subhead}
             </h2>
             <p className="font-sans text-base sm:text-lg text-[#242320]/70 leading-[1.8]">
@@ -87,16 +90,16 @@ export default function HomePage() {
 
           <JourneyDiagram />
 
-          <div className="mt-12 max-w-2xl pt-6 border-t border-[rgba(36,35,32,0.08)]">
+          <div className="mt-10 max-w-2xl pt-6 border-t border-[rgba(36,35,32,0.08)]">
             <p className="font-sans text-base text-[#242320]/75 leading-[1.8]">
               {HOME_COPY.journey.anchor}
             </p>
-            <div className="mt-6">
+            <div className="mt-5">
               <Link
                 href="/why-rituals"
                 className="link-editorial text-sm font-sans font-medium"
               >
-                <span>Discover why rituals create lasting rhythm</span>
+                <span>Why Rituals?</span>
                 <span aria-hidden="true">→</span>
               </Link>
             </div>
@@ -104,27 +107,27 @@ export default function HomePage() {
         </div>
       </section>
 
-      {/* ── Section 4: What's Missing (Three Pillars) ── */}
+      {/* ── Section 4: What's Missing? ── */}
       <section
-        className="section-pad bg-[#FAF7F2] border-t border-[rgba(36,35,32,0.06)]"
+        className="section-pad bg-white"
         aria-label="What's missing — the anchor"
       >
         <div className="container-site">
-          <div className="max-w-2xl mb-16">
-            <span className="section-label">What&apos;s Missing</span>
-            <h2 className="font-serif text-[clamp(2.25rem,4.5vw,3.25rem)] font-normal text-[#242320] leading-tight">
+          <div className="max-w-2xl mb-14">
+            <span className="section-label">What&apos;s Missing?</span>
+            <h2 className="font-serif text-[clamp(2rem,4vw,3rem)] font-normal text-[#242320] leading-tight">
               {HOME_COPY.whatsMissing.heading}
             </h2>
           </div>
 
-          <div className="grid grid-cols-1 md:grid-cols-3 gap-12 md:gap-10">
+          <div className="grid grid-cols-1 md:grid-cols-3 gap-10">
             {HOME_COPY.whatsMissing.pillars.map((pillar, i) => (
               <div
                 key={i}
-                className="pt-6 border-t border-[rgba(36,35,32,0.12)] flex flex-col justify-between"
+                className="pt-6 border-t border-[rgba(36,35,32,0.14)] flex flex-col justify-between"
               >
                 <div>
-                  <span className="font-serif text-3xl italic text-[#B4533C] block mb-4">
+                  <span className="font-serif text-2xl sm:text-3xl font-normal italic text-[#C46243] block mb-3">
                     0{i + 1}
                   </span>
                   <h3 className="font-serif text-xl text-[#242320] font-medium mb-3 leading-snug">
@@ -142,14 +145,14 @@ export default function HomePage() {
 
       {/* ── Section 5: Services Teaser ── */}
       <section
-        className="section-pad bg-[#FAF7F2] border-t border-[rgba(36,35,32,0.06)]"
+        className="section-pad bg-[#F9F7F5] border-t border-[rgba(34,34,34,0.06)]"
         aria-label="Services teaser"
       >
         <div className="container-site">
           <div className="flex flex-col md:flex-row md:items-baseline md:justify-between gap-6 mb-12">
             <div>
               <span className="section-label">What We Offer</span>
-              <h2 className="font-serif text-[clamp(2rem,4vw,3rem)] font-normal text-[#242320] leading-tight">
+              <h2 className="font-serif text-[clamp(2rem,4vw,3rem)] font-normal text-[#222222] leading-tight">
                 Rituals designed for your stage
               </h2>
             </div>
@@ -157,7 +160,7 @@ export default function HomePage() {
               href="/services"
               className="link-editorial text-sm font-sans font-medium shrink-0"
             >
-              <span>View full service catalog</span>
+              <span>See all services</span>
               <span aria-hidden="true">→</span>
             </Link>
           </div>
@@ -178,7 +181,7 @@ export default function HomePage() {
 
       {/* ── Section 8: Contact Strip ── */}
       <section
-        className="section-pad bg-[#FAF7F2] border-t border-[rgba(36,35,32,0.06)]"
+        className="section-pad bg-white border-t border-[rgba(34,34,34,0.06)]"
         aria-label="Contact"
         id="contact"
       >

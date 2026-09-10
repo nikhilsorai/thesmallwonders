@@ -55,29 +55,29 @@ export default function ApproachPage() {
     <>
       {/* Page header */}
       <section
-        className="section-pad-sm bg-[#FAF7F2] border-b border-[rgba(36,35,32,0.06)]"
+        className="section-pad-sm bg-white border-b border-[rgba(34,34,34,0.06)]"
         aria-label="Page header"
       >
         <div className="container-content">
           <span className="section-label">Our Approach</span>
-          <h1 className="font-serif text-[clamp(2.5rem,5.5vw,4.25rem)] font-normal text-[#242320] leading-[1.12] mb-6">
+          <h1 className="font-serif text-[clamp(2.5rem,5.5vw,4.25rem)] font-normal text-[#222222] leading-[1.12] mb-6">
             How routines become rituals
           </h1>
-          <p className="font-sans text-lg sm:text-xl text-[#242320]/75 leading-[1.8] max-w-2xl">
+          <p className="font-sans text-lg sm:text-xl text-[#222222]/75 leading-[1.8] max-w-2xl">
             Rituals aren&apos;t off-sites or one-time retreats. They are the small, repeatable behaviours you already half-do — designed intentionally, made emotionally safe, and given meaning by the teams who own them.
           </p>
         </div>
       </section>
 
       {/* Three-part model */}
-      <section className="section-pad bg-[#FAF7F2]" aria-label="Three-part approach model">
+      <section className="section-pad bg-white" aria-label="Three-part approach model">
         <div className="container-content">
           <div className="space-y-24 md:space-y-32">
             {approachParts.map((part) => (
-              <div key={part.id} id={part.id} className="pt-10 border-t border-[rgba(36,35,32,0.12)]">
+              <div key={part.id} id={part.id} className="pt-10 border-t border-[rgba(34,34,34,0.12)]">
                 {/* Number & Heading */}
                 <div className="flex items-baseline gap-4 mb-6">
-                  <span className="font-serif text-3xl sm:text-4xl italic text-[#B4533C] font-normal">
+                  <span className="font-serif text-3xl sm:text-4xl italic text-[#C46243] font-normal">
                     {part.number}
                   </span>
                   <h2 className="font-serif text-[clamp(1.75rem,3.5vw,2.5rem)] font-normal text-[#242320] leading-tight">
@@ -90,7 +90,7 @@ export default function ApproachPage() {
                 </p>
 
                 {part.detail && (
-                  <blockquote className="my-10 pl-6 border-l-2 border-[#B4533C] py-1">
+                  <blockquote className="my-10 pl-6 border-l-2 border-[#C46243] py-1">
                     <p className="font-serif text-xl sm:text-2xl italic text-[#242320] leading-snug">
                       &ldquo;{part.detail}&rdquo;
                     </p>
@@ -118,13 +118,13 @@ export default function ApproachPage() {
       </section>
 
       {/* CTA bridge */}
-      <section className="py-20 bg-[#F3ECE3] border-t border-[rgba(36,35,32,0.08)]">
+      <section className="py-20 bg-[#F9F7F5] border-t border-[rgba(34,34,34,0.08)]">
         <div className="container-content flex flex-col sm:flex-row items-start sm:items-center justify-between gap-8">
           <div>
-            <p className="font-serif text-2xl text-[#242320] font-normal leading-snug">
+            <p className="font-serif text-2xl text-[#222222] font-normal leading-snug">
               Curious about the six areas where rituals have the most impact?
             </p>
-            <p className="font-sans text-sm text-[#242320]/60 mt-1">
+            <p className="font-sans text-sm text-[#222222]/60 mt-1">
               Explore the framework and methodology behind our practice.
             </p>
           </div>

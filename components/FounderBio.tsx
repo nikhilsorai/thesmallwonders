@@ -11,7 +11,7 @@ export default function FounderBio({ variant = "compact" }: FounderBioProps) {
 
   return (
     <section
-      className="py-20 md:py-28 bg-[#FAF7F2] border-t border-[rgba(36,35,32,0.06)]"
+      className="py-20 md:py-24 bg-white border-t border-[rgba(34,34,34,0.06)]"
       aria-label="Meet the Founder"
     >
       <div className="container-site">
@@ -19,7 +19,7 @@ export default function FounderBio({ variant = "compact" }: FounderBioProps) {
           {/* Photo */}
           <div className="lg:col-span-5">
             <div className="relative max-w-sm mx-auto lg:mx-0">
-              <div className="w-full aspect-[4/5] rounded-3xl bg-[#F3ECE3] overflow-hidden relative border border-[rgba(36,35,32,0.08)]">
+              <div className="w-full aspect-[4/5] rounded-3xl bg-[#F8F6F4] overflow-hidden relative border border-[rgba(34,34,34,0.08)] shadow-sm">
                 <Image
                   src="/images/founder-ekta.png"
                   alt="Ekta Das — Founder, Small Wonders"
@@ -29,7 +29,7 @@ export default function FounderBio({ variant = "compact" }: FounderBioProps) {
                   priority
                 />
               </div>
-              <div className="mt-4 flex items-center justify-between text-xs text-[#242320]/50 font-sans">
+              <div className="mt-4 flex items-center justify-between text-xs text-[#222222]/50 font-sans">
                 <span>Ekta Das — Founder</span>
                 <span>Bangalore, India</span>
               </div>
@@ -43,22 +43,22 @@ export default function FounderBio({ variant = "compact" }: FounderBioProps) {
             <h2 className="font-serif text-[clamp(2rem,3.8vw,2.75rem)] font-normal text-[#242320] mb-2 leading-tight">
               {SITE.founder.name}
             </h2>
-            <p className="font-sans text-xs font-medium text-[#B4533C] tracking-[0.14em] uppercase mb-8">
+            <p className="font-sans text-xs font-semibold text-[#C46243] tracking-[0.14em] uppercase mb-8">
               {SITE.founder.title} · 15+ Years Working with CXOs &amp; Founders
             </p>
 
-            <p className="font-sans text-base sm:text-lg text-[#242320]/75 leading-[1.8] mb-8">
+            <p className="font-sans text-base sm:text-lg text-[#242320]/80 leading-[1.8] mb-8">
               {SITE.founder.bio}
             </p>
 
             {/* Pull quote */}
-            <blockquote className="my-8 pl-6 border-l-2 border-[#B4533C]">
+            <blockquote className="my-8 pl-6 border-l-2 border-[#C46243]">
               <p className="font-serif text-xl sm:text-2xl italic text-[#242320] leading-snug font-normal">
                 &ldquo;{SITE.founder.quote}&rdquo;
               </p>
             </blockquote>
 
-            <div className="flex flex-wrap items-center gap-4 pt-4">
+            <div className="flex flex-wrap items-center gap-5 pt-4">
               {isCompact ? (
                 <Link
                   href="/about"

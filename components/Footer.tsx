@@ -1,20 +1,21 @@
 import Link from "next/link";
+import Image from "next/image";
 import { NAV_LINKS, SITE, FOOTER_COPY, CTA } from "@/data/site-content";
 
 export default function Footer() {
   const year = new Date().getFullYear();
 
   return (
-    <footer className="bg-[#242320] text-[#FAF7F2]" aria-label="Site footer">
+    <footer className="bg-[#242320] text-[#FFFFFF]" aria-label="Site footer">
       <div className="container-site py-20 md:py-24">
         <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-12 gap-12 lg:gap-8">
           {/* Brand column */}
           <div className="lg:col-span-5">
             <Link href="/" className="inline-block group mb-4" aria-label="Small Wonders — Home">
-              <span className="font-serif text-2xl font-normal text-white group-hover:text-[#D98772] transition-colors">
+              <span className="font-serif text-2xl font-normal text-white group-hover:text-[#C46243] transition-colors">
                 Small Wonders
               </span>
-              <span className="block text-[0.625rem] font-sans font-medium tracking-[0.2em] uppercase text-[#D98772] mt-0.5">
+              <span className="block text-[0.625rem] font-sans font-semibold tracking-[0.2em] uppercase text-[#C46243] mt-0.5">
                 Humanising Growth
               </span>
             </Link>
@@ -26,7 +27,7 @@ export default function Footer() {
               <div>
                 <a
                   href={`mailto:${SITE.contact.email}`}
-                  className="text-white/80 hover:text-[#D98772] transition-colors"
+                  className="text-white/80 hover:text-[#C46243] transition-colors"
                 >
                   {SITE.contact.email}
                 </a>
@@ -39,7 +40,7 @@ export default function Footer() {
                   href={SITE.contact.linkedin}
                   target="_blank"
                   rel="noopener noreferrer"
-                  className="text-xs text-white/60 hover:text-[#D98772] transition-colors inline-flex items-center gap-1 mt-2"
+                  className="text-xs text-white/60 hover:text-[#C46243] transition-colors inline-flex items-center gap-1 mt-2"
                 >
                   LinkedIn — Ekta Das ↗
                 </a>
@@ -49,7 +50,7 @@ export default function Footer() {
 
           {/* Navigation column */}
           <div className="lg:col-span-3 lg:col-start-7">
-            <p className="text-[0.6875rem] font-semibold tracking-[0.18em] uppercase text-white/40 mb-6 font-sans">
+            <p className="text-[0.6875rem] font-semibold tracking-[0.18em] uppercase text-[#C46243] mb-6 font-sans">
               Navigation
             </p>
             <ul className="space-y-3" role="list">
@@ -68,7 +69,7 @@ export default function Footer() {
 
           {/* CTA column */}
           <div className="lg:col-span-3">
-            <p className="text-[0.6875rem] font-semibold tracking-[0.18em] uppercase text-white/40 mb-6 font-sans">
+            <p className="text-[0.6875rem] font-semibold tracking-[0.18em] uppercase text-[#C46243] mb-6 font-sans">
               Take Action
             </p>
             <div className="space-y-4">
@@ -77,7 +78,7 @@ export default function Footer() {
                 target="_blank"
                 rel="noopener noreferrer"
                 id="footer-cta-assessment"
-                className="inline-flex items-center gap-1.5 text-sm font-medium text-[#D98772] hover:text-white transition-colors"
+                className="inline-flex items-center gap-1.5 text-sm font-medium text-white hover:text-[#C46243] transition-colors"
               >
                 <span>Take the Assessment</span>
                 <span aria-hidden="true">↗</span>
@@ -102,7 +103,7 @@ export default function Footer() {
 
             {/* Assessment note box */}
             <div className="mt-8 p-5 rounded-2xl border border-white/10 bg-white/[0.04]">
-              <p className="text-xs text-white/75 font-sans leading-relaxed">
+              <p className="text-xs text-white/80 font-sans leading-relaxed">
                 Not sure where to start? The assessment takes 5 minutes and gives you a clear read on where your organisation needs an anchor.
               </p>
             </div>

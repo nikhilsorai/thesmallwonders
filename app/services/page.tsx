@@ -40,18 +40,18 @@ export default function ServicesPage() {
     <>
       {/* Page header */}
       <section
-        className="section-pad-sm bg-[#FAF7F2] border-b border-[rgba(36,35,32,0.06)]"
+        className="section-pad-sm bg-white border-b border-[rgba(34,34,34,0.06)]"
         aria-label="Services page header"
       >
         <div className="container-content">
           <span className="section-label">What We Offer</span>
-          <h1 className="font-serif text-[clamp(2.5rem,5.5vw,4.25rem)] font-normal text-[#242320] leading-[1.12] mb-6">
+          <h1 className="font-serif text-[clamp(2.5rem,5.5vw,4.25rem)] font-normal text-[#222222] leading-[1.12] mb-6">
             Services &amp; Engagements
           </h1>
-          <p className="font-sans text-lg sm:text-xl text-[#242320]/75 leading-[1.8] max-w-2xl mb-4">
+          <p className="font-sans text-lg sm:text-xl text-[#222222]/75 leading-[1.8] max-w-2xl mb-4">
             Every engagement is shaped for your context — not from an off-the-shelf playbook, but from your North Star.
           </p>
-          <p className="font-sans text-sm text-[#242320]/50 max-w-xl">
+          <p className="font-sans text-sm text-[#222222]/50 max-w-xl">
             Scope and timeline vary by organisational stage. If an offering resonates, use the &ldquo;Ask about this&rdquo; link to discuss what fits your team.
           </p>
         </div>
@@ -59,17 +59,17 @@ export default function ServicesPage() {
 
       {/* Ritual Design Services */}
       <section
-        className="section-pad bg-[#FAF7F2]"
+        className="section-pad bg-white"
         aria-label="Ritual Design services"
         id="ritual-design"
       >
         <div className="container-site">
           <div className="max-w-3xl mb-14">
             <span className="section-label">Core Offerings</span>
-            <h2 className="font-serif text-[clamp(2rem,3.8vw,2.85rem)] font-normal text-[#242320] leading-tight mb-4">
+            <h2 className="font-serif text-[clamp(2rem,3.8vw,2.85rem)] font-normal text-[#222222] leading-tight mb-4">
               Ritual Design
             </h2>
-            <p className="font-sans text-base sm:text-lg text-[#242320]/70 leading-[1.8]">
+            <p className="font-sans text-base sm:text-lg text-[#222222]/70 leading-[1.8]">
               Designed for founder-led, family-led, and PE/VC-backed companies navigating a transition, rapid scaling, or a cultural reset.
             </p>
           </div>
@@ -84,17 +84,17 @@ export default function ServicesPage() {
 
       {/* Legacy Brand Advisory */}
       <section
-        className="section-pad bg-[#F3ECE3] border-y border-[rgba(36,35,32,0.08)]"
+        className="section-pad bg-[#F9F7F5] border-y border-[rgba(34,34,34,0.08)]"
         aria-label="Legacy Brand Advisory services"
         id="brand-advisory"
       >
         <div className="container-site">
           <div className="max-w-3xl mb-14">
             <span className="section-label">Legacy Practice</span>
-            <h2 className="font-serif text-[clamp(2rem,3.8vw,2.85rem)] font-normal text-[#242320] leading-tight mb-4">
+            <h2 className="font-serif text-[clamp(2rem,3.8vw,2.85rem)] font-normal text-[#222222] leading-tight mb-4">
               Brand Consulting &amp; Advisory
             </h2>
-            <p className="font-sans text-base sm:text-lg text-[#242320]/70 leading-[1.8]">
+            <p className="font-sans text-base sm:text-lg text-[#222222]/70 leading-[1.8]">
               Over a decade in brand valuation, M&amp;A advisory, rights issues, licensing frameworks, and leadership alignment for companies across sectors. These services remain available as standalone engagements.
             </p>
           </div>
@@ -109,13 +109,13 @@ export default function ServicesPage() {
 
       {/* Industries served */}
       <section
-        className="py-20 bg-[#FAF7F2] border-b border-[rgba(36,35,32,0.06)]"
+        className="py-20 bg-white border-b border-[rgba(34,34,34,0.06)]"
         aria-label="Industries we've worked with"
       >
         <div className="container-site">
           <div className="mb-8">
             <span className="section-label">Sector Depth</span>
-            <h2 className="font-serif text-2xl sm:text-3xl font-normal text-[#242320]">
+            <h2 className="font-serif text-2xl sm:text-3xl font-normal text-[#222222]">
               Industries across 15+ years of practice
             </h2>
           </div>
@@ -130,7 +130,7 @@ export default function ServicesPage() {
             Detailed case studies across these sectors are documented in the{" "}
             <Link
               href="/case-studies"
-              className="text-[#B4533C] hover:underline"
+              className="text-[#C46243] hover:underline"
             >
               Case Studies archive
             </Link>
@@ -140,7 +140,7 @@ export default function ServicesPage() {
       </section>
 
       {/* CTA section */}
-      <section className="py-24 bg-[#242320] text-[#FAF7F2]" aria-label="Get in touch CTA">
+      <section className="py-24 bg-[#222222] text-white" aria-label="Get in touch CTA">
         <div className="container-content text-center">
           <h2 className="font-serif text-[clamp(2rem,3.8vw,2.85rem)] font-normal text-white mb-4 leading-tight">
             Not sure which engagement fits?
@@ -149,7 +149,7 @@ export default function ServicesPage() {
             Most engagements begin with a candid conversation. Share where you are and what you&apos;re building — we&apos;ll help clarify the right starting point.
           </p>
           <div className="flex flex-wrap justify-center items-center gap-5">
-            <Link href="/contact" className="btn btn-primary text-sm bg-white text-[#242320] hover:bg-[#B4533C] hover:text-white border-white">
+            <Link href="/contact" className="btn btn-primary text-sm">
               Let&apos;s talk <span>→</span>
             </Link>
             <a
@@ -157,7 +157,7 @@ export default function ServicesPage() {
               target="_blank"
               rel="noopener noreferrer"
               id="services-cta-assessment"
-              className="btn btn-ghost text-sm"
+              className="btn btn-ghost text-sm text-white border-white/20 hover:border-white"
             >
               Take the Assessment ↗
             </a>

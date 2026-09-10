@@ -31,18 +31,18 @@ export default function CaseStudiesClient() {
     <>
       {/* Filterable grid */}
       <section
-        className="section-pad bg-[#FAF7F2]"
+        className="section-pad bg-white"
         aria-label="All case studies — archive grid"
       >
         <div className="container-site">
           <div className="flex flex-col md:flex-row md:items-baseline md:justify-between gap-6 mb-12">
             <div>
               <span className="section-label">Track Record</span>
-              <h2 className="font-serif text-[clamp(2rem,3.8vw,2.85rem)] font-normal text-[#242320] leading-tight">
+              <h2 className="font-serif text-[clamp(2rem,3.8vw,2.85rem)] font-normal text-[#222222] leading-tight">
                 Case Archive
               </h2>
             </div>
-            <div className="text-xs text-[#242320]/45 font-sans">
+            <div className="text-xs text-[#222222]/45 font-sans">
               Filter by industry
             </div>
           </div>
@@ -59,8 +59,8 @@ export default function CaseStudiesClient() {
                 onClick={() => setActiveFilter(opt)}
                 className={`px-4 py-1.5 rounded-full text-xs font-sans font-medium transition-all duration-300 border cursor-pointer ${
                   activeFilter === opt
-                    ? "bg-[#242320] text-[#FAF7F2] border-[#242320]"
-                    : "bg-transparent text-[#242320]/65 border-[rgba(36,35,32,0.12)] hover:border-[#242320]"
+                    ? "bg-[#C46243] text-white border-[#C46243]"
+                    : "bg-transparent text-[#242320]/65 border-[rgba(36,35,32,0.12)] hover:border-[#C46243] hover:text-[#C46243]"
                 }`}
                 aria-pressed={activeFilter === opt}
               >
@@ -77,7 +77,7 @@ export default function CaseStudiesClient() {
               ))}
             </div>
           ) : (
-            <p className="font-sans text-sm text-[#242320]/45 py-12 text-center">
+            <p className="font-sans text-sm text-[#222222]/45 py-12 text-center">
               No cases match this filter.
             </p>
           )}
@@ -86,13 +86,13 @@ export default function CaseStudiesClient() {
 
       {/* Industries tag cloud */}
       <section
-        className="py-20 bg-[#F3ECE3] border-y border-[rgba(36,35,32,0.08)]"
+        className="py-20 bg-[#F9F7F5] border-y border-[rgba(34,34,34,0.08)]"
         aria-label="Industries and sectors we've worked with"
       >
         <div className="container-site">
           <div className="mb-6">
             <span className="section-label">Sectors Worked With</span>
-            <h2 className="font-serif text-2xl font-normal text-[#242320]">
+            <h2 className="font-serif text-2xl font-normal text-[#222222]">
               Additional Engagements &amp; Sector Breadth
             </h2>
           </div>
@@ -103,20 +103,20 @@ export default function CaseStudiesClient() {
               </span>
             ))}
           </div>
-          <p className="font-sans text-xs text-[#242320]/40 mt-6 leading-relaxed max-w-2xl">
+          <p className="font-sans text-xs text-[#222222]/40 mt-6 leading-relaxed max-w-2xl">
             Includes advisory engagements in discount brokerage, HR tech, aviation infrastructure, construction equipment, paints, two-wheelers, accounting &amp; taxation, apparel, and entertainment.
           </p>
         </div>
       </section>
 
       {/* CTA */}
-      <section className="py-20 bg-[#FAF7F2]">
+      <section className="py-20 bg-white">
         <div className="container-content flex flex-col sm:flex-row items-start sm:items-center justify-between gap-8">
           <div>
-            <p className="font-serif text-2xl text-[#242320] font-normal leading-snug">
+            <p className="font-serif text-2xl text-[#222222] font-normal leading-snug">
               Interested in working together?
             </p>
-            <p className="font-sans text-sm text-[#242320]/60 mt-1">
+            <p className="font-sans text-sm text-[#222222]/60 mt-1">
               Every engagement starts with an exploratory conversation about your team&apos;s context.
             </p>
           </div>

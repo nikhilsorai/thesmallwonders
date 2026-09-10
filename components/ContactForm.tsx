@@ -75,7 +75,6 @@ export default function ContactForm({ prefillService }: ContactFormProps) {
     setSubmitState("submitting");
 
     try {
-      // Simulated response delay
       await new Promise((resolve) => setTimeout(resolve, 1200));
       setSubmitState("success");
     } catch {
@@ -85,11 +84,11 @@ export default function ContactForm({ prefillService }: ContactFormProps) {
 
   if (submitState === "success") {
     return (
-      <div className="bg-[#FAF7F2] rounded-3xl p-10 md:p-14 text-center border border-[rgba(36,35,32,0.1)]">
-        <span className="text-3xl font-serif italic text-[#B4533C] block mb-4">
+      <div className="bg-white rounded-3xl p-10 md:p-14 text-center border border-[rgba(36,35,32,0.1)] shadow-sm">
+        <span className="text-3xl font-serif italic text-[#C46243] block mb-4">
           Message received.
         </span>
-        <p className="font-sans text-[#242320]/75 text-base max-w-md mx-auto leading-relaxed">
+        <p className="font-sans text-[#242320]/80 text-base max-w-md mx-auto leading-relaxed">
           Thank you for reaching out. Ekta will review your note and be in touch shortly — typically within two business days.
         </p>
       </div>
@@ -98,7 +97,7 @@ export default function ContactForm({ prefillService }: ContactFormProps) {
 
   return (
     <div className="grid grid-cols-1 lg:grid-cols-12 gap-12 lg:gap-16 items-start">
-      {/* Left — Contact Details & Context */}
+      {/* Left — Contact Details */}
       <div className="lg:col-span-5">
         <span className="section-label">Get in Touch</span>
         <h2 className="font-serif text-[clamp(2rem,3.8vw,2.75rem)] font-normal text-[#242320] mb-6 leading-tight">
@@ -110,19 +109,19 @@ export default function ContactForm({ prefillService }: ContactFormProps) {
 
         <div className="space-y-6 pt-6 border-t border-[rgba(36,35,32,0.08)]">
           <div>
-            <span className="text-[0.6875rem] font-medium tracking-[0.16em] uppercase text-[#242320]/45 block mb-1.5 font-sans">
+            <span className="text-[0.6875rem] font-semibold tracking-[0.16em] uppercase text-[#C46243] block mb-1.5 font-sans">
               Direct Email
             </span>
             <a
               href={`mailto:${SITE.contact.email}`}
-              className="font-serif text-lg text-[#242320] hover:text-[#B4533C] transition-colors"
+              className="font-serif text-lg text-[#242320] hover:text-[#C46243] transition-colors"
             >
               {SITE.contact.email}
             </a>
           </div>
 
           <div>
-            <span className="text-[0.6875rem] font-medium tracking-[0.16em] uppercase text-[#242320]/45 block mb-1.5 font-sans">
+            <span className="text-[0.6875rem] font-semibold tracking-[0.16em] uppercase text-[#242320]/45 block mb-1.5 font-sans">
               Location &amp; Working Time
             </span>
             <p className="font-sans text-sm text-[#242320]/70">
@@ -131,7 +130,7 @@ export default function ContactForm({ prefillService }: ContactFormProps) {
           </div>
 
           <div>
-            <span className="text-[0.6875rem] font-medium tracking-[0.16em] uppercase text-[#242320]/45 block mb-1.5 font-sans">
+            <span className="text-[0.6875rem] font-semibold tracking-[0.16em] uppercase text-[#242320]/45 block mb-1.5 font-sans">
               Founder Profile
             </span>
             <a
@@ -147,9 +146,9 @@ export default function ContactForm({ prefillService }: ContactFormProps) {
         </div>
 
         {/* Assessment callout */}
-        <div className="mt-12 p-6 rounded-2xl bg-[#F3ECE3] border border-[rgba(36,35,32,0.08)]">
+        <div className="mt-12 p-6 rounded-2xl bg-[#F8ECE8]/60 border border-[rgba(196,98,67,0.2)]">
           <p className="font-serif text-base text-[#242320] mb-2 leading-snug">
-            Not sure where to start?
+            Not ready to talk yet?
           </p>
           <p className="font-sans text-xs text-[#242320]/65 leading-relaxed mb-4">
             The assessment takes 5 minutes and gives you a clear read on where your organisation needs an anchor.
@@ -172,7 +171,7 @@ export default function ContactForm({ prefillService }: ContactFormProps) {
         <form
           onSubmit={handleSubmit}
           noValidate
-          className="bg-[#FAF7F2] rounded-3xl p-8 sm:p-12 border border-[rgba(36,35,32,0.1)] space-y-6"
+          className="bg-white rounded-3xl p-8 sm:p-12 border border-[rgba(36,35,32,0.1)] shadow-sm space-y-6"
           aria-label="Contact form"
           id={`contact-form-${formId}`}
         >
@@ -183,7 +182,7 @@ export default function ContactForm({ prefillService }: ContactFormProps) {
                 htmlFor={`firstName-${formId}`}
                 className="block text-xs font-medium uppercase tracking-wider text-[#242320]/70 mb-2 font-sans"
               >
-                First name <span className="text-[#B4533C]">*</span>
+                First name <span className="text-[#C46243]">*</span>
               </label>
               <input
                 id={`firstName-${formId}`}
@@ -197,7 +196,7 @@ export default function ContactForm({ prefillService }: ContactFormProps) {
                 aria-invalid={!!errors.firstName}
               />
               {errors.firstName && (
-                <span className="text-xs text-[#B4533C] mt-1.5 block font-sans">
+                <span className="text-xs text-[#C46243] mt-1.5 block font-sans">
                   {errors.firstName}
                 </span>
               )}
@@ -208,7 +207,7 @@ export default function ContactForm({ prefillService }: ContactFormProps) {
                 htmlFor={`lastName-${formId}`}
                 className="block text-xs font-medium uppercase tracking-wider text-[#242320]/70 mb-2 font-sans"
               >
-                Last name <span className="text-[#B4533C]">*</span>
+                Last name <span className="text-[#C46243]">*</span>
               </label>
               <input
                 id={`lastName-${formId}`}
@@ -222,7 +221,7 @@ export default function ContactForm({ prefillService }: ContactFormProps) {
                 aria-invalid={!!errors.lastName}
               />
               {errors.lastName && (
-                <span className="text-xs text-[#B4533C] mt-1.5 block font-sans">
+                <span className="text-xs text-[#C46243] mt-1.5 block font-sans">
                   {errors.lastName}
                 </span>
               )}
@@ -235,7 +234,7 @@ export default function ContactForm({ prefillService }: ContactFormProps) {
               htmlFor={`email-${formId}`}
               className="block text-xs font-medium uppercase tracking-wider text-[#242320]/70 mb-2 font-sans"
             >
-              Work Email <span className="text-[#B4533C]">*</span>
+              Work Email <span className="text-[#C46243]">*</span>
             </label>
             <input
               id={`email-${formId}`}
@@ -250,7 +249,7 @@ export default function ContactForm({ prefillService }: ContactFormProps) {
               aria-invalid={!!errors.email}
             />
             {errors.email && (
-              <span className="text-xs text-[#B4533C] mt-1.5 block font-sans">
+              <span className="text-xs text-[#C46243] mt-1.5 block font-sans">
                 {errors.email}
               </span>
             )}
@@ -282,7 +281,7 @@ export default function ContactForm({ prefillService }: ContactFormProps) {
               htmlFor={`message-${formId}`}
               className="block text-xs font-medium uppercase tracking-wider text-[#242320]/70 mb-2 font-sans"
             >
-              Message <span className="text-[#B4533C]">*</span>
+              Message <span className="text-[#C46243]">*</span>
             </label>
             <textarea
               id={`message-${formId}`}
@@ -296,7 +295,7 @@ export default function ContactForm({ prefillService }: ContactFormProps) {
               aria-invalid={!!errors.message}
             />
             {errors.message && (
-              <span className="text-xs text-[#B4533C] mt-1.5 block font-sans">
+              <span className="text-xs text-[#C46243] mt-1.5 block font-sans">
                 {errors.message}
               </span>
             )}
@@ -304,7 +303,7 @@ export default function ContactForm({ prefillService }: ContactFormProps) {
 
           {/* Error notice */}
           {submitState === "error" && (
-            <div className="p-4 rounded-xl bg-[#B4533C]/10 border border-[#B4533C]/20 text-[#B4533C] text-sm">
+            <div className="p-4 rounded-xl bg-red-50 border border-red-200 text-[#C46243] text-sm">
               Something went wrong. Please try again or email us directly at {SITE.contact.email}.
             </div>
           )}

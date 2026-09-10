@@ -1,6 +1,7 @@
 "use client";
 
 import Link from "next/link";
+import Image from "next/image";
 import { usePathname } from "next/navigation";
 import { useState, useEffect } from "react";
 import { NAV_LINKS, CTA, SITE } from "@/data/site-content";
@@ -16,12 +17,10 @@ export default function Nav() {
     return () => window.removeEventListener("scroll", handleScroll);
   }, []);
 
-  // Close menu on route change
   useEffect(() => {
     setMenuOpen(false);
   }, [pathname]);
 
-  // Prevent body scroll when menu is open
   useEffect(() => {
     document.body.style.overflow = menuOpen ? "hidden" : "";
     return () => {
@@ -34,8 +33,8 @@ export default function Nav() {
       <header
         className={`fixed top-0 left-0 right-0 z-50 transition-all duration-300 ${
           scrolled
-            ? "bg-[#FAF7F2]/95 backdrop-blur-md border-b border-[rgba(36,35,32,0.08)] py-3.5"
-            : "bg-transparent py-5"
+            ? "bg-[#FAF8F5]/95 backdrop-blur-md border-b border-[rgba(36,35,32,0.08)] py-3.5 shadow-sm"
+            : "bg-[#FAF8F5] border-b border-[rgba(36,35,32,0.06)] py-4.5"
         }`}
       >
         <div className="container-site">
@@ -43,70 +42,75 @@ export default function Nav() {
             className="flex items-center justify-between"
             aria-label="Main navigation"
           >
-            {/* Brand Mark */}
+            {/* Logo */}
             <Link
               href="/"
-              className="flex flex-col leading-tight group"
+              className="flex items-center gap-2 group"
               aria-label="Small Wonders — Home"
             >
-              <span className="font-serif text-xl tracking-tight text-[#242320] group-hover:text-[#B4533C] transition-colors duration-200">
-                Small Wonders
-              </span>
-              <span className="text-[0.625rem] font-sans font-medium tracking-[0.18em] uppercase text-[#B4533C] mt-0.5">
-                Humanising Growth
-              </span>
+              <div className="relative h-10 w-36 sm:w-44 flex items-center">
+                <Image
+                  src="/images/logo.png"
+                  alt="Small Wonders"
+                  width={160}
+                  height={45}
+                  className="object-contain object-left h-8 sm:h-9 w-auto"
+                  priority
+                />
+              </div>
             </Link>
 
             {/* Desktop Nav Links */}
-            <ul className="hidden lg:flex items-center gap-8" role="list">
-              {NAV_LINKS.map((link) => {
-                const isActive =
-                  link.href === "/"
-                    ? pathname === "/"
-                    : pathname === link.href;
-                return (
-                  <li key={link.href}>
-                    <Link
-                      href={link.href}
-                      className={`nav-link text-[0.875rem] tracking-wide ${
-                        isActive ? "active" : ""
-                      }`}
-                    >
-                      {link.label}
-                    </Link>
-                  </li>
-                );
-              })}
-            </ul>
-
-            {/* CTA + Mobile Toggle */}
-            <div className="flex items-center gap-4">
+            <div className="hidden lg:flex items-center gap-7">
+              {/* Take an assessment link */}
               <a
                 href={CTA.assessment.href}
                 target="_blank"
                 rel="noopener noreferrer"
-                id="nav-cta-assessment"
-                className="hidden sm:inline-flex btn btn-primary text-xs uppercase tracking-wider py-2.5 px-5"
+                id="nav-cta-assessment-link"
+                className="text-sm font-sans text-[#242320]/75 hover:text-[#C46243] transition-colors"
               >
-                <span>{CTA.assessment.label}</span>
-                <span className="text-[0.85em]" aria-hidden="true">↗</span>
+                Take an assessment
               </a>
 
-              {/* Minimal Hamburger */}
+              {NAV_LINKS.map((link) => {
+                const isActive = pathname === link.href || pathname.startsWith(`${link.href}/`);
+                return (
+                  <Link
+                    key={link.href}
+                    href={link.href}
+                    className={`nav-link text-sm ${isActive ? "active" : ""}`}
+                  >
+                    {link.label}
+                  </Link>
+                );
+              })}
+            </div>
+
+            {/* Mobile Toggle */}
+            <div className="lg:hidden flex items-center gap-3">
+              <a
+                href={CTA.assessment.href}
+                target="_blank"
+                rel="noopener noreferrer"
+                className="btn btn-primary text-xs py-2 px-3.5"
+              >
+                Assessment ↗
+              </a>
               <button
                 onClick={() => setMenuOpen(!menuOpen)}
-                className="lg:hidden p-2 text-[#242320] hover:text-[#B4533C] transition-colors flex flex-col justify-center items-center w-8 h-8 gap-1.5"
+                className="p-2 text-[#242320] hover:text-[#C46243] transition-colors flex flex-col justify-center items-center w-8 h-8 gap-1.5"
                 aria-label={menuOpen ? "Close menu" : "Open menu"}
                 aria-expanded={menuOpen}
                 aria-controls="mobile-menu"
               >
                 <span
-                  className={`w-5 h-[1.5px] bg-current transition-transform duration-300 ${
-                    menuOpen ? "rotate-45 translate-y-[3.5px]" : ""
+                  className={`w-5 h-[2px] bg-current transition-transform duration-300 ${
+                    menuOpen ? "rotate-45 translate-y-[4px]" : ""
                   }`}
                 />
                 <span
-                  className={`w-5 h-[1.5px] bg-current transition-transform duration-300 ${
+                  className={`w-5 h-[2px] bg-current transition-transform duration-300 ${
                     menuOpen ? "-rotate-45 -translate-y-[4px]" : ""
                   }`}
                 />
@@ -116,7 +120,7 @@ export default function Nav() {
         </div>
       </header>
 
-      {/* Mobile menu overlay */}
+      {/* Mobile menu drawer */}
       <div
         id="mobile-menu"
         className={`fixed inset-0 z-40 lg:hidden transition-all duration-300 ${
@@ -125,29 +129,39 @@ export default function Nav() {
         aria-hidden={!menuOpen}
       >
         <div
-          className="absolute inset-0 bg-[#242320]/25 backdrop-blur-sm"
+          className="absolute inset-0 bg-[#242320]/30 backdrop-blur-sm"
           onClick={() => setMenuOpen(false)}
         />
         <div
-          className={`absolute right-0 top-0 bottom-0 w-[min(320px,85vw)] bg-[#FAF7F2] border-l border-[rgba(36,35,32,0.08)] shadow-2xl transition-transform duration-300 ${
+          className={`absolute right-0 top-0 bottom-0 w-[min(320px,85vw)] bg-[#FAF8F5] border-l border-[rgba(36,35,32,0.08)] shadow-2xl transition-transform duration-300 ${
             menuOpen ? "translate-x-0" : "translate-x-full"
           }`}
         >
-          <div className="flex flex-col h-full p-6 pt-24">
+          <div className="flex flex-col h-full p-6 pt-20">
             <ul className="flex flex-col gap-2" role="list">
+              <li>
+                <a
+                  href={CTA.assessment.href}
+                  target="_blank"
+                  rel="noopener noreferrer"
+                  className="block py-3 px-3 text-base font-sans text-[#C46243] font-medium"
+                >
+                  Take an assessment ↗
+                </a>
+              </li>
               {NAV_LINKS.map((link) => {
                 const isActive =
                   link.href === "/"
                     ? pathname === "/"
-                    : pathname.startsWith(link.href);
+                    : pathname === link.href;
                 return (
                   <li key={link.href}>
                     <Link
                       href={link.href}
                       className={`block py-3 px-3 text-base font-sans transition-colors ${
                         isActive
-                          ? "text-[#B4533C] font-medium"
-                          : "text-[#242320] hover:text-[#B4533C]"
+                          ? "text-[#C46243] font-medium border-l-2 border-[#C46243] bg-[#F8ECE8]/60"
+                          : "text-[#242320] hover:text-[#C46243]"
                       }`}
                     >
                       {link.label}
@@ -158,16 +172,7 @@ export default function Nav() {
             </ul>
 
             <div className="mt-auto pt-6 border-t border-[rgba(36,35,32,0.08)] space-y-4">
-              <a
-                href={CTA.assessment.href}
-                target="_blank"
-                rel="noopener noreferrer"
-                id="nav-mobile-cta-assessment"
-                className="btn btn-primary w-full justify-center text-sm"
-              >
-                {CTA.assessment.label} ↗
-              </a>
-              <p className="text-xs text-center text-[rgba(36,35,32,0.5)] font-sans">
+              <p className="text-xs text-center text-[#242320]/50 font-sans">
                 {SITE.contact.location} · {SITE.contact.email}
               </p>
             </div>
@@ -175,8 +180,8 @@ export default function Nav() {
         </div>
       </div>
 
-      {/* Spacer to push content below fixed nav */}
-      <div className="h-20 md:h-24" aria-hidden />
+      {/* Spacer below fixed nav */}
+      <div className="h-16 md:h-20" aria-hidden />
     </>
   );
 }

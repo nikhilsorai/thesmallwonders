@@ -12,7 +12,6 @@ export const metadata: Metadata = {
   },
 };
 
-// Three tracks × rituals — §4.3
 const tracks = [
   {
     id: "core-alignment",
@@ -71,7 +70,6 @@ const tracks = [
   },
 ];
 
-// Six pillars — §4.3
 const pillars = [
   {
     id: "strategy-planning",
@@ -117,7 +115,6 @@ const pillars = [
   },
 ];
 
-// Six-step method — §4.3
 const method = [
   {
     step: "01",
@@ -161,20 +158,20 @@ export default function WhyRitualsPage() {
   return (
     <>
       {/* Page header */}
-      <section className="section-pad-sm bg-[#FAF7F2] border-b border-[rgba(36,35,32,0.06)]">
+      <section className="section-pad-sm bg-white border-b border-[rgba(34,34,34,0.06)]">
         <div className="container-content">
           <span className="section-label">Why Rituals?</span>
-          <h1 className="font-serif text-[clamp(2.5rem,5.5vw,4.25rem)] font-normal text-[#242320] leading-[1.12] mb-6">
+          <h1 className="font-serif text-[clamp(2.5rem,5.5vw,4.25rem)] font-normal text-[#222222] leading-[1.12] mb-6">
             Six pillars. Three tracks. One rhythm.
           </h1>
-          <p className="font-sans text-lg sm:text-xl text-[#242320]/75 leading-[1.8] max-w-2xl">
+          <p className="font-sans text-lg sm:text-xl text-[#222222]/75 leading-[1.8] max-w-2xl">
             Rituals work because they give teams a consistent, safe way to show up — to each other, to the work, and to the customer. Here is the framework behind how we design them.
           </p>
         </div>
       </section>
 
       {/* Three Tracks */}
-      <section className="section-pad bg-[#FAF7F2]" aria-label="Three ritual design tracks">
+      <section className="section-pad bg-white" aria-label="Three ritual design tracks">
         <div className="container-site">
           <div className="max-w-3xl mb-16">
             <span className="section-label">The Three Tracks</span>
@@ -188,13 +185,13 @@ export default function WhyRitualsPage() {
               <div
                 key={track.id}
                 id={track.id}
-                className="pt-8 border-t border-[rgba(36,35,32,0.12)] flex flex-col justify-between"
+                className="pt-8 border-t-2 border-[#C46243] flex flex-col justify-between"
               >
                 <div>
-                  <span className="text-[0.6875rem] font-medium tracking-[0.16em] uppercase text-[#B4533C] block mb-2 font-sans">
+                  <span className="text-[0.6875rem] font-semibold tracking-[0.16em] uppercase text-[#C46243] block mb-2 font-sans">
                     {track.number}
                   </span>
-                  <h3 className="font-serif text-2xl font-normal text-[#242320] mb-1">
+                  <h3 className="font-serif text-2xl font-medium text-[#242320] mb-1">
                     {track.label}
                   </h3>
                   <p className="font-serif text-sm italic text-[#242320]/60 mb-8">
@@ -202,13 +199,13 @@ export default function WhyRitualsPage() {
                   </p>
 
                   <div className="mb-8">
-                    <p className="text-[0.6875rem] font-medium tracking-[0.14em] uppercase text-[#242320]/45 mb-4 font-sans">
+                    <p className="text-[0.6875rem] font-semibold tracking-[0.14em] uppercase text-[#242320]/45 mb-4 font-sans">
                       Rituals in this track
                     </p>
                     <ul className="space-y-2.5" role="list">
                       {track.rituals.map((ritual, i) => (
                         <li key={i} className="flex items-start gap-2.5 font-sans text-sm text-[#242320]/75 leading-relaxed">
-                          <span className="text-[#B4533C] text-sm leading-none mt-1 select-none">·</span>
+                          <span className="text-[#C46243] text-sm leading-none mt-1 select-none">·</span>
                           <span>{ritual}</span>
                         </li>
                       ))}
@@ -217,7 +214,7 @@ export default function WhyRitualsPage() {
                 </div>
 
                 <div className="pt-6 border-t border-[rgba(36,35,32,0.06)]">
-                  <p className="text-[0.6875rem] font-medium tracking-[0.14em] uppercase text-[#242320]/45 mb-3 font-sans">
+                  <p className="text-[0.6875rem] font-semibold tracking-[0.14em] uppercase text-[#242320]/45 mb-3 font-sans">
                     Our approach
                   </p>
                   <ul className="space-y-2" role="list">
@@ -236,7 +233,7 @@ export default function WhyRitualsPage() {
 
       {/* Six Pillars Grid */}
       <section
-        className="section-pad bg-[#F3ECE3] border-y border-[rgba(36,35,32,0.08)]"
+        className="section-pad bg-[#FAF8F5] border-y border-[rgba(36,35,32,0.08)]"
         aria-label="Six pillars"
       >
         <div className="container-site">
@@ -254,9 +251,9 @@ export default function WhyRitualsPage() {
             {pillars.map((pillar) => (
               <div
                 key={pillar.id}
-                className="pt-6 border-t border-[rgba(36,35,32,0.12)]"
+                className="pt-6 border-t border-[rgba(36,35,32,0.12)] bg-white p-6 rounded-2xl shadow-sm"
               >
-                <span className="font-serif text-2xl italic text-[#B4533C] block mb-3">
+                <span className="font-serif text-2xl font-normal italic text-[#C46243] block mb-3">
                   {pillar.number}
                 </span>
                 <h3 className="font-serif text-xl font-medium text-[#242320] mb-2 leading-snug">
@@ -282,7 +279,7 @@ export default function WhyRitualsPage() {
       </section>
 
       {/* Six-Step Method */}
-      <section className="section-pad bg-[#FAF7F2]" aria-label="Six-step ritual design method">
+      <section className="section-pad bg-white" aria-label="Six-step ritual design method">
         <div className="container-site">
           <div className="max-w-3xl mb-16">
             <span className="section-label">Our Design Method</span>
@@ -297,7 +294,7 @@ export default function WhyRitualsPage() {
                 key={m.step}
                 className="pt-6 border-t border-[rgba(36,35,32,0.12)]"
               >
-                <span className="font-mono text-xs text-[#B4533C] font-semibold block mb-2">
+                <span className="font-mono text-xs text-[#C46243] font-bold block mb-2">
                   STEP {m.step}
                 </span>
                 <h3 className="font-serif text-lg font-medium text-[#242320] mb-2">
@@ -313,13 +310,13 @@ export default function WhyRitualsPage() {
       </section>
 
       {/* Proof bridge */}
-      <section className="py-20 bg-[#F3ECE3] border-t border-[rgba(36,35,32,0.08)]">
+      <section className="py-20 bg-[#F9F7F5] border-t border-[rgba(34,34,34,0.08)]">
         <div className="container-content flex flex-col sm:flex-row items-start sm:items-center justify-between gap-8">
           <div>
-            <p className="font-serif text-2xl text-[#242320] font-normal leading-snug">
+            <p className="font-serif text-2xl text-[#222222] font-normal leading-snug">
               Proof through practice
             </p>
-            <p className="font-sans text-sm text-[#242320]/60 mt-1">
+            <p className="font-sans text-sm text-[#222222]/60 mt-1">
               Explore how intentional rituals translated into measurable growth across 15+ engagements.
             </p>
           </div>

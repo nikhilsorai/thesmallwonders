@@ -55,7 +55,6 @@ const STAGES: Stage[] = [
   },
 ];
 
-// Smooth natural cubic bezier curve through all 4 coordinates
 const PATH_D =
   "M 70 90 C 140 90, 170 210, 250 210 C 330 210, 360 155, 430 155 C 500 155, 540 65, 610 65";
 
@@ -67,8 +66,8 @@ export default function JourneyDiagram() {
   return (
     <div className="w-full">
       {/* Hand-considered architectural drawing SVG */}
-      <div className="relative w-full bg-[#FAF7F2] rounded-3xl border border-[rgba(36,35,32,0.08)] p-6 sm:p-10 mb-8">
-        <div className="flex items-center justify-between text-xs text-[#242320]/45 font-sans mb-4">
+      <div className="relative w-full bg-white rounded-3xl border border-[rgba(34,34,34,0.08)] p-6 sm:p-10 mb-8 shadow-sm">
+        <div className="flex items-center justify-between text-xs text-[#222222]/45 font-sans mb-4">
           <span className="tracking-[0.14em] uppercase">The Dynamics of Growth</span>
           <span className="font-serif italic">Fig. 1 — The Valley &amp; The Anchor</span>
         </div>
@@ -83,29 +82,28 @@ export default function JourneyDiagram() {
             aria-label="The Journey of Growth: Valley of Death and Rituals"
           >
             <defs>
-              {/* Soft warm terracotta gradient fill */}
-              <linearGradient id="warmTerracottaFill" x1="0" y1="0" x2="0" y2="1">
-                <stop offset="0%" stopColor="#B4533C" stopOpacity="0.08" />
-                <stop offset="100%" stopColor="#B4533C" stopOpacity="0" />
+              <linearGradient id="warmClayFill" x1="0" y1="0" x2="0" y2="1">
+                <stop offset="0%" stopColor="#C46243" stopOpacity="0.10" />
+                <stop offset="100%" stopColor="#C46243" stopOpacity="0" />
               </linearGradient>
             </defs>
 
             {/* Subtle horizontal reference lines */}
-            <line x1="50" y1="70" x2="630" y2="70" stroke="rgba(36,35,32,0.05)" strokeWidth="1" strokeDasharray="3 5" />
-            <line x1="50" y1="150" x2="630" y2="150" stroke="rgba(36,35,32,0.05)" strokeWidth="1" strokeDasharray="3 5" />
-            <line x1="50" y1="220" x2="630" y2="220" stroke="rgba(36,35,32,0.05)" strokeWidth="1" strokeDasharray="3 5" />
+            <line x1="50" y1="70" x2="630" y2="70" stroke="rgba(36,35,32,0.06)" strokeWidth="1" strokeDasharray="3 5" />
+            <line x1="50" y1="150" x2="630" y2="150" stroke="rgba(36,35,32,0.06)" strokeWidth="1" strokeDasharray="3 5" />
+            <line x1="50" y1="220" x2="630" y2="220" stroke="rgba(36,35,32,0.06)" strokeWidth="1" strokeDasharray="3 5" />
 
             {/* Fill under the curve */}
             <path
               d={`${PATH_D} L 610 270 L 70 270 Z`}
-              fill="url(#warmTerracottaFill)"
+              fill="url(#warmClayFill)"
             />
 
             {/* The main continuous curve line */}
             <path
               d={PATH_D}
               stroke="#242320"
-              strokeWidth="1.75"
+              strokeWidth="2"
               strokeLinecap="round"
             />
 
@@ -126,14 +124,14 @@ export default function JourneyDiagram() {
                     }
                   }}
                 >
-                  {/* Subtle target circle */}
+                  {/* Target circle */}
                   <circle
                     cx={stage.x}
                     cy={stage.y}
                     r={isActive ? 16 : 10}
-                    fill={isActive ? "rgba(180, 83, 60, 0.12)" : "transparent"}
-                    stroke={isActive ? "#B4533C" : "rgba(36,35,32,0.15)"}
-                    strokeWidth="1"
+                    fill={isActive ? "rgba(196, 98, 67, 0.12)" : "transparent"}
+                    stroke={isActive ? "#C46243" : "rgba(36,35,32,0.18)"}
+                    strokeWidth="1.5"
                     className="transition-all duration-300"
                   />
 
@@ -141,8 +139,8 @@ export default function JourneyDiagram() {
                   <circle
                     cx={stage.x}
                     cy={stage.y}
-                    r={isActive ? 4 : 3}
-                    fill={isActive ? "#B4533C" : "#242320"}
+                    r={isActive ? 4.5 : 3}
+                    fill={isActive ? "#C46243" : "#242320"}
                     className="transition-all duration-300"
                   />
 
@@ -151,11 +149,11 @@ export default function JourneyDiagram() {
                     x={stage.x}
                     y={stage.id === "valley" ? stage.y + 26 : stage.y - 18}
                     textAnchor="middle"
-                    fontSize="11"
+                    fontSize="11.5"
                     fontFamily="var(--font-serif)"
                     fontStyle={isActive ? "italic" : "normal"}
                     fontWeight={isActive ? "600" : "400"}
-                    fill={isActive ? "#B4533C" : "rgba(36,35,32,0.75)"}
+                    fill={isActive ? "#C46243" : "rgba(36,35,32,0.8)"}
                     className="select-none transition-colors duration-200"
                   >
                     {stage.number}. {stage.label}
@@ -167,7 +165,7 @@ export default function JourneyDiagram() {
         </div>
       </div>
 
-      {/* Editorial Stage Details Panel */}
+      {/* Stage Details Panel */}
       <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-4 pt-2">
         {STAGES.map((stage) => {
           const isActive = stage.id === activeStageId;
@@ -175,23 +173,23 @@ export default function JourneyDiagram() {
             <button
               key={stage.id}
               onClick={() => setActiveStageId(stage.id)}
-              className={`text-left p-5 rounded-2xl transition-all duration-300 ${
+              className={`text-left p-5 rounded-2xl transition-all duration-300 cursor-pointer ${
                 isActive
-                  ? "bg-[#F3ECE3] border-l-2 border-[#B4533C]"
-                  : "bg-transparent hover:bg-[#F3ECE3]/50 border-l-2 border-transparent"
+                  ? "bg-white border-l-4 border-[#C46243] shadow-sm"
+                  : "bg-transparent hover:bg-white/60 border-l-4 border-transparent"
               }`}
             >
               <div className="flex items-center justify-between mb-2">
                 <span
-                  className={`text-xs font-mono font-medium ${
-                    isActive ? "text-[#B4533C]" : "text-[#242320]/40"
+                  className={`text-xs font-mono font-semibold ${
+                    isActive ? "text-[#C46243]" : "text-[#242320]/40"
                   }`}
                 >
                   {stage.number}
                 </span>
                 <span
                   className={`w-1.5 h-1.5 rounded-full ${
-                    isActive ? "bg-[#B4533C]" : "bg-[#242320]/20"
+                    isActive ? "bg-[#C46243]" : "bg-[#242320]/20"
                   }`}
                 />
               </div>
@@ -207,12 +205,12 @@ export default function JourneyDiagram() {
       </div>
 
       {/* Active Stage Callout */}
-      <div className="mt-6 p-6 rounded-2xl bg-[#F3ECE3]/60 border border-[rgba(36,35,32,0.06)]">
+      <div className="mt-6 p-6 rounded-2xl bg-white border border-[rgba(36,35,32,0.08)] shadow-sm">
         <div className="flex flex-col sm:flex-row sm:items-baseline gap-2 sm:gap-4 mb-2">
           <span className="font-serif text-lg font-medium text-[#242320]">
             Stage {currentStage.number} — {currentStage.label}
           </span>
-          <span className="text-xs font-sans uppercase tracking-widest text-[#B4533C]">
+          <span className="text-xs font-sans uppercase tracking-widest text-[#C46243] font-medium">
             {currentStage.subtitle}
           </span>
         </div>
