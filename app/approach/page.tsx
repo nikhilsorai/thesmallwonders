@@ -77,7 +77,7 @@ export default function ApproachPage() {
               <div key={part.id} id={part.id} className="pt-10 border-t border-[rgba(34,34,34,0.12)]">
                 {/* Number & Heading */}
                 <div className="flex items-baseline gap-4 mb-6">
-                  <span className="font-serif text-3xl sm:text-4xl italic text-[#C46243] font-normal">
+                  <span className="font-serif text-3xl sm:text-4xl italic text-[#A31818] font-normal">
                     {part.number}
                   </span>
                   <h2 className="font-serif text-[clamp(1.75rem,3.5vw,2.5rem)] font-normal text-[#242320] leading-tight">
@@ -90,7 +90,7 @@ export default function ApproachPage() {
                 </p>
 
                 {part.detail && (
-                  <blockquote className="my-10 pl-6 border-l-2 border-[#C46243] py-1">
+                  <blockquote className="my-10 pl-6 border-l-2 border-[#A31818] py-1">
                     <p className="font-serif text-xl sm:text-2xl italic text-[#242320] leading-snug">
                       &ldquo;{part.detail}&rdquo;
                     </p>

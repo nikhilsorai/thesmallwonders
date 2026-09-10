@@ -43,7 +43,7 @@ export default function FounderBio({ variant = "compact" }: FounderBioProps) {
             <h2 className="font-serif text-[clamp(2rem,3.8vw,2.75rem)] font-normal text-[#242320] mb-2 leading-tight">
               {SITE.founder.name}
             </h2>
-            <p className="font-sans text-xs font-semibold text-[#C46243] tracking-[0.14em] uppercase mb-8">
+            <p className="font-sans text-xs font-semibold text-[#A31818] tracking-[0.14em] uppercase mb-8">
               {SITE.founder.title} · 15+ Years Working with CXOs &amp; Founders
             </p>
 
@@ -52,7 +52,7 @@ export default function FounderBio({ variant = "compact" }: FounderBioProps) {
             </p>
 
             {/* Pull quote */}
-            <blockquote className="my-8 pl-6 border-l-2 border-[#C46243]">
+            <blockquote className="my-8 pl-6 border-l-2 border-[#A31818]">
               <p className="font-serif text-xl sm:text-2xl italic text-[#242320] leading-snug font-normal">
                 &ldquo;{SITE.founder.quote}&rdquo;
               </p>

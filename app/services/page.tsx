@@ -130,7 +130,7 @@ export default function ServicesPage() {
             Detailed case studies across these sectors are documented in the{" "}
             <Link
               href="/case-studies"
-              className="text-[#C46243] hover:underline"
+              className="text-[#A31818] hover:underline"
             >
               Case Studies archive
             </Link>

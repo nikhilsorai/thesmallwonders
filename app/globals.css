@@ -212,6 +212,7 @@
   font-size: 0.9375rem;
   font-weight: 500;
   color: #A31818;
+  white-space: nowrap;
   transition: gap var(--transition-smooth), color var(--transition-smooth);
 }
 
@@ -291,7 +292,7 @@
 }
 
 .form-input:focus {
-  border-color: #C46243;
+  border-color: #A31818;
   background-color: #FFFFFF;
 }
 
@@ -301,11 +302,11 @@
 
 /* Selection */
 ::selection {
-  background: rgba(196, 98, 67, 0.16);
+  background: rgba(163, 24, 24, 0.14);
   color: #242320;
 }
 
 :focus-visible {
-  outline: 2px solid #C46243;
+  outline: 2px solid #A31818;
   outline-offset: 2px;
 }

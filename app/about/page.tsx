@@ -96,7 +96,7 @@ export default function AboutPage() {
               <h2 className="font-serif text-[clamp(2rem,3.8vw,2.85rem)] font-normal text-[#242320] mb-2 leading-tight">
                 {SITE.founder.name}
               </h2>
-              <p className="font-sans text-xs font-semibold text-[#C46243] tracking-[0.14em] uppercase mb-8">
+              <p className="font-sans text-xs font-semibold text-[#A31818] tracking-[0.14em] uppercase mb-8">
                 {SITE.founder.title} · 15+ Years Working with CXOs &amp; Founders
               </p>
 
@@ -111,7 +111,7 @@ export default function AboutPage() {
               </div>
 
               {/* Pull quote */}
-              <blockquote className="my-10 pl-6 border-l-2 border-[#C46243]">
+              <blockquote className="my-10 pl-6 border-l-2 border-[#A31818]">
                 <p className="font-serif text-xl sm:text-2xl italic text-[#242320] leading-snug font-normal">
                   &ldquo;{SITE.founder.quote}&rdquo;
                 </p>
@@ -158,7 +158,7 @@ export default function AboutPage() {
           </h2>
 
           <div className="p-8 sm:p-10 rounded-3xl bg-white border border-[rgba(36,35,32,0.08)] shadow-sm">
-            <p className="font-sans text-xs font-semibold tracking-widest uppercase text-[#C46243] mb-3">
+            <p className="font-sans text-xs font-semibold tracking-widest uppercase text-[#A31818] mb-3">
               Founder Narrative Note
             </p>
             <p className="font-sans text-base text-[#242320]/75 leading-[1.8] italic">
@@ -184,7 +184,7 @@ export default function AboutPage() {
                 key={item.label}
                 className="pt-6 border-t border-[rgba(36,35,32,0.12)]"
               >
-                <span className="font-serif text-2xl font-normal italic text-[#C46243] block mb-3">
+                <span className="font-serif text-2xl font-normal italic text-[#A31818] block mb-3">
                   {item.number}
                 </span>
                 <h3 className="font-serif text-xl font-medium text-[#242320] mb-2 leading-snug">

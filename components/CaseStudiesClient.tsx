@@ -59,8 +59,8 @@ export default function CaseStudiesClient() {
                 onClick={() => setActiveFilter(opt)}
                 className={`px-4 py-1.5 rounded-full text-xs font-sans font-medium transition-all duration-300 border cursor-pointer ${
                   activeFilter === opt
-                    ? "bg-[#C46243] text-white border-[#C46243]"
-                    : "bg-transparent text-[#242320]/65 border-[rgba(36,35,32,0.12)] hover:border-[#C46243] hover:text-[#C46243]"
+                    ? "bg-[#A31818] text-white border-[#A31818]"
+                    : "bg-transparent text-[#242320]/65 border-[rgba(36,35,32,0.12)] hover:border-[#A31818] hover:text-[#A31818]"
                 }`}
                 aria-pressed={activeFilter === opt}
               >

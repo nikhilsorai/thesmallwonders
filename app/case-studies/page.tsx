@@ -57,7 +57,7 @@ export default function CaseStudiesPage() {
           <div className="grid grid-cols-2 md:grid-cols-4 gap-8">
             {statBar.map((stat) => (
               <div key={stat.label} className="flex flex-col">
-                <span className="font-serif text-3xl sm:text-4xl font-normal italic text-[#C46243] leading-none mb-2">
+                <span className="font-serif text-3xl sm:text-4xl font-normal italic text-[#A31818] leading-none mb-2">
                   {stat.value}
                 </span>
                 <span className="font-sans text-xs sm:text-sm text-white/60">{stat.label}</span>
@@ -76,7 +76,7 @@ export default function CaseStudiesPage() {
         >
           <div className="container-site">
             <div className="flex flex-wrap items-baseline gap-3 mb-10 pb-4 border-b border-[rgba(36,35,32,0.08)]">
-              <span className="text-xs font-semibold tracking-widest uppercase text-[#C46243] font-sans">
+              <span className="text-xs font-semibold tracking-widest uppercase text-[#A31818] font-sans">
                 Featured Case Study
               </span>
               <span className="text-xs text-[#242320]/40 font-sans">·</span>
@@ -99,7 +99,7 @@ export default function CaseStudiesPage() {
                     <h3 className="text-[0.6875rem] font-semibold uppercase tracking-[0.16em] text-[#242320]/45 mb-3 font-sans">
                       The Challenge
                     </h3>
-                    <blockquote className="my-4 pl-5 border-l-2 border-[#C46243]">
+                    <blockquote className="my-4 pl-5 border-l-2 border-[#A31818]">
                       <p className="font-serif text-lg italic text-[#242320] leading-snug">
                         &ldquo;{flagshipCase.problem}&rdquo;
                       </p>
@@ -116,7 +116,7 @@ export default function CaseStudiesPage() {
                     <ul className="space-y-3" role="list">
                       {flagshipCase.work.map((item, i) => (
                         <li key={i} className="flex items-start gap-3 font-sans text-sm sm:text-base text-[#242320]/80 leading-relaxed">
-                          <span className="text-[#C46243] text-sm leading-none mt-1 select-none">·</span>
+                          <span className="text-[#A31818] text-sm leading-none mt-1 select-none">·</span>
                           <span>{item}</span>
                         </li>
                       ))}
@@ -139,13 +139,13 @@ export default function CaseStudiesPage() {
                     {/* Impact numbers */}
                     <div className="grid grid-cols-2 gap-6 pt-6 border-t border-[rgba(36,35,32,0.08)]">
                       <div>
-                        <span className="font-serif text-4xl font-normal italic text-[#C46243] leading-none block mb-1">
+                        <span className="font-serif text-4xl font-normal italic text-[#A31818] leading-none block mb-1">
                           2×
                         </span>
                         <p className="font-sans text-xs text-[#242320]/60">Total revenue growth</p>
                       </div>
                       <div>
-                        <span className="font-serif text-4xl font-normal italic text-[#C46243] leading-none block mb-1">
+                        <span className="font-serif text-4xl font-normal italic text-[#A31818] leading-none block mb-1">
                           10×
                         </span>
                         <p className="font-sans text-xs text-[#242320]/60">Retail expansion in 2 yrs</p>

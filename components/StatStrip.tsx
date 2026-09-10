@@ -31,7 +31,7 @@ export default function StatStrip({
         {/* Section header */}
         <div className="flex flex-col md:flex-row md:items-baseline md:justify-between gap-6 mb-16 pb-8 border-b border-white/10">
           <div>
-            <span className="text-[0.6875rem] font-semibold tracking-[0.18em] uppercase text-[#C46243] font-sans block mb-3">
+            <span className="text-[0.6875rem] font-semibold tracking-[0.18em] uppercase text-[#A31818] font-sans block mb-3">
               {title}
             </span>
             <p className="font-serif text-2xl sm:text-3xl font-normal text-white/95 leading-snug max-w-xl">
@@ -40,7 +40,7 @@ export default function StatStrip({
           </div>
           <Link
             href={ctaHref}
-            className="inline-flex items-center gap-2 text-sm font-sans font-medium text-white hover:text-[#C46243] transition-colors shrink-0 group"
+            className="inline-flex items-center gap-2 text-sm font-sans font-medium text-white hover:text-[#A31818] transition-colors shrink-0 group"
           >
             <span>{ctaLabel}</span>
             <span className="group-hover:translate-x-1 transition-transform" aria-hidden="true">→</span>
@@ -51,7 +51,7 @@ export default function StatStrip({
         <div className="grid grid-cols-2 sm:grid-cols-3 lg:grid-cols-6 gap-y-12 gap-x-8">
           {stats.map((stat, i) => (
             <div key={i} className="flex flex-col">
-              <span className="font-serif text-3xl sm:text-4xl font-normal italic text-[#C46243] leading-none mb-3">
+              <span className="font-serif text-3xl sm:text-4xl font-normal italic text-[#A31818] leading-none mb-3">
                 {stat.value}
               </span>
               <span className="text-sm font-sans font-medium text-white leading-snug mb-1">
