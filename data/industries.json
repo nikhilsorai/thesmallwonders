@@ -1,0 +1,10 @@
+[
+  { "industry": "Professional Services", "offerings": ["Brand Consulting", "Advertising", "Executive Search", "Accounting & Taxation", "Assurance & Consulting", "HR Consulting"] },
+  { "industry": "Manufacturing", "offerings": ["Mattress", "2-Wheeler Tyres", "Hosiery", "Electronics Components", "Stainless Steel", "Organic Medicines", "Concrete Blocks & Pavers", "Construction Equipment", "Abrasives", "Paints", "Two Wheelers", "Apparel"] },
+  { "industry": "Education", "offerings": ["Schools, Colleges, University"] },
+  { "industry": "Media & Entertainment", "offerings": ["Business Newspaper", "Newspaper", "News Channel", "Entertainment"] },
+  { "industry": "Services", "offerings": ["Travel (Outbound Leisure, Corporate, Wholly-owned)", "Yoga Studio", "IT Product", "IT Services", "Logistics", "Discount Brokerage", "Crowdfunding", "Eye Hospital", "HR Tech"] },
+  { "industry": "Retail", "offerings": ["Luxury Kitchenware", "Gym"] },
+  { "industry": "Infrastructure & Real Estate", "offerings": ["Real Estate", "Airport", "Budget Housing"] },
+  { "industry": "Individual / Personal Brand", "offerings": ["Education Trust Institutionalisation"] }
+]

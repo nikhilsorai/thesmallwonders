@@ -1,0 +1,143 @@
+[
+  {
+    "id": "strategy-planning-rituals",
+    "name": "Strategy & Planning Rituals",
+    "category": "Ritual Design",
+    "promise": "Clarify purpose, vision, values and goals, and drive alignment.",
+    "whoFor": "Founders and leadership teams who have a plan on paper but not in practice.",
+    "delivered": [
+      "Leadership workshop",
+      "North Star Metric definition",
+      "Goals framework (objectives, measurable outcomes, monthly initiatives)",
+      "Business plan and execution roadmap"
+    ],
+    "engagementLength": "4-8 weeks, typically starting with a Full Circle Exploration of stakeholders",
+    "cta": "Ask about this"
+  },
+  {
+    "id": "innovation-rituals",
+    "name": "Innovation Rituals",
+    "category": "Ritual Design",
+    "promise": "Let teams think new without the fear of failure.",
+    "whoFor": "Teams that have stopped experimenting because failure feels risky.",
+    "delivered": [
+      "Sprint and jam formats",
+      "Fail-forward day design",
+      "Psychological-safety practices embedded into existing routines"
+    ],
+    "engagementLength": "Project-based, typically 4-6 weeks per ritual design cycle",
+    "cta": "Ask about this"
+  },
+  {
+    "id": "execution-agility-rituals",
+    "name": "Execution & Agility Rituals",
+    "category": "Ritual Design",
+    "promise": "Move fast without losing rhythm.",
+    "whoFor": "Organisations where execution fails not from lack of ideas but lack of rhythm.",
+    "delivered": [
+      "Decision-making and workflow mapping across departments",
+      "Design of stand-up, sync, and review cadences",
+      "Facilitation guides and rhythm-discipline metrics"
+    ],
+    "engagementLength": "4-6 weeks",
+    "cta": "Ask about this"
+  },
+  {
+    "id": "customer-centricity-rituals",
+    "name": "Customer Centricity Rituals",
+    "category": "Ritual Design",
+    "promise": "Bring the voice of the customer into day-to-day decisions.",
+    "whoFor": "Teams whose customer feedback lives in a dashboard nobody acts on.",
+    "delivered": [
+      "NPS and lost-deal debrief rituals",
+      "Customer story and feedback rituals",
+      "Integration of customer signals into recurring reviews"
+    ],
+    "engagementLength": "3-4 weeks",
+    "cta": "Ask about this"
+  },
+  {
+    "id": "people-culture-rituals",
+    "name": "People & Culture Rituals",
+    "category": "Ritual Design",
+    "promise": "Build a future-ready team.",
+    "whoFor": "Organisations investing in growth who need their people practices to keep pace.",
+    "delivered": [
+      "Onboarding journeys rooted in purpose and clarity",
+      "Succession and mentoring roadmap",
+      "Recognition and celebration rituals"
+    ],
+    "engagementLength": "6-8 weeks",
+    "cta": "Ask about this"
+  },
+  {
+    "id": "collaboration-trust-rituals",
+    "name": "Collaboration & Trust Rituals",
+    "category": "Ritual Design",
+    "promise": "Break silos and build cross-functional trust.",
+    "whoFor": "Companies where teams work in parallel but rarely in sync.",
+    "delivered": [
+      "Cross-functional huddle design",
+      "Trust-building formats and facilitation",
+      "Feedback loops that surface across teams, not just up the chain"
+    ],
+    "engagementLength": "4-6 weeks",
+    "cta": "Ask about this"
+  },
+  {
+    "id": "brand-diagnosis-discovery",
+    "name": "Brand Diagnosis & Discovery",
+    "category": "Legacy Brand Advisory",
+    "promise": "Understand where your brand actually stands, inside the business and against competitors.",
+    "whoFor": "Leadership teams making a strategic decision that hinges on brand clarity.",
+    "delivered": [
+      "Brand audit",
+      "360-degree brand perspective and SWOT",
+      "Competitive brand positioning read"
+    ],
+    "engagementLength": "3-5 weeks",
+    "cta": "Ask about this"
+  },
+  {
+    "id": "brand-valuation",
+    "name": "Brand Valuation",
+    "category": "Legacy Brand Advisory",
+    "promise": "An independent, defensible valuation of what your brand is worth.",
+    "whoFor": "Companies raising capital, going through M&A, or reporting brand impact to a board.",
+    "delivered": [
+      "Independent brand valuation report",
+      "Board-ready reporting dashboard",
+      "Regulatory and financial-compliance-ready documentation"
+    ],
+    "engagementLength": "4-6 weeks",
+    "cta": "Ask about this"
+  },
+  {
+    "id": "brand-licensing-structuring",
+    "name": "Brand Licensing Structuring",
+    "category": "Legacy Brand Advisory",
+    "promise": "Turn a personal or promoter-owned brand into a properly licensed, monetisable asset.",
+    "whoFor": "Founders or trusts where the brand is personally owned but used by the business.",
+    "delivered": [
+      "Royalty rate framework",
+      "Usage guardrails and benefits structure",
+      "Licensing agreement support"
+    ],
+    "engagementLength": "4-6 weeks",
+    "cta": "Ask about this"
+  },
+  {
+    "id": "leadership-alignment-workshops",
+    "name": "Leadership & Alignment Workshops",
+    "category": "Legacy Brand Advisory",
+    "promise": "Get a leadership team aligned on what matters most, fast.",
+    "whoFor": "Leadership teams that need to converge on priorities, not just discuss them.",
+    "delivered": [
+      "Facilitated leadership workshop(s)",
+      "Prioritised set of initiatives with clear ownership",
+      "Implementation blueprint"
+    ],
+    "engagementLength": "1-2 workshops, 1-2 weeks",
+    "cta": "Ask about this"
+  }
+]
