@@ -63,7 +63,7 @@ export default function Nav() {
                 const isActive =
                   link.href === "/"
                     ? pathname === "/"
-                    : pathname.startsWith(link.href);
+                    : pathname === link.href;
                 return (
                   <li key={link.href}>
                     <Link
@@ -86,10 +86,10 @@ export default function Nav() {
                 target="_blank"
                 rel="noopener noreferrer"
                 id="nav-cta-assessment"
-                className="hidden sm:inline-flex items-center gap-1.5 text-xs font-medium uppercase tracking-wider py-2.5 px-4 rounded-full bg-[#242320] text-[#FAF7F2] hover:bg-[#B4533C] transition-all duration-300"
+                className="hidden sm:inline-flex btn btn-primary text-xs uppercase tracking-wider py-2.5 px-5"
               >
                 <span>{CTA.assessment.label}</span>
-                <span className="text-[0.8em]" aria-hidden="true">↗</span>
+                <span className="text-[0.85em]" aria-hidden="true">↗</span>
               </a>
 
               {/* Minimal Hamburger */}
