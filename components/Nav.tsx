@@ -48,13 +48,13 @@ export default function Nav() {
               className="flex items-center gap-2 group"
               aria-label="Small Wonders — Home"
             >
-              <div className="relative h-10 w-36 sm:w-44 flex items-center">
+              <div className="relative h-11 w-40 sm:w-48 flex items-center">
                 <Image
                   src="/images/logo.png"
                   alt="Small Wonders"
-                  width={160}
-                  height={45}
-                  className="object-contain object-left h-8 sm:h-9 w-auto"
+                  width={212}
+                  height={121}
+                  className="object-contain object-left h-9 sm:h-10 w-auto"
                   priority
                 />
               </div>
