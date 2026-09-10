@@ -61,18 +61,7 @@ export default function Nav() {
             </Link>
 
             {/* Desktop Nav Links */}
-            <div className="hidden lg:flex items-center gap-7">
-              {/* Take an assessment link */}
-              <a
-                href={CTA.assessment.href}
-                target="_blank"
-                rel="noopener noreferrer"
-                id="nav-cta-assessment-link"
-                className="text-sm font-sans text-[#242320]/75 hover:text-[#A31818] transition-colors"
-              >
-                Take an assessment
-              </a>
-
+            <div className="hidden lg:flex items-center gap-6">
               {NAV_LINKS.map((link) => {
                 const isActive = pathname === link.href || pathname.startsWith(`${link.href}/`);
                 return (
@@ -85,18 +74,36 @@ export default function Nav() {
                   </Link>
                 );
               })}
-            </div>
 
-            {/* Mobile Toggle */}
-            <div className="lg:hidden flex items-center gap-3">
+              {/* Assessment link */}
               <a
                 href={CTA.assessment.href}
                 target="_blank"
                 rel="noopener noreferrer"
-                className="btn btn-primary text-xs py-2 px-3.5"
+                id="nav-cta-assessment-link"
+                className="text-sm font-sans text-[#242320]/75 hover:text-[#A31818] transition-colors"
               >
                 Assessment ↗
               </a>
+
+              {/* Take an Appointment button */}
+              <Link
+                href="/contact"
+                id="nav-cta-appointment-btn"
+                className="btn btn-primary text-xs sm:text-sm py-2 px-4.5 shadow-sm"
+              >
+                Take an Appointment
+              </Link>
+            </div>
+
+            {/* Mobile Toggle & CTA */}
+            <div className="lg:hidden flex items-center gap-2.5">
+              <Link
+                href="/contact"
+                className="btn btn-primary text-xs py-1.5 px-3"
+              >
+                Appointment
+              </Link>
               <button
                 onClick={() => setMenuOpen(!menuOpen)}
                 className="p-2 text-[#242320] hover:text-[#A31818] transition-colors flex flex-col justify-center items-center w-8 h-8 gap-1.5"
@@ -144,7 +151,7 @@ export default function Nav() {
                   href={CTA.assessment.href}
                   target="_blank"
                   rel="noopener noreferrer"
-                  className="block py-3 px-3 text-base font-sans text-[#A31818] font-medium"
+                  className="block py-3 px-3 text-base font-sans text-[#242320] hover:text-[#A31818]"
                 >
                   Take an assessment ↗
                 </a>
@@ -172,6 +179,12 @@ export default function Nav() {
             </ul>
 
             <div className="mt-auto pt-6 border-t border-[rgba(36,35,32,0.08)] space-y-4">
+              <Link
+                href="/contact"
+                className="btn btn-primary w-full text-center text-sm py-3 justify-center"
+              >
+                Take an Appointment →
+              </Link>
               <p className="text-xs text-center text-[#242320]/50 font-sans">
                 {SITE.contact.location} · {SITE.contact.email}
               </p>
