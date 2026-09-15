@@ -1,0 +1,264 @@
+/**
+ * Small Wonders — additions on top of the Invena template CSS.
+ *
+ * Loaded AFTER public/assets/css/style.css (see layout.tsx). The home page uses
+ * the Invena home-8 markup and classes unchanged, so every size, colour, gap and
+ * breakpoint comes from style.css. This file only covers what Small Wonders
+ * content needs that Invena's did not: the text logo, different portrait
+ * proportions, the signature, search results and keyboard access to dropdowns.
+ * Do not re-add layout overrides here — fix the content to fit the design.
+ */
+
+:root {
+  --sw-primary: #0D7A85;
+  --sw-primary-hover: #0a5f67;
+}
+
+.text-sw-primary {
+  color: var(--sw-primary) !important;
+}
+
+/* ─── Logo — same footprint as Invena's 193×53 logo ───────────────────────── */
+.sw-logo {
+  display: inline-flex;
+  align-items: center;
+  gap: 10px;
+  line-height: 1;
+  white-space: nowrap;
+}
+
+.sw-logo__mark {
+  width: 53px;
+  height: 53px;
+  flex: 0 0 53px;
+  border-radius: 50%;
+  background: #20282D;
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.sw-logo__mark svg {
+  width: 26px;
+  height: 26px;
+  fill: #fff;
+}
+
+.sw-logo__text {
+  display: flex;
+  flex-direction: column;
+  gap: 5px;
+}
+
+.sw-logo__name {
+  font-family: var(--font-primary);
+  font-size: 27px;
+  font-weight: 700;
+  letter-spacing: -0.02em;
+  color: #20282D;
+}
+
+.sw-logo__tag {
+  font-size: 15px;
+  font-weight: 500;
+  color: #20282D;
+}
+
+.sw-logo--light .sw-logo__mark {
+  background: #fff;
+}
+
+.sw-logo--light .sw-logo__mark svg {
+  fill: #20282D;
+}
+
+.sw-logo--light .sw-logo__name,
+.sw-logo--light .sw-logo__tag {
+  color: #fff;
+}
+
+.footer-logo-area-left-8 .sw-logo__mark {
+  width: 66px;
+  height: 66px;
+  flex-basis: 66px;
+}
+
+.footer-logo-area-left-8 .sw-logo__name {
+  font-size: 32px;
+}
+
+.footer-logo-area-left-8 .sw-logo__tag {
+  font-size: 17px;
+}
+
+@media only screen and (max-width: 575px) {
+  .header-main-one-wrapper .sw-logo {
+    gap: 8px;
+  }
+
+  .header-main-one-wrapper .sw-logo__mark {
+    width: 38px;
+    height: 38px;
+    flex-basis: 38px;
+  }
+
+  .header-main-one-wrapper .sw-logo__mark svg {
+    width: 19px;
+    height: 19px;
+  }
+
+  .header-main-one-wrapper .sw-logo__name {
+    font-size: 19px;
+  }
+
+  .header-main-one-wrapper .sw-logo__tag {
+    font-size: 11px;
+  }
+}
+
+/* ─── Dropdowns open for keyboard users too (template opens on :hover only) ── */
+header .nav-area ul li.has-dropdown:focus-within .submenu {
+  opacity: 1;
+  visibility: visible;
+  transform: scaleY(1);
+}
+
+/* ─── Hero portrait ───────────────────────────────────────────────────────────
+   Invena's 11.webp is 528×764 and renders at natural size. Hero 1.png is a
+   wider crop (1049×1193), so it is pinned by height instead: at 700px the face
+   is the same size on screen as the reference model's, and the image stays
+   clear of the second counter. */
+@media only screen and (min-width: 1200px) {
+  .rts-banner-area-eight .absolute-image img {
+    height: 700px;
+    width: auto;
+    max-width: none;
+  }
+}
+
+@media only screen and (max-width: 1199px) {
+  .rts-banner-area-eight .absolute-image img {
+    width: 100%;
+    height: auto;
+  }
+}
+
+/* ─── About portrait ──────────────────────────────────────────────────────────
+   Invena's 14.webp is 479×739. Hero 2.png is proportionally wider, so the box
+   grows to 520px to keep the same 739px height on large screens. */
+@media only screen and (min-width: 1200px) {
+  .rts-about-us-area-8 .right-content-image {
+    max-width: 520px;
+  }
+}
+
+/* ─── Signature — Ekta's name in place of the template's signature image ──── */
+.sign-and-contact-area-8 .sw-signature {
+  display: block;
+  font-family: "Brush Script MT", "Segoe Script", "Snell Roundhand", cursive;
+  font-size: 44px;
+  line-height: 1;
+  color: #fff;
+  white-space: nowrap;
+}
+
+/* ─── Founder quote avatar (Hero 2.png cropped to the face) ──────────────── */
+.testimonails-8-mian-wrapper .author-area .avatar img {
+  width: 80px;
+  height: 80px;
+  border-radius: 50%;
+  object-fit: cover;
+  object-position: 50% 12%;
+  background: #fff;
+}
+
+/* ─── Circle text — same 285px footprint as Invena's testimonials/07.webp ─── */
+.circle-text .sw-circle-text {
+  display: block;
+  width: 285px;
+  max-width: 100%;
+  height: auto;
+}
+
+/* ─── "Start here" form: keep a long email clear of the overlaid button ──── */
+.rts-subscribe-area-8 form input {
+  padding-right: 195px;
+}
+
+/* ─── Drawer: the template styles every drawer <button> as the close icon ── */
+.side-bar .mobile-menu button.main {
+  position: static;
+  display: block;
+  width: 100%;
+  max-width: none;
+  min-height: 0;
+  margin: 0;
+  padding: 12px 0 17px 0;
+  background: transparent;
+  border: none;
+  border-bottom: 1px solid #f3f3f3;
+  text-align: left;
+  font-weight: 600;
+  color: #20282d;
+}
+
+.side-bar .mobile-menu .submenu {
+  list-style: none;
+  padding: 0 0 0 15px;
+}
+
+/* ─── Search results ──────────────────────────────────────────────────────── */
+/* The close control is a <button> here (a <div> in the template); the
+   template's global button width would otherwise stretch it across the page. */
+.search-input-area .search-close-icon {
+  width: auto;
+  background: none;
+  border: none;
+  padding: 0;
+}
+
+.sw-search-results {
+  list-style: none;
+  width: 80%;
+  margin: 20px auto 0;
+  padding: 0;
+}
+
+@media only screen and (max-width: 575px) {
+  .sw-search-results {
+    width: 100%;
+  }
+}
+
+.sw-search-results li {
+  margin: 0;
+}
+
+.sw-search-results a {
+  display: flex;
+  align-items: baseline;
+  gap: 14px;
+  padding: 12px 16px;
+  border-radius: 5px;
+  color: #1C2539;
+  font-weight: 600;
+  transition: var(--transition);
+}
+
+.sw-search-results a:hover,
+.sw-search-results a:focus-visible {
+  background: #F7F7F7;
+}
+
+.sw-search-results__type {
+  flex: 0 0 64px;
+  font-size: 13px;
+  font-weight: 500;
+  text-transform: uppercase;
+  color: #5D666F;
+}
+
+.sw-search-results__empty {
+  padding: 12px 16px;
+  color: #5D666F;
+}
