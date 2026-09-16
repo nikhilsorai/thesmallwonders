@@ -25,30 +25,35 @@ interface OdometerElement extends HTMLElement {
 }
 
 // ─── Odometer counters (same behaviour as home-8) ────────────────────────────
+// Counters start when they scroll into view. An observer replaces the template's
+// scroll handler, which measured every counter on every scroll event.
 function useOdometer(refs: RefObject<OdometerElement[]>) {
   useEffect(() => {
-    let onScroll: (() => void) | undefined;
+    let observer: IntersectionObserver | undefined;
+    let cancelled = false;
     import('odometer').then((module) => {
+      if (cancelled) return;
       const Odometer = module.default;
-      refs.current.forEach((el) => {
+      const counters = refs.current;
+      counters.forEach((el) => {
         el.od = new Odometer({ el, value: 0, format: 'd', duration: 2000 });
       });
-      const inView = (el: OdometerElement) => {
-        const r = el.getBoundingClientRect();
-        return r.top < window.innerHeight && r.bottom >= 0;
-      };
-      onScroll = () =>
-        refs.current.forEach((el) => {
-          if (inView(el) && !el.classList.contains('odometer-triggered')) {
+      observer = new IntersectionObserver(
+        (entries) => {
+          entries.forEach((entry) => {
+            if (!entry.isIntersecting) return;
+            const el = entry.target as OdometerElement;
             el.od?.update(el.dataset.count);
-            el.classList.add('odometer-triggered');
-          }
-        });
-      onScroll();
-      window.addEventListener('scroll', onScroll);
+            observer?.unobserve(el);
+          });
+        },
+        { rootMargin: '0px 0px -10% 0px' },
+      );
+      counters.forEach((el) => observer?.observe(el));
     });
     return () => {
-      if (onScroll) window.removeEventListener('scroll', onScroll);
+      cancelled = true;
+      observer?.disconnect();
     };
     // eslint-disable-next-line react-hooks/exhaustive-deps
   }, []);

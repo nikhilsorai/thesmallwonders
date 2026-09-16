@@ -10,18 +10,36 @@ import { CONTACT, NAV, SEARCH_INDEX } from '../data/site';
 
 /** Header — the Invena home-8 HeaderFour markup (top bar, dropdown nav, search, drawer). */
 export default function Navbar() {
-  const [isSticky, setIsSticky] = useState(false);
+  const [isPinned, setIsPinned] = useState(false);
   const [isOffcanvasOpen, setIsOffcanvasOpen] = useState(false);
   const [isSearchOpen, setIsSearchOpen] = useState(false);
   const [query, setQuery] = useState('');
   const searchInput = useRef<HTMLInputElement>(null);
   const router = useRouter();
 
+  // The header itself is `position: sticky` (see globals.css), so it never leaves the
+  // document flow and the page cannot jump. This only adds the shadow once the top bar
+  // has scrolled away: passive, rAF-throttled, and it re-renders only when it flips.
   useEffect(() => {
-    const handleScroll = () => setIsSticky(window.scrollY > 150);
-    handleScroll();
-    window.addEventListener('scroll', handleScroll);
-    return () => window.removeEventListener('scroll', handleScroll);
+    const topBarHeight = () => (window.matchMedia('(max-width: 991px)').matches ? 0 : 49);
+    let frame = 0;
+    let pinned = false;
+    const onScroll = () => {
+      if (frame) return;
+      frame = requestAnimationFrame(() => {
+        frame = 0;
+        const next = window.scrollY > topBarHeight();
+        if (next === pinned) return;
+        pinned = next;
+        setIsPinned(next);
+      });
+    };
+    onScroll();
+    window.addEventListener('scroll', onScroll, { passive: true });
+    return () => {
+      window.removeEventListener('scroll', onScroll);
+      if (frame) cancelAnimationFrame(frame);
+    };
   }, []);
 
   // Escape closes whichever overlay is open.
@@ -65,7 +83,7 @@ export default function Navbar() {
 
   return (
     <>
-      <header className={`header-one style-four top-transparent-header header--sticky ${isSticky ? 'sticky' : ''}`}>
+      <header className={`header-one style-four top-transparent-header sw-header ${isPinned ? 'sw-header--pinned' : ''}`}>
         <div className="header-top-area-wrapper">
           <div className="container">
             <div className="row">

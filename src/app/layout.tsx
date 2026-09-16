@@ -84,7 +84,9 @@ export default function RootLayout({
         <Navbar />
         <main>{children}</main>
         <Footer />
-        <Script src="/assets/js/smooth-scroll.js" strategy="afterInteractive" />
+        {/* assets/js/smooth-scroll.js is deliberately NOT loaded: it hijacks every wheel
+            event (preventDefault + its own 300fps re-animation), which is what made
+            scrolling feel glitchy. The browser's native scrolling is smoother. */}
         <Script src="/assets/js/bootstrap.min.js" strategy="afterInteractive" />
       </body>
     </html>

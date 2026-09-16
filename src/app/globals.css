@@ -18,102 +18,96 @@
   color: var(--sw-primary) !important;
 }
 
-/* ─── Logo — same footprint as Invena's 193×53 logo ───────────────────────── */
-.sw-logo {
-  display: inline-flex;
-  align-items: center;
-  gap: 10px;
-  line-height: 1;
-  white-space: nowrap;
+/* ─── Header: sticky, and always in the document flow ─────────────────────────
+   The template swapped the header to `position: fixed` past 150px of scroll. That
+   pulled a 155px-tall element out of the flow, so the whole page jumped up by 155px
+   (and back down on the way up), while a keyframe re-slid the header in from -100px
+   every time. Sticky keeps the header's space reserved, so nothing can shift: the
+   49px top bar scrolls away and the main row pins.
+
+   `overflow-x: hidden` on <body> would make it a scroll container, and sticky inside
+   a non-scrolling container never activates. `clip` hides the same overflow without
+   creating one — that is why this rule exists, and it is not a visual change. */
+body {
+  overflow-x: clip;
+  overflow-y: visible;
 }
 
-.sw-logo__mark {
-  width: 53px;
-  height: 53px;
-  flex: 0 0 53px;
-  border-radius: 50%;
-  background: #20282D;
-  display: inline-flex;
-  align-items: center;
-  justify-content: center;
+@media only screen and (min-width: 992px) and (max-width: 1199px) {
+  body {
+    overflow-x: clip;
+    overflow-y: visible;
+  }
 }
 
-.sw-logo__mark svg {
-  width: 26px;
-  height: 26px;
-  fill: #fff;
-}
-
-.sw-logo__text {
-  display: flex;
-  flex-direction: column;
-  gap: 5px;
-}
-
-.sw-logo__name {
-  font-family: var(--font-primary);
-  font-size: 27px;
-  font-weight: 700;
-  letter-spacing: -0.02em;
-  color: #20282D;
-}
-
-.sw-logo__tag {
-  font-size: 15px;
-  font-weight: 500;
-  color: #20282D;
-}
-
-.sw-logo--light .sw-logo__mark {
+.sw-header {
+  position: sticky;
+  top: -49px;
+  z-index: 999;
   background: #fff;
 }
 
-.sw-logo--light .sw-logo__mark svg {
-  fill: #20282D;
+.sw-header .header-main {
+  background: #fff;
 }
 
-.sw-logo--light .sw-logo__name,
-.sw-logo--light .sw-logo__tag {
-  color: #fff;
+/* Shadow only once the top bar has gone; nothing here changes the header's size. */
+.sw-header--pinned {
+  box-shadow: 0 7px 18px rgba(24, 16, 16, 0.05);
 }
 
-.footer-logo-area-left-8 .sw-logo__mark {
-  width: 66px;
-  height: 66px;
-  flex-basis: 66px;
+@media only screen and (max-width: 991px) {
+  .sw-header {
+    /* the top bar is display:none below 992px, so the whole header pins */
+    top: 0;
+  }
 }
 
-.footer-logo-area-left-8 .sw-logo__name {
-  font-size: 32px;
+/* ─── Official logo ───────────────────────────────────────────────────────────
+   assets/images/logo/small-wonders.png is the supplied artwork, trimmed of its
+   transparent margins and exported at 2x. Height-only sizing keeps it undistorted. */
+.sw-logo {
+  display: inline-flex;
+  align-items: center;
 }
 
-.footer-logo-area-left-8 .sw-logo__tag {
-  font-size: 17px;
+.sw-logo img {
+  display: block;
+  height: 68px;
+  width: auto;
+}
+
+@media only screen and (max-width: 1199px) {
+  .sw-logo img {
+    height: 58px;
+  }
 }
 
 @media only screen and (max-width: 575px) {
-  .header-main-one-wrapper .sw-logo {
-    gap: 8px;
+  .sw-logo img {
+    height: 44px;
   }
+}
 
-  .header-main-one-wrapper .sw-logo__mark {
-    width: 38px;
+@media only screen and (max-width: 360px) {
+  .sw-logo img {
     height: 38px;
-    flex-basis: 38px;
   }
+}
 
-  .header-main-one-wrapper .sw-logo__mark svg {
-    width: 19px;
-    height: 19px;
-  }
+/* Dark surfaces (footer): the artwork's dark half needs a light plate to stay legible. */
+.sw-logo--light {
+  background: #fff;
+  padding: 12px 16px;
+  border-radius: 10px;
+}
 
-  .header-main-one-wrapper .sw-logo__name {
-    font-size: 19px;
-  }
+.footer-logo-area-left-8 .sw-logo img {
+  height: 62px;
+}
 
-  .header-main-one-wrapper .sw-logo__tag {
-    font-size: 11px;
-  }
+.rts-sidebar-menu-desktop .sw-logo img {
+  height: 56px;
 }
 
 /* ─── Dropdowns open for keyboard users too (template opens on :hover only) ── */
@@ -170,6 +164,59 @@ header .nav-area ul li.has-dropdown:focus-within .submenu {
   object-fit: cover;
   object-position: 50% 12%;
   background: #fff;
+}
+
+/* ─── Case-study slider on tablet and phone ───────────────────────────────────
+   `.flowating-right { width: 128% }` is a desktop device: the slider is meant to
+   run past the right edge. With one slide per view on a phone that made every
+   slide wider than the screen (442px inside 375px) and, because the artwork is
+   almost square (810×852), about 465px tall — half the viewport for one photo.
+   Below 992px the slider is held to its container and the image gets a 4:3 box,
+   so it scales with the viewport instead of at its natural size. The artwork is
+   unchanged; `cover` keeps it undistorted.
+
+   The caption is hover-only in the template, which no touch device can trigger,
+   so below 992px it rests in view where the hover state would put it. */
+@media only screen and (max-width: 991px) {
+  .rts-business-case-area .flowating-right {
+    width: 100%;
+  }
+
+  /* the desktop 40px gap under the heading reads as dead space on a phone */
+  .rts-business-case-area .container.mt--40 {
+    margin-top: 12px !important;
+  }
+
+  .rts-business-case-area .single-case-studies-four .thumbnail {
+    display: block;
+  }
+
+  .rts-business-case-area .single-case-studies-four .thumbnail img {
+    width: 100%;
+    height: auto;
+    aspect-ratio: 4 / 3;
+    object-fit: cover;
+    object-position: 50% 40%;
+  }
+
+  .rts-business-case-area .single-case-studies-four .inner {
+    left: 16px;
+    right: 16px;
+    bottom: 16px;
+    padding: 16px 18px;
+    border-left-width: 5px;
+  }
+
+  .rts-business-case-area .single-case-studies-four .inner .title {
+    font-size: 18px;
+    margin-bottom: 4px;
+  }
+
+  .rts-business-case-area .single-case-studies-four .inner span {
+    display: block;
+    font-size: 14px;
+    line-height: 1.4;
+  }
 }
 
 /* ─── Circle text — same 285px footprint as Invena's testimonials/07.webp ─── */
