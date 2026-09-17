@@ -153,15 +153,20 @@ export default function Navbar() {
                     <nav className="nav-area" aria-label="Main">
                       <ul>
                         {NAV.map((item) => (
-                          <li key={item.href} className="main-nav has-dropdown project-a-after">
+                          <li
+                            key={item.href}
+                            className={`main-nav${item.children ? ' has-dropdown project-a-after' : ''}`}
+                          >
                             <Link href={item.href}>{item.label}</Link>
-                            <ul className="submenu parent-nav">
-                              {item.children.map((child) => (
-                                <li key={child.label}>
-                                  <NavAnchor href={child.href}>{child.label}</NavAnchor>
-                                </li>
-                              ))}
-                            </ul>
+                            {item.children && (
+                              <ul className="submenu parent-nav">
+                                {item.children.map((child) => (
+                                  <li key={child.label}>
+                                    <NavAnchor href={child.href}>{child.label}</NavAnchor>
+                                  </li>
+                                ))}
+                              </ul>
+                            )}
                           </li>
                         ))}
                       </ul>

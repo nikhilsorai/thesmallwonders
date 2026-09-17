@@ -5,6 +5,7 @@ import '../../public/assets/css/aos.css';
 import '../../public/assets/css/style.css';
 // Small Wonders additions load last so they sit on top of the template CSS.
 import './globals.css';
+import './pages.css';
 import 'swiper/css';
 import 'swiper/css/navigation';
 import 'swiper/css/pagination';

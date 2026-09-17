@@ -1,124 +1,85 @@
-import Link from 'next/link';
+import type { Metadata } from 'next';
+import { PageHero, SectionTitle, CtaBand } from '../../components/sections';
+import { CASE_STUDIES, INDUSTRIES } from '../../data/case-studies';
+import WorkExplorer, { CaseCard } from './WorkExplorer';
 
-export const metadata = {
-  title: 'Our Work — One Quarter, One Company, Honestly Reported',
+export const metadata: Metadata = {
+  title: 'Our Work — Engagements Across Eight Industries',
   description:
-    'An anonymised case study of a ~200-person company running LEAP, including what didn’t work.',
+    'The questions leadership teams brought to us, what we did about them, what we handed over, and where it went. Forty-five engagements across manufacturing, services, media and more.',
+  alternates: { canonical: 'https://thesmallwonders.com/work' },
+  openGraph: {
+    title: 'Our Work — Engagements Across Eight Industries',
+    description:
+      'The questions leadership teams brought to us, what we did about them, and where it went.',
+    url: 'https://thesmallwonders.com/work',
+  },
 };
 
 export default function WorkPage() {
+  const featured = CASE_STUDIES.filter((item) => item.featured);
+  const withOutcome = CASE_STUDIES.filter((item) => item.outcome).length;
+
   return (
-    <div className="py-5" style={{ backgroundColor: '#FFFFFF' }}>
-      <div className="container py-4">
-        <div className="mx-auto" style={{ maxWidth: '840px' }}>
-          {/* Header */}
-          <div className="mb-5">
-            <span
-              style={{
-                fontSize: '0.85rem',
-                fontWeight: 700,
-                color: '#0D7A85',
-                textTransform: 'uppercase',
-                letterSpacing: '0.05em',
-                display: 'block',
-                marginBottom: '12px',
-              }}
-            >
-              Case Study
-            </span>
-            <h1
-              style={{
-                fontSize: 'clamp(2.3rem, 4.5vw, 3.4rem)',
-                fontWeight: 800,
-                lineHeight: 1.18,
-                color: '#0F172A',
-                letterSpacing: '-0.03em',
-                marginBottom: '20px',
-              }}
-            >
-              One quarter, one company, honestly reported
-            </h1>
+    <>
+      <PageHero
+        watermark="Work"
+        title={`${CASE_STUDIES.length} engagements, ${INDUSTRIES.length} industries`}
+        intro="Each one began as a question a leadership team could not answer on its own. What follows is the question, the work, what was handed over, and — where there is one — the outcome. No client names."
+      />
+
+      {/* Featured */}
+      <div className="rts-section-gap">
+        <div className="container">
+          <div className="row">
+            <div className="col-lg-12">
+              <SectionTitle
+                pre="Selected Work"
+                title={
+                  <>
+                    Where the answer <span>changed the business</span>
+                  </>
+                }
+                disc={`${withOutcome} of the ${CASE_STUDIES.length} engagements have a recorded outcome. These are the ones where it moved furthest.`}
+              />
+            </div>
           </div>
-
-          {/* Anonymised Case Study */}
-          <div className="d-flex flex-column gap-5">
-            <div className="p-4 p-md-5 rounded-3 border" style={{ backgroundColor: '#F8FAFC', borderColor: '#E2E8F0' }}>
-              <div className="d-flex flex-column gap-4" style={{ fontSize: '1.05rem', color: '#334155', lineHeight: 1.75 }}>
-                <div>
-                  <h3 style={{ fontSize: '1.25rem', fontWeight: 700, color: '#0F172A', marginBottom: '8px' }}>
-                    The company
-                  </h3>
-                  <p className="mb-0 text-secondary font-monospace" style={{ fontSize: '0.95rem' }}>
-                    [Sector, size, structure — e.g. "A ~200-person manufacturer, ten departments, founder-led."]
-                  </p>
-                </div>
-
-                <div>
-                  <h3 style={{ fontSize: '1.25rem', fontWeight: 700, color: '#0F172A', marginBottom: '8px' }}>
-                    What was happening
-                  </h3>
-                  <p className="mb-0 text-secondary font-monospace" style={{ fontSize: '0.95rem' }}>
-                    [The situation before. Spreadsheet-and-Word OKRs, monthly screen-share, nobody chasing between meetings.]
-                  </p>
-                </div>
-
-                <div>
-                  <h3 style={{ fontSize: '1.25rem', fontWeight: 700, color: '#0F172A', marginBottom: '8px' }}>
-                    What we found
-                  </h3>
-                  <p className="mb-0 text-secondary font-monospace" style={{ fontSize: '0.95rem' }}>
-                    [The 5-C read. Which dimension was worst and why that mattered.]
-                  </p>
-                </div>
-
-                <div>
-                  <h3 style={{ fontSize: '1.25rem', fontWeight: 700, color: '#0F172A', marginBottom: '8px' }}>
-                    What we changed
-                  </h3>
-                  <p className="mb-0 text-secondary font-monospace" style={{ fontSize: '0.95rem' }}>
-                    [The rituals designed. What came off whose plate. What AI took.]
-                  </p>
-                </div>
-
-                <div>
-                  <h3 style={{ fontSize: '1.25rem', fontWeight: 700, color: '#0F172A', marginBottom: '8px' }}>
-                    What happened
-                  </h3>
-                  <p className="mb-0 text-secondary font-monospace" style={{ fontSize: '0.95rem' }}>
-                    [Results. Energy by team. Override rate. Removals delivered. Rituals held versus planned.]
-                  </p>
-                </div>
-
-                <div className="pt-3 border-top">
-                  <h3 style={{ fontSize: '1.25rem', fontWeight: 700, color: '#DC2626', marginBottom: '8px' }}>
-                    What didn't work
-                  </h3>
-                  <p className="mb-0 text-secondary font-monospace" style={{ fontSize: '0.95rem' }}>
-                    [Include this. A case study with no failures reads as marketing. One honest "this took longer than we expected" buys more trust than three successes.]
-                  </p>
-                </div>
-              </div>
-            </div>
-
-            {/* CTA */}
-            <div className="p-4 p-md-5 rounded-3 text-center border" style={{ backgroundColor: '#FFFFFF', borderColor: '#CBD5E1' }}>
-              <h3 style={{ fontSize: '1.6rem', fontWeight: 700, color: '#0F172A', marginBottom: '14px' }}>
-                See how this applies to your quarter
-              </h3>
-              <p style={{ color: '#475569', fontSize: '1.05rem', marginBottom: '24px' }}>
-                We start with a conversation about what your teams are carrying today.
-              </p>
-              <Link
-                href="/contact"
-                className="btn btn-primary px-4 py-2"
-                style={{ fontWeight: 600, fontSize: '1rem', borderRadius: '6px' }}
-              >
-                Book a call
-              </Link>
-            </div>
+          <div className="sw-grid sw-grid--2 mt--30">
+            {featured.map((item) => (
+              <CaseCard key={item.id} item={item} featured />
+            ))}
           </div>
         </div>
       </div>
-    </div>
+
+      {/* The full record */}
+      <div className="rts-section-gapBottom">
+        <div className="container">
+          <div className="row">
+            <div className="col-lg-12">
+              <SectionTitle
+                pre="The Record"
+                title={
+                  <>
+                    Filter by industry <span>or by expertise</span>
+                  </>
+                }
+                disc="Brand valuation, business diagnosis, leadership workshops, GTM, organisational strategy — across manufacturing, services, media, infrastructure, education and retail."
+              />
+            </div>
+          </div>
+          <WorkExplorer />
+        </div>
+      </div>
+
+      <CtaBand
+        title={
+          <>
+            Bring us the question <span>you cannot answer</span>
+          </>
+        }
+        body="The first conversation is free, and you leave with a clearer read on your own situation whether or not we work together."
+      />
+    </>
   );
 }

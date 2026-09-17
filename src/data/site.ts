@@ -16,34 +16,33 @@ export const SITE_DESCRIPTION =
   'Small Wonders helps founder-led companies grow without spending their people to do it. Bengaluru, India · working across India and the UAE.';
 
 export type NavLink = { label: string; href: string };
-export type NavItem = NavLink & { children: NavLink[] };
+export type NavItem = NavLink & { children?: NavLink[] };
 
+/**
+ * The navigation CONTENT.md specifies: LEAP Framework · Services · Work · About ·
+ * Blog, then the Book a call button. "LEAP Framework" rather than bare "LEAP" —
+ * one word teaches a cold visitor nothing, and it collides with Leapsome.
+ */
 export const NAV: NavItem[] = [
   {
-    label: 'About',
-    href: '/about',
+    label: 'LEAP Framework',
+    href: '/leap',
     children: [
-      { label: 'About Ekta', href: '/about' },
-      { label: 'Our Work', href: '/work' },
+      { label: 'The OKR LEAP Framework', href: '/leap' },
+      { label: 'OKR Ladder', href: '/okr-ladder' },
     ],
   },
   {
     label: 'Services',
     href: '/services',
     children: [
-      { label: 'All Services', href: '/services' },
-      { label: 'The LEAP Framework', href: '/leap' },
-      { label: 'OKR Ladder', href: '/okr-ladder' },
-    ],
-  },
-  {
-    label: 'Practice',
-    href: '/okr-consulting-india',
-    children: [
+      { label: 'How We Work', href: '/services' },
       { label: 'OKR Consulting India', href: '/okr-consulting-india' },
       { label: 'OKR Consulting UAE', href: '/okr-consulting-uae' },
     ],
   },
+  { label: 'Work', href: '/work' },
+  { label: 'About', href: '/about' },
   {
     label: 'Blog',
     href: '/blog',
@@ -52,15 +51,6 @@ export const NAV: NavItem[] = [
       { label: 'Why OKRs Fail', href: `/blog/${BLOG_POSTS[0].slug}` },
       { label: 'OKRs vs KPIs', href: `/blog/${BLOG_POSTS[1].slug}` },
       { label: 'The Capacity Gate', href: `/blog/${BLOG_POSTS[2].slug}` },
-    ],
-  },
-  {
-    label: 'Contact',
-    href: '/contact',
-    children: [
-      { label: 'Book a Call', href: '/contact' },
-      { label: 'Email Ekta', href: `mailto:${CONTACT.email}` },
-      { label: 'Call Us', href: CONTACT.phoneHref },
     ],
   },
 ];

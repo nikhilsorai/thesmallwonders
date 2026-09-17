@@ -1,129 +1,193 @@
-import Link from 'next/link';
+import type { Metadata } from 'next';
+import { PageHero, SectionTitle, StatementRow, FeatureRow, CtaBand } from '../../components/sections';
 
-export const metadata = {
-  title: 'OKR Consulting in the UAE — For Founder-Led Companies (Dubai / Abu Dhabi)',
+export const metadata: Metadata = {
+  title: 'OKR Consulting UAE — Founder-Led Companies',
   description:
-    'Working with mid-market companies across the Emirates from Bengaluru. Remote through the month, on site for the close, Monday to Friday GST.',
+    'OKR consulting for mid-market companies across the UAE. Remote through the month, on site for the quarterly close, and in your working week — Monday to Friday, GST.',
+  alternates: { canonical: 'https://thesmallwonders.com/okr-consulting-uae' },
+  openGraph: {
+    title: 'OKR Consulting UAE — Founder-Led Companies',
+    description:
+      'Remote through the month, on site for the quarterly close, and in your working week — Monday to Friday, GST.',
+    url: 'https://thesmallwonders.com/okr-consulting-uae',
+  },
 };
+
+const LADDER_BRIEF = [
+  { index: '01', title: 'Reset', body: 'A first conversation, free.' },
+  { index: '02', title: 'Discovery', body: "Find the north star, and find out what's measurable." },
+  { index: '03', title: 'The 90-Day Proof', body: 'One quarter, run properly, with the evidence pack at the end.' },
+  { index: '04', title: 'Core', body: 'The full year. One function a month, every quarter closed.' },
+  { index: '05', title: 'Transformation', body: 'Years two to five, as the practice becomes yours.' },
+];
 
 export default function OkrConsultingUaePage() {
   return (
-    <div className="py-5" style={{ backgroundColor: '#FFFFFF' }}>
-      <div className="container py-4">
-        <div className="mx-auto" style={{ maxWidth: '840px' }}>
-          {/* Header */}
-          <div className="mb-5">
-            <span
-              style={{
-                fontSize: '0.85rem',
-                fontWeight: 700,
-                color: '#0D7A85',
-                textTransform: 'uppercase',
-                letterSpacing: '0.05em',
-                display: 'block',
-                marginBottom: '12px',
-              }}
-            >
-              UAE Practice · Dubai & Abu Dhabi
-            </span>
-            <h1
-              style={{
-                fontSize: 'clamp(2.3rem, 4.5vw, 3.4rem)',
-                fontWeight: 800,
-                lineHeight: 1.18,
-                color: '#0F172A',
-                letterSpacing: '-0.03em',
-                marginBottom: '20px',
-              }}
-            >
-              OKR consulting for founder-led companies in the UAE
-            </h1>
-            <p style={{ fontSize: '1.2rem', color: '#475569', lineHeight: 1.65 }}>
-              Working with mid-market companies across the Emirates from Bengaluru — one and a half hours behind you, which means a single working day covers both of us.
-            </p>
-          </div>
+    <>
+      <PageHero
+        watermark="UAE"
+        title="OKR consulting for founder-led companies in the UAE"
+        intro="Working with mid-market companies across the Emirates from Bengaluru — one and a half hours behind you, which means a single working day covers both of us."
+      />
 
-          {/* Body */}
-          <section className="mb-5">
-            <h2 style={{ fontSize: '1.9rem', fontWeight: 800, color: '#0F172A', marginBottom: '20px' }}>
-              Growth plans, Vision 2031, and the gap in between
-            </h2>
-            <div style={{ fontSize: '1.1rem', color: '#334155', lineHeight: 1.75 }} className="d-flex flex-column gap-3">
-              <p>
-                The UAE's diversification agenda has produced no shortage of ambition. What's scarce is the same thing that's scarce everywhere: the rhythm that turns an ambitious plan into something that happens on a Tuesday.
-              </p>
-              <p>
-                Free-zone and mainland SMEs here lean heavily on external advisers, and most of that advice arrives as a document. Ours arrives as a practice you keep.
-              </p>
-              <div
-                className="p-4 my-2 rounded-3"
-                style={{
-                  backgroundColor: '#F8FAFC',
-                  borderLeft: '4px solid #0D7A85',
-                  border: '1px solid #E2E8F0',
-                }}
-              >
-                <p className="mb-0" style={{ fontWeight: 700, color: '#0F172A', fontSize: '1.15rem' }}>
-                  We work across the Emirates remotely, on site for the quarterly close, and in your working week — Monday to Friday, GST.
+      {/* Body */}
+      <div className="rts-section-gap">
+        <div className="container">
+          <div className="row g-5">
+            <div className="col-lg-5">
+              <SectionTitle
+                pre="The Gulf Market"
+                title={
+                  <>
+                    Growth plans, Vision 2031, <span>and the gap in between</span>
+                  </>
+                }
+              />
+            </div>
+            <div className="col-lg-7">
+              <div className="sw-prose">
+                <p>
+                  The UAE&apos;s diversification agenda has produced no shortage of ambition.
+                  What&apos;s scarce is the same thing that&apos;s scarce everywhere: the rhythm that
+                  turns an ambitious plan into something that happens on a Tuesday.
+                </p>
+                <p>
+                  Free-zone and mainland SMEs here lean heavily on external advisers, and most of that
+                  advice arrives as a document. Ours arrives as a practice you keep.
+                </p>
+                <p>
+                  <strong>
+                    We work across the Emirates remotely, on site for the quarterly close, and in your
+                    working week — Monday to Friday, GST.
+                  </strong>
                 </p>
               </div>
             </div>
-          </section>
-
-          {/* Three Forces Block */}
-          <section className="mb-5 p-4 p-md-5 rounded-3 border" style={{ backgroundColor: '#F8FAFC', borderColor: '#E2E8F0' }}>
-            <h3 style={{ fontSize: '1.5rem', fontWeight: 800, color: '#0F172A', marginBottom: '16px' }}>
-              The three forces of LEAP
-            </h3>
-            <p style={{ color: '#475569', lineHeight: 1.7, marginBottom: '20px' }}>
-              Growth = Ambition × Energy × Leverage, sustained by Practice. Ambition asks what the vision requires. Energy protects what your leaders can carry. Leverage asks what AI takes off the plate.
-            </p>
-            <Link href="/leap" className="fw-semibold text-decoration-none" style={{ color: '#0D7A85' }}>
-              Learn more about the LEAP framework →
-            </Link>
-          </section>
-
-          {/* Engagement Ladder in Brief */}
-          <section className="mb-5">
-            <h3 style={{ fontSize: '1.5rem', fontWeight: 800, color: '#0F172A', marginBottom: '16px' }}>
-              How we work together
-            </h3>
-            <div className="d-flex flex-column gap-3" style={{ fontSize: '1.05rem', color: '#334155' }}>
-              <div><strong>1. Reset:</strong> A first conversation, free. A clear assessment of your goal discipline and energy load.</div>
-              <div><strong>2. Discovery:</strong> Month 0 diagnostic. Map P&L leverage and establish real baseline measures.</div>
-              <div><strong>3. The 90-Day Proof:</strong> One quarter closed with an evidence pack before committing to an annual engagement.</div>
-              <div><strong>4. Core:</strong> Full year rhythm — our role is designed to shrink by year three.</div>
-            </div>
-          </section>
-
-          {/* Ekta Section */}
-          <section className="mb-5 p-4 rounded-3 border" style={{ backgroundColor: '#FFFFFF', borderColor: '#CBD5E1' }}>
-            <h4 style={{ fontSize: '1.25rem', fontWeight: 700, color: '#0F172A', marginBottom: '8px' }}>
-              Ekta Das · Founder
-            </h4>
-            <p style={{ color: '#475569', lineHeight: 1.65, margin: 0 }}>
-              15+ years with CXOs, founders and teams across industries. 50+ leadership and alignment workshops. Serving clients across the GCC and India.
-            </p>
-          </section>
-
-          {/* CTA */}
-          <div className="pt-4 text-center border-top">
-            <h3 style={{ fontSize: '1.7rem', fontWeight: 800, color: '#0F172A', marginBottom: '16px' }}>
-              Start with one conversation
-            </h3>
-            <p style={{ color: '#64748B', marginBottom: '24px' }}>
-              Not a proposal. A conversation about what your team is carrying today.
-            </p>
-            <Link
-              href="/contact"
-              className="btn btn-primary px-4 py-2"
-              style={{ fontWeight: 600, fontSize: '1.05rem', borderRadius: '6px' }}
-            >
-              Book a call
-            </Link>
           </div>
         </div>
       </div>
-    </div>
+
+      {/* How the engagement runs across time zones */}
+      <div className="rts-section-gapBottom">
+        <div className="container">
+          <div className="row g-5">
+            <div className="col-lg-6">
+              <FeatureRow icon="/assets/images/about/icons/01.svg" title="Remote through the month">
+                One function a month, run in your working week. IST and GST are ninety minutes apart,
+                so a single working day covers both of us — an actual overlap, not a scheduling
+                compromise.
+              </FeatureRow>
+            </div>
+            <div className="col-lg-6">
+              <FeatureRow icon="/assets/images/about/icons/02.svg" title="On site for the quarterly close">
+                Committed goals graded honestly, stretch graded separately, and one evidence pack —
+                results, energy by team, override rates, removals delivered.
+              </FeatureRow>
+            </div>
+          </div>
+        </div>
+      </div>
+
+      {/* The three forces */}
+      <div className="rts-section-gapBottom">
+        <div className="container">
+          <div className="row">
+            <div className="col-lg-12">
+              <SectionTitle
+                pre="The Framework"
+                title={
+                  <>
+                    Three forces, <span>and they multiply</span>
+                  </>
+                }
+                align="center"
+                disc="Growth = Ambition × Energy × Leverage, sustained by Practice. It doesn’t replace OKRs. It completes them."
+              />
+            </div>
+          </div>
+          <div className="sw-grid sw-grid--3 mt--30">
+            <div className="sw-card">
+              <h3 className="sw-step__title">Ambition</h3>
+              <p className="sw-step__body">What the business asks of itself.</p>
+            </div>
+            <div className="sw-card">
+              <h3 className="sw-step__title">Energy</h3>
+              <p className="sw-step__body">What your people can actually carry.</p>
+            </div>
+            <div className="sw-card">
+              <h3 className="sw-step__title">Leverage</h3>
+              <p className="sw-step__body">How much AI carries, so people don&apos;t have to.</p>
+            </div>
+          </div>
+        </div>
+      </div>
+
+      {/* The ladder in brief */}
+      <div className="rts-section-gapBottom">
+        <div className="container">
+          <div className="row g-5">
+            <div className="col-lg-4">
+              <div className="position-sticky top--120">
+                <SectionTitle
+                  pre="How We Work"
+                  title={
+                    <>
+                      Five ways in, <span>starting with a free Reset</span>
+                    </>
+                  }
+                />
+              </div>
+            </div>
+            <div className="col-lg-8">
+              <section className="main-wrapper-sticky sw-sticky-ladder">
+                {LADDER_BRIEF.map((rung) => (
+                  <StatementRow
+                    key={rung.title}
+                    index={rung.index}
+                    title={rung.title}
+                    body={rung.body}
+                    href="/services"
+                  />
+                ))}
+              </section>
+            </div>
+          </div>
+        </div>
+      </div>
+
+      {/* Ekta */}
+      <div className="rts-section-gapBottom">
+        <div className="container">
+          <div className="row g-5 align-items-center">
+            <div className="col-lg-5">
+              <SectionTitle pre="Who You Work With" title="Ekta Das" />
+            </div>
+            <div className="col-lg-7">
+              <div className="sw-prose">
+                <p>
+                  Fifteen years with CXOs, founders and teams across industries, and a rare mix of
+                  systems thinking and human-centred design. Fifty-plus leadership and alignment
+                  workshops. Before Small Wonders: Capgemini Invent and EQUiTOR Value Advisory.
+                </p>
+                <p>
+                  Her work is the part most consultants skip — translating values into rituals, and
+                  vision into something that happens on a Tuesday.
+                </p>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+
+      <CtaBand
+        title={
+          <>
+            Start with one conversation. <span>It costs nothing</span>
+          </>
+        }
+        body="A conversation about what your teams are actually carrying, and what your goals would look like if that were a condition rather than an afterthought."
+      />
+    </>
   );
 }

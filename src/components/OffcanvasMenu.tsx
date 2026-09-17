@@ -76,26 +76,34 @@ export default function OffcanvasMenu({ isOpen, onClose }: OffcanvasMenuProps) {
       <div className="mobile-menu d-block d-xl-none">
         <nav className="nav-main mainmenu-nav mt--30" aria-label="Mobile">
           <ul className="mainmenu" id="mobile-menu-active">
-            {NAV.map((item, index) => (
-              <li key={item.href} className={`has-droupdown ${activeMenu === index ? 'mm-active' : ''}`}>
-                <button
-                  className="main"
-                  aria-expanded={activeMenu === index}
-                  onClick={() => setActiveMenu(activeMenu === index ? null : index)}
-                >
-                  {item.label}
-                </button>
-                <ul className="submenu" hidden={activeMenu !== index}>
-                  {item.children.map((child) => (
-                    <li key={child.label}>
-                      <NavAnchor href={child.href} onClick={onClose}>
-                        {child.label}
-                      </NavAnchor>
-                    </li>
-                  ))}
-                </ul>
-              </li>
-            ))}
+            {NAV.map((item, index) =>
+              item.children ? (
+                <li key={item.href} className={`has-droupdown ${activeMenu === index ? 'mm-active' : ''}`}>
+                  <button
+                    className="main"
+                    aria-expanded={activeMenu === index}
+                    onClick={() => setActiveMenu(activeMenu === index ? null : index)}
+                  >
+                    {item.label}
+                  </button>
+                  <ul className="submenu" hidden={activeMenu !== index}>
+                    {item.children.map((child) => (
+                      <li key={child.label}>
+                        <NavAnchor href={child.href} onClick={onClose}>
+                          {child.label}
+                        </NavAnchor>
+                      </li>
+                    ))}
+                  </ul>
+                </li>
+              ) : (
+                <li key={item.href}>
+                  <Link href={item.href} className="main" onClick={onClose}>
+                    {item.label}
+                  </Link>
+                </li>
+              ),
+            )}
             <li>
               <Link href="/contact" className="main" onClick={onClose}>
                 Book a Call
